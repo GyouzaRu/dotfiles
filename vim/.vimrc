@@ -45,6 +45,8 @@ if has('ide')
     set NERDTree
 end
 
+"" change path of .viminfo
+set viminfo+=n~/.config/vim/.viminfo
 
 ""===========================
 "" color schemes
@@ -125,29 +127,29 @@ nnoremap <leader>t :NERDTree<CR>
 ""===========================
 "" Plugin setting
 ""===========================
-call plug#begin()
-
-"" NERDTree
-Plug 'preservim/nerdtree'|
-            \ Plug 'Xuyuanp/nerdtree-git-plugin'
-
-Plug 'preservim/tagbar'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-call plug#end()
-
-"" Nerdtree git plugin config
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-            \ 'Modified'  :'✹',
-            \ 'Staged'    :'✚',
-            \ 'Untracked' :'✭',
-            \ 'Renamed'   :'➜',
-            \ 'Unmerged'  :'═',
-            \ 'Deleted'   :'✖',
-            \ 'Dirty'     :'✗',
-            \ 'Ignored'   :'☒',
-            \ 'Clean'     :'✔︎',
-            \ 'Unknown'   :'?',
-            \ }
-
-
+"call plug#begin()
+"
+""" NERDTree
+"Plug 'preservim/nerdtree'|
+"            \ Plug 'Xuyuanp/nerdtree-git-plugin'
+"
+"Plug 'preservim/tagbar'
+""Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"
+"call plug#end()
+"
+""" Nerdtree git plugin config
+"let g:NERDTreeGitStatusIndicatorMapCustom = {
+"            \ 'Modified'  :'✹',
+"            \ 'Staged'    :'✚',
+"            \ 'Untracked' :'✭',
+"            \ 'Renamed'   :'➜',
+"            \ 'Unmerged'  :'═',
+"            \ 'Deleted'   :'✖',
+"            \ 'Dirty'     :'✗',
+"            \ 'Ignored'   :'☒',
+"            \ 'Clean'     :'✔︎',
+"            \ 'Unknown'   :'?',
+"            \ }
+"
+"

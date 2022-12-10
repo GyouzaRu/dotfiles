@@ -17,7 +17,7 @@ if not status then
 end
 
 -- :h mason-default-settings
-require("mason").setup({
+mason.setup({
   ui = {
     icons = {
       package_installed = "✓",
@@ -29,7 +29,7 @@ require("mason").setup({
 
 -- mason-lspconfig uses the `lspconfig` server names in the APIs it exposes - not `mason.nvim` package names
 -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-require("mason-lspconfig").setup({
+mason_config.setup({
   -- 确保安装，根据需要填写
   ensure_installed = {
     "clangd",

@@ -2,33 +2,42 @@ local packer = require("packer")
 packer.startup({
   function(use)
     -- Packer 可以管理自己本身
-    use 'wbthomason/packer.nvim'
+    use('wbthomason/packer.nvim')
 
     -- 你的插件列表...
     ---- colorschemes ----
     -- tokyonight
-    use("folke/tokyonight.nvim")
+    use({"folke/tokyonight.nvim"})
     ---- plugins ----
     -- nvim-tree
-    use ({"nvim-tree/nvim-tree.lua", requires = {"nvim-tree/nvim-web-devicons"}})
+    use({"nvim-tree/nvim-tree.lua", requires = {"nvim-tree/nvim-web-devicons"}})
     -- bufferline
-    use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }})
+    use({"akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }})
     -- lualine
-    use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
+    use({"nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
     use("arkav/lualine-lsp-progress")
     -- telescope
-    use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
+    use({"nvim-telescope/telescope.nvim", requires = { "nvim-lua/plenary.nvim" }})
     -- dashboard-nvim
-    use("glepnir/dashboard-nvim")
+    use({ "glepnir/dashboard-nvim"})
     -- project
-    use("ahmedkhalf/project.nvim")
+    use({ "ahmedkhalf/project.nvim"})
     -- treesitter
-    use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+    use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+    -- surround
+    use({"kylechui/nvim-surround"})
+    -- nvim-autopairs
+    use({"windwp/nvim-autopairs"})
+    -- comment
+    use({"numToStr/Comment.nvim"})
+    -- Float terminal
+    use({"numToStr/FTerm.nvim"})
+
     -- mason
-    use({ "williamboman/mason.nvim" })
-    use({ "williamboman/mason-lspconfig.nvim" })
+    use({"williamboman/mason.nvim" })
+    use({"williamboman/mason-lspconfig.nvim" })
     -- Lspconfig
-    use({ "neovim/nvim-lspconfig" })
+    use({"neovim/nvim-lspconfig" })
 
     -- 补全引擎
     use("hrsh7th/nvim-cmp")

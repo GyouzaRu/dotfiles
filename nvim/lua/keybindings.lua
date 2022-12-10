@@ -93,6 +93,10 @@ pluginKeys.nvimTreeList = {
   { key = "so", action = "system_open" },
 }
 
+-- Float terminal
+vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+
 -- Telescope
 -- 查找文件
 map("n", "<C-p>", ":Telescope find_files<CR>", opt)

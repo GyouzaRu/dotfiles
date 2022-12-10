@@ -14,6 +14,10 @@ require("plugin-config.telescope")
 require("plugin-config.dashboard")
 require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
+require("plugin-config.nvim-surround")
+require("plugin-config.nvim-autopairs")
+require("plugin-config.comment")
+require("plugin-config.FTerm")
 
 -- LSP
 require("lsp.setup")

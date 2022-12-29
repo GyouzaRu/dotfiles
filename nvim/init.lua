@@ -23,3 +23,6 @@ require("plugin-config.FTerm")
 require("lsp.setup")
 require("lsp.cmp")
 require("lsp.ui")
+
+-- DAP
+require("dap.setup")

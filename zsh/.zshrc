@@ -32,13 +32,27 @@ source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 ######################################
 # aliases
 ######################################
+# common
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias ra='ranger'
 
-alias setssr='export all_proxy="socks5://127.0.0.1:1080"'
+# ssr proxy
+alias setssr='export all_proxy="socks5://127.0.0.1:7890"'
 alias unsetssr='unset all_proxy'
+
+# tmux
+alias tmd='tmux detach'
+alias tml='tmux ls'
+alias tma='tmux attach -t'
+alias tms='tmux switch -t'
+
+# git
+alias ga='git add'
+alias gc='git commit'
+alias gl='git log'
+alias gs='git status'
 
 # repo mirror address
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo'

@@ -14,6 +14,8 @@ map("i", "jk", "<Esc>", opt)
 -- 移动
 map("n", "J", "5j", opt)
 map("n", "K", "5k", opt)
+map("v", "J", "5j", opt)
+map("v", "K", "5k", opt)
 map("n", "<C-J>", "J", opt)
 -- 取消 s 默认功能
 map("n", "s", "", opt)
@@ -94,8 +96,8 @@ pluginKeys.nvimTreeList = {
 }
 
 -- Float terminal
-vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
-vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('n', '<A-t>', '<CMD>lua require("FTerm").toggle()<CR>')
+vim.keymap.set('t', '<A-t>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
 -- Telescope
 -- 查找文件
@@ -142,6 +144,15 @@ end
 
 -- nvim-cmp 自动补全
 pluginKeys.cmp = function(cmp)
+  local feedkey = function(key, mode)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+  end
+
+  local has_words_before = function()
+    local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+  end
+
   return {
    -- 出现补全
    ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
@@ -150,10 +161,33 @@ pluginKeys.cmp = function(cmp)
        i = cmp.mapping.abort(),
        c = cmp.mapping.close()
    }),
-   -- 下一个
-   ["<Tab>"] = cmp.mapping.select_next_item(),
-   -- 上一个
-   ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+
+    -- Super Tab
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      end
+    end, {"i", "s"}),
+
+    ["<S-Tab>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif vim.fn["vsnip#jumpable"](-1) == 1 then
+        feedkey("<Plug>(vsnip-jump-prev)", "")
+      end
+    end, {"i", "s"}),
+    -- end of super Tab
+   -- -- 下一个
+   -- ["<Tab>"] = cmp.mapping.select_next_item(),
+   -- -- 上一个
+   -- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+
    -- 确认
    ["<CR>"] = cmp.mapping.confirm({
        select = true,

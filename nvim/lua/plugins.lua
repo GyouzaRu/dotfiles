@@ -53,8 +53,10 @@ packer.startup({
     -- 常见编程语言代码段
     use("rafamadriz/friendly-snippets")
 
-    -- dap
-    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
+    -- Debugger
+    use ( "mfussenegger/nvim-dap" )
+    use ( "rcarriga/nvim-dap-ui" )
+    use ( "theHamsta/nvim-dap-virtual-text" )
   end,
 
   config = {

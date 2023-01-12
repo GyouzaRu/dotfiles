@@ -45,8 +45,10 @@ if has('ide')
     set NERDTree
 end
 
-"" change path of .viminfo
-set viminfo+=n~/.config/vim/.viminfo
+"" change path of vim setting files
+set viminfo+=n~/.dotfiles/vim/.viminfo
+set runtimepath+=~/.dotfiles/vim
+set packpath+=~/.dotfiles/vim
 
 ""===========================
 "" color schemes
@@ -66,17 +68,19 @@ map R :source $MYVIMRC<CR>
 "" moving cursor
 nnoremap J 5j
 nnoremap K 5k
+nnoremap H 0
+nnoremap L $
 vnoremap J 5j
 vnoremap K 5k
+vnoremap H 0
+vnoremap L $
 
 "" change join keybind
-nnoremap <C-j> J
+nnoremap <C-J> J
 
 "" split window
-map sl :set splitright<CR>:vsplit<CR>
-map sh :set nosplitright<CR>:vsplit<CR>
-map sj :set splitbelow<CR>:split<CR>
-map sk :set nosplitbelow<CR>:split<CR>
+map sv :set splitright<CR>:vsplit<CR>
+map sh :set splitbelow<CR>:split<CR>
 map sc <C-w>q
 
 "" move cursor to split window
@@ -95,23 +99,25 @@ map <down> :res -5<CR>
 map <left> :vertical resize-5<CR>
 map <right> :vertical resize+5<CR>
 
+"" control buffer
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
+nnoremap [B :bfirst<CR>
+nnoremap ]B :blast<CR>
+
 "" control tab
-map tb :tabe<cr>
-nnoremap <c-n> :tabn<cr>
-nnoremap <c-b> :tabp<cr>
-inoremap <c-n> <esc>:tabn<cr>
-inoremap <c-b> <esc>:tabp<cr>
-"" use <c-p> instead of <c-b>
-nnoremap <c-p> <c-b>
-vnoremap <c-p> <c-b>
+map tb :tabe<CR>
+nnoremap [t :tabprevious<CR>
+nnoremap ]t :tabnext<CR>
 
 "" terminal
 if has('ide')
     map <C-t> <Action>(ActivateTerminalToolWindow)
     imap <C-t> <Esc><Action>(ActivateTerminalToolWindow)
 else
-    nnoremap <C-t> :below term<cr>
-    inoremap <C-t> <Esc>:below term<cr>
+    nnoremap <C-t> :below term<CR>
+    inoremap <C-t> <Esc>:below term<CR>
+    tnoremap <C-\><C-\> <C-\><C-n>
 end
 
 "" cancel search highlight
@@ -120,9 +126,10 @@ map <leader><CR> :nohlsearch<CR>
 "" copy and paste with system
 vnoremap <C-C> "+y
 
+"" open lazygit
+nnoremap <leader>lg :!lazygit<CR>
 
-"" Nerdtree
-nnoremap <leader>t :NERDTree<CR>
+
 
 ""===========================
 "" Plugin setting
@@ -138,18 +145,34 @@ nnoremap <leader>t :NERDTree<CR>
 "
 "call plug#end()
 "
-""" Nerdtree git plugin config
-"let g:NERDTreeGitStatusIndicatorMapCustom = {
-"            \ 'Modified'  :'✹',
-"            \ 'Staged'    :'✚',
-"            \ 'Untracked' :'✭',
-"            \ 'Renamed'   :'➜',
-"            \ 'Unmerged'  :'═',
-"            \ 'Deleted'   :'✖',
-"            \ 'Dirty'     :'✗',
-"            \ 'Ignored'   :'☒',
-"            \ 'Clean'     :'✔︎',
-"            \ 'Unknown'   :'?',
-"            \ }
-"
-"
+
+""==Nerdtree==
+
+nnoremap <leader>t :NERDTree<CR>
+" Start NERDTree and leave the cursor in it.
+" autocmd VimEnter * NERDTree
+
+"" Nerdtree git plugin config
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+            \ 'Modified'  :'✹',
+            \ 'Staged'    :'✚',
+            \ 'Untracked' :'✭',
+            \ 'Renamed'   :'➜',
+            \ 'Unmerged'  :'═',
+            \ 'Deleted'   :'✖',
+            \ 'Dirty'     :'✗',
+            \ 'Ignored'   :'☒',
+            \ 'Clean'     :'✔︎',
+            \ 'Unknown'   :'?',
+            \ }
+
+""==Comment==
+autocmd FileType apache setlocal commentstring=#\ %s
+
+""==Airline==
+"" https://github.com/vim-airline/vim-airline
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+""==Airline Theme==
+""https://github.com/vim-airline/vim-airline-themes#vim-airline-themes--
+let g:airline_theme='simple'

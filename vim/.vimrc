@@ -46,9 +46,9 @@ if has('ide')
 end
 
 "" change path of vim setting files
-set viminfo+=n~/.dotfiles/vim/.viminfo
-set runtimepath+=~/.dotfiles/vim
-set packpath+=~/.dotfiles/vim
+set viminfo+=n~/.config/vim/.viminfo
+set runtimepath+=~/.config/vim
+set packpath+=~/.config/vim
 
 ""===========================
 "" color schemes

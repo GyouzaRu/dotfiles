@@ -1,6 +1,13 @@
-# zsh history
+*
+
+!zsh/**
 zsh/.zsh_history
 
-# vim history
+!nvim/
+!nvim/**
+
+!vim/
 vim/.viminfo
 
+!alacritty/
+!alacritty/**

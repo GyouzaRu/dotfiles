@@ -53,6 +53,7 @@ alias ga='git add'
 alias gc='git commit'
 alias gl='git log'
 alias gs='git status'
+alias lg='lazygit'
 
 # repo mirror address
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo'

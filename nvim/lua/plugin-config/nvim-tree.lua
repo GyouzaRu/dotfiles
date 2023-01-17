@@ -4,12 +4,10 @@ if not status then
   return
 end
 
--- 列表操作快捷键
-local list_keys = require('keybindings').nvimTreeList
 nvim_tree.setup({
     -- 不显示 git 状态图标
     git = {
-        enable = false,
+        enable = true,
     },
     -- project plugin 需要这样设置
     update_cwd = true,
@@ -32,7 +30,7 @@ nvim_tree.setup({
         -- 自定义列表中快捷键
         mappings = {
             custom_only = false,
-            list = list_keys,
+            list = require('keybindings').nvimTreeList,
         },
         -- 不显示行数
         number = false,

@@ -9,7 +9,7 @@ set noerrorbells    "去除错误响铃
 set number          "显示行号
 set relativenumber "显示相对行号
 syntax on           "高亮语法
-set showmode        "显示当前输入模式
+"set showmode        "显示当前输入模式
 set showcmd         "命令行显示输入命令
 set autochdir       "执行命令在当前目录
 set term=screen-256color        "设施256色
@@ -35,7 +35,9 @@ set listchars=tab:»·,trail:·        "显示符号
 set list                            "显示符号
 set wildmode=longest,list,full
 set wildmenu                        "命令行补全
-set tags=./tags,tags;       "自动设置tags
+set tags=./.tags;,.tags;       "自动设置tags
+set timeout timeoutlen=1000     "按下后等待1000ms
+set ttimeout ttimeoutlen=100     "keycode 按下后等待100ms
 
 "" setting for ideavim
 if has('ide')
@@ -50,11 +52,15 @@ set viminfo+=n~/.config/vim/.viminfo
 set runtimepath+=~/.config/vim
 set packpath+=~/.config/vim
 
+"" cursor shape
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
 ""===========================
 "" color schemes
 ""===========================
 colo ron
-"murphy
+"colo murphy
 
 
 ""===========================
@@ -62,21 +68,23 @@ colo ron
 ""===========================
 let mapleader=" "
 map s <nop>
+nmap <ESC> <nop>
 inoremap jk <ESC>
-map R :source $MYVIMRC<CR>
 
 "" moving cursor
 nnoremap J 5j
 nnoremap K 5k
-nnoremap H 0
+nnoremap H ^
 nnoremap L $
 vnoremap J 5j
 vnoremap K 5k
-vnoremap H 0
+vnoremap H ^
 vnoremap L $
+onoremap H ^
+onoremap L $
 
 "" change join keybind
-nnoremap <C-J> J
+nnoremap <C-j> J
 
 "" split window
 map sv :set splitright<CR>:vsplit<CR>
@@ -84,14 +92,25 @@ map sh :set splitbelow<CR>:split<CR>
 map sc <C-w>q
 
 "" move cursor to split window
-map <C-l> <C-W>l
-map <C-h> <C-W>h
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-inoremap <C-l> <ESC><C-W>l
-inoremap <C-h> <ESC><C-W>h
-inoremap <C-j> <ESC><C-W>j
-inoremap <C-k> <ESC><C-W>k
+if has("ide")
+noremap <A-l> <C-W>l
+noremap <A-h> <C-W>h
+noremap <A-j> <C-W>j
+noremap <A-k> <C-W>k
+inoremap <A-l> <ESC><C-W>l
+inoremap <A-h> <ESC><C-W>h
+inoremap <A-j> <ESC><C-W>j
+inoremap <A-k> <ESC><C-W>k
+else
+noremap <ESC>l <C-W>l
+noremap <ESC>h <C-W>h
+noremap <ESC>j <C-W>j
+noremap <ESC>k <C-W>k
+inoremap <ESC>l <ESC><C-W>l
+inoremap <ESC>h <ESC><C-W>h
+inoremap <ESC>j <ESC><C-W>j
+inoremap <ESC>k <ESC><C-W>k
+endif
 
 "" control window size
 map <up> :res +5<CR>
@@ -112,11 +131,11 @@ nnoremap ]t :tabnext<CR>
 
 "" terminal
 if has('ide')
-    map <C-t> <Action>(ActivateTerminalToolWindow)
-    imap <C-t> <Esc><Action>(ActivateTerminalToolWindow)
+    map <A-t> <Action>(ActivateTerminalToolWindow)
+    inoremap <A-t> <ESC><Action>(ActivateTerminalToolWindow)
 else
-    nnoremap <C-t> :below term<CR>
-    inoremap <C-t> <Esc>:below term<CR>
+    nnoremap <ESC>t :below term<CR>
+    inoremap <ESC>t <ESC>:below term<CR>
     tnoremap <C-\><C-\> <C-\><C-n>
 end
 
@@ -128,7 +147,6 @@ vnoremap <C-C> "+y
 
 "" open lazygit
 nnoremap <leader>lg :!lazygit<CR>
-
 
 
 ""===========================
@@ -148,7 +166,7 @@ nnoremap <leader>lg :!lazygit<CR>
 
 ""==Nerdtree==
 
-nnoremap <leader>t :NERDTree<CR>
+nnoremap <leader>n :NERDTree<CR>
 " Start NERDTree and leave the cursor in it.
 " autocmd VimEnter * NERDTree
 

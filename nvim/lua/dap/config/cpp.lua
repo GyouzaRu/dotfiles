@@ -2,7 +2,7 @@ local dap = require('dap')
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',
-  command = '/home/jasper/05_Software/cpptools/extension/debugAdapters/bin/OpenDebugAD7',
+  command = '/home/jasper/.local/share/nvim/mason/packages/cpptools/extension/debugAdapters/bin/OpenDebugAD7'
 }
 
 dap.configurations.cpp = {

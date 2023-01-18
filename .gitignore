@@ -5,6 +5,7 @@ zsh/.zsh_history
 
 !nvim/
 !nvim/**
+nvim/plugin/
 
 !vim/
 vim/.viminfo

@@ -22,6 +22,16 @@ db.custom_center = {
     action = "Telescope oldfiles",
   },
   {
+    icon = "  ",
+    desc = "Find file                           ",
+    action = "Telescope find_files",
+  },
+  {
+    icon = "  ",
+    desc = "Find text                           ",
+    action = "Telescope live_grep",
+  },
+  {
     icon = "  ",
     desc = "Edit keybindings                    ",
     action = "edit ~/.config/nvim/lua/keybindings.lua",
@@ -45,16 +55,6 @@ db.custom_center = {
   --   icon = "  ",
   --   desc = "Edit init.lua                       ",
   --   action = "edit ~/.config/nvim/init.lua",
-  -- },
-  -- {
-  --   icon = "  ",
-  --   desc = "Find file                           ",
-  --   action = "Telescope find_files",
-  -- },
-  -- {
-  --   icon = "  ",
-  --   desc = "Find text                           ",
-  --   action = "Telescopecope live_grep",
   -- },
 }
 

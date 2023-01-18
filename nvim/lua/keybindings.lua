@@ -80,7 +80,7 @@ map("n","tc", ":Bdelete!<CR>", opt)
 map("n", "<leader>n", ":NvimTreeToggle<CR>", opt)
 -- 列表快捷键
 pluginKeys.nvimTreeList = {
-  { key = {"<CR>", "l", "<2-LeftMouse>"}, action = "edit" },
+  { key = {"<CR>", "o", "l", "<2-LeftMouse>"}, action = "edit" },
   { key = "sv", action = "vsplit" },
   { key = "sh", action = "split" },
   { key = "tb", action = "tabnew" },

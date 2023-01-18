@@ -25,4 +25,4 @@ require("lsp.cmp")
 require("lsp.ui")
 
 -- DAP
-require("dap.config")
+require("dap.setup")

@@ -33,8 +33,8 @@ nvim_tree.setup({
             list = require('keybindings').nvimTreeList,
         },
         -- 不显示行数
-        number = false,
-        relativenumber = false,
+        number = true,
+        relativenumber = true,
         -- 显示图标
         signcolumn = 'yes',
     },

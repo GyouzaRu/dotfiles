@@ -1,20 +1,14 @@
-*
-
-!zsh/
-!zsh/**
+# zsh
 zsh/.zsh_history
 
-!nvim/init.lua
-!nvim/lua/**
-
-
-!vim/
-!vim/**
-vim/.viminfo
-
-!alacritty/
-!alacritty/**
-
-!vifm/
+# vifm
+vifm/**
 !vifm/vifmrc
 !vifm/icons
+
+# vim
+vim/.viminfo
+
+# nvim
+nvim/plugin/
+

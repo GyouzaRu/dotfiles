@@ -1,17 +1,17 @@
-local status, mason = pcall(require, "mason")
-if not status then
+local mason_status, mason = pcall(require, "mason")
+if not mason_status then
   vim.notify("没有找到 mason")
   return
 end
 
-local status, mason_config = pcall(require, "mason-lspconfig")
-if not status then
+local mason_config_status, mason_config = pcall(require, "mason-lspconfig")
+if not mason_config_status then
   vim.notify("没有找到 mason-lspconfig")
   return
 end
 
-local status, lspconfig = pcall(require, "lspconfig")
-if not status then
+local lsp_status, lspconfig = pcall(require, "lspconfig")
+if not lspconfig then
   vim.notify("没有找到 lspconfig")
   return
 end

@@ -23,14 +23,14 @@ map("v", "H", "^", opt)
 map("v", "L", "$", opt)
 map("n", "<C-J>", "J", opt)
 -- 取消 s 默认功能
-map("n", "s", "", opt)
+-- map("n", "s", "", opt)
 -- windows 分屏快捷键
-map("n", "sv", ":vsp<CR>", opt)
-map("n", "sh", ":sp<CR>", opt)
+map("n", "<leader>sv", ":vsp<CR>", opt)
+map("n", "<leader>sh", ":sp<CR>", opt)
 -- 关闭当前
-map("n", "sc", "<C-w>c", opt)
+map("n", "<leader>sc", "<C-w>c", opt)
 -- 关闭其他
-map("n", "so", "<C-w>o", opt)
+map("n", "<leader>so", "<C-w>o", opt)
 -- Ctrl + hjkl  窗口之间跳转
 map("n", "<A-h>", "<C-w>h", opt)
 map("n", "<A-j>", "<C-w>j", opt)
@@ -85,15 +85,18 @@ pluginKeys.nvimTreeList = {
   { key = "sh", action = "split" },
   { key = "tb", action = "tabnew" },
   { key = "h", action = "close_node" },
-  { key = "r", action = "refresh" },
-  { key = "c", action = "create" },
+  { key = "J", action = "" },
+  { key = "K", action = "" },
+  { key = "cw", action = "rename" },
+  { key = "R", action = "refresh" },
+  { key = "a", action = "create" },
   { key = "x", action = "cut" },
   { key = "y", action = "copy" },
   { key = "p", action = "paste" },
   { key = "so", action = "system_open" },
   -- 显示隐藏文件
   { key = "i", action = "toggle_custom" }, -- 对应 filters 中的 custom (node_modules)
-  { key = ".", action = "toggle_dotfiles" }, -- Hide (dotfiles)
+  { key = { "za" , "."}, action = "toggle_dotfiles" }, -- Hide (dotfiles)
 }
 
 -- Float terminal

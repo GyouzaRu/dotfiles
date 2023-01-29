@@ -1,5 +1,5 @@
 # Set up ZSH home
-export ZSH=$HOME/.config/zsh
+export ZSH=$HOME/.dotfiles/zsh
 
 # Set up the prompt
 autoload -U colors && colors

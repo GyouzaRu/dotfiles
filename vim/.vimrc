@@ -48,9 +48,9 @@ if has('ide')
 end
 
 "" change path of vim setting files
-set viminfo+=n~/.config/vim/.viminfo
-set runtimepath+=~/.config/vim
-set packpath+=~/.config/vim
+set viminfo+=n~/.dotfiles/vim/.viminfo
+set runtimepath+=~/.dotfiles/vim
+set packpath+=~/.dotfiles/vim
 
 "" cursor shape
 let &t_SI = "\e[6 q"

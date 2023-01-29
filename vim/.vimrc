@@ -67,8 +67,6 @@ colo ron
 "" map
 ""===========================
 let mapleader=" "
-map s <nop>
-nmap <ESC> <nop>
 inoremap jk <ESC>
 
 "" moving cursor
@@ -87,9 +85,9 @@ onoremap L $
 nnoremap <C-j> J
 
 "" split window
-map sv :set splitright<CR>:vsplit<CR>
-map sh :set splitbelow<CR>:split<CR>
-map sc <C-w>q
+map <leader>sv :set splitright<CR>:vsplit<CR>
+map <leader>sh :set splitbelow<CR>:split<CR>
+map <leader>sc <C-w>q
 
 "" move cursor to split window
 if has("ide")
@@ -152,17 +150,31 @@ nnoremap <leader>lg :!lazygit<CR>
 ""===========================
 "" Plugin setting
 ""===========================
-"call plug#begin()
-"
-""" NERDTree
-"Plug 'preservim/nerdtree'|
-"            \ Plug 'Xuyuanp/nerdtree-git-plugin'
-"
-"Plug 'preservim/tagbar'
-""Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"
-"call plug#end()
-"
+call plug#begin()
+
+"" NERDTree: file explore
+Plug 'preservim/nerdtree'|
+            \ Plug 'Xuyuanp/nerdtree-git-plugin'
+
+" airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" tagbar
+Plug 'preservim/tagbar'
+
+" comment plugin
+Plug 'tpope/vim-commentary'
+
+" surround
+Plug 'tpope/vim-surround'
+
+" auto pairs
+Plug 'jiangmiao/auto-pairs'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+call plug#end()
+
 
 ""==Nerdtree==
 

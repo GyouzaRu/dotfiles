@@ -1,0 +1,21 @@
+# common
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias ra='ranger'
+
+# tmux
+alias tmd='tmux detach'
+alias tml='tmux ls'
+alias tma='tmux attach -t'
+alias tms='tmux switch -t'
+
+# git
+alias ga='git add'
+alias gc='git commit'
+alias gl='git log'
+alias gs='git status'
+alias lg='lazygit'
+
+# vifm
+alias vf='vifm'

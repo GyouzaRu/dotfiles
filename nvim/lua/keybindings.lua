@@ -24,6 +24,8 @@ map("v", "L", "$", opt)
 map("n", "<C-J>", "J", opt)
 -- 取消 s 默认功能
 -- map("n", "s", "", opt)
+-- 取消高亮
+map("n", "<leader><CR>", ":nohl<CR>", opt)
 -- windows 分屏快捷键
 map("n", "<leader>sv", ":vsp<CR>", opt)
 map("n", "<leader>sh", ":sp<CR>", opt)

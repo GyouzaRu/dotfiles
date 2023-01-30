@@ -151,6 +151,7 @@ nnoremap <leader>lg :!lazygit<CR>
 "" Plugin setting
 ""===========================
 call plug#begin()
+call plug#begin('~/.dotfiles/vim/.vim/plugged')
 
 "" NERDTree: file explore
 Plug 'preservim/nerdtree'|

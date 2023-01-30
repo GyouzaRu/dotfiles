@@ -1,13 +1,16 @@
 # zsh
+bash/.bash_history
+
+# zsh
 zsh/.zsh_history
 
 # vifm
-vifm/**
-!vifm/vifmrc
-!vifm/icons
+vifm/vifminfo
+vifm/vifm-help.txt
 
 # vim
 vim/.viminfo
+vim/.vim
 
 # nvim
 nvim/plugin/

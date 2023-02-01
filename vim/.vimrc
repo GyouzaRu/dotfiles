@@ -38,6 +38,7 @@ set wildmenu                        "命令行补全
 set tags=./.tags;,.tags;       "自动设置tags
 set timeout timeoutlen=1000     "按下后等待1000ms
 set ttimeout ttimeoutlen=100     "keycode 按下后等待100ms
+set updatetime=200
 
 "" setting for ideavim
 if has('ide')
@@ -67,6 +68,7 @@ colo ron
 "" map
 ""===========================
 let mapleader=" "
+map s <nop>
 inoremap jk <ESC>
 
 "" moving cursor
@@ -85,30 +87,19 @@ onoremap L $
 nnoremap <C-j> J
 
 "" split window
-map <leader>sv :set splitright<CR>:vsplit<CR>
-map <leader>sh :set splitbelow<CR>:split<CR>
-map <leader>sc <C-w>q
+map sv :set splitright<CR>:vsplit<CR>
+map sh :set splitbelow<CR>:split<CR>
+map sc <C-w>q
 
 "" move cursor to split window
-if has("ide")
-noremap <A-l> <C-W>l
-noremap <A-h> <C-W>h
-noremap <A-j> <C-W>j
-noremap <A-k> <C-W>k
-inoremap <A-l> <ESC><C-W>l
-inoremap <A-h> <ESC><C-W>h
-inoremap <A-j> <ESC><C-W>j
-inoremap <A-k> <ESC><C-W>k
-else
-noremap <ESC>l <C-W>l
-noremap <ESC>h <C-W>h
-noremap <ESC>j <C-W>j
-noremap <ESC>k <C-W>k
-inoremap <ESC>l <ESC><C-W>l
-inoremap <ESC>h <ESC><C-W>h
-inoremap <ESC>j <ESC><C-W>j
-inoremap <ESC>k <ESC><C-W>k
-endif
+noremap <C-l> <C-W>l
+noremap <C-h> <C-W>h
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+inoremap <C-l> <ESC><C-W>l
+inoremap <C-h> <ESC><C-W>h
+inoremap <C-j> <ESC><C-W>j
+inoremap <C-k> <ESC><C-W>k
 
 "" control window size
 map <up> :res +5<CR>
@@ -131,10 +122,10 @@ nnoremap ]t :tabnext<CR>
 if has('ide')
     map <A-t> <Action>(ActivateTerminalToolWindow)
     inoremap <A-t> <ESC><Action>(ActivateTerminalToolWindow)
-else
-    nnoremap <ESC>t :below term<CR>
-    inoremap <ESC>t <ESC>:below term<CR>
-    tnoremap <C-\><C-\> <C-\><C-n>
+" else
+"     nnoremap <ESC>t :below term<CR>
+"     inoremap <ESC>t <ESC>:below term<CR>
+"     tnoremap <C-\><C-\> <C-\><C-n>
 end
 
 "" cancel search highlight
@@ -174,12 +165,21 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" git diff marks
+Plug 'airblade/vim-gitgutter'
+
+" fugitive
+Plug 'tpope/vim-fugitive'
+
+" ALE
+" Plug 'dense-analysis/ale'
+
 call plug#end()
 
 
 ""==Nerdtree==
 
-nnoremap <leader>n :NERDTree<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 " Start NERDTree and leave the cursor in it.
 " autocmd VimEnter * NERDTree
 
@@ -207,3 +207,13 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 ""==Airline Theme==
 ""https://github.com/vim-airline/vim-airline-themes#vim-airline-themes--
 let g:airline_theme='simple'
+
+""==TagBar==
+nnoremap <leader>t :TagbarToggle<CR>
+
+""==GitGutter==
+nnoremap <leader>g :GitGutterToggle<CR>
+
+""==ALE==
+let g:ale_sign_error = ''
+let g:ale_sign_warning = ''

@@ -10,9 +10,12 @@ fi
 # move the original file to the backup folder
 mv ${HOME}/.zshrc ${BACKUP}
 mv ${HOME}/.bashrc ${BACKUP}
-mv ${HOME}/.vimrc ${BACKUP}
-mv ${HOME}/.tmux.conf ${BACKUP}
 
+mv ${HOME}/.tmux ${BACKUP}
+mv ${HOME}/.tmux.conf ${BACKUP}
+mv ${HOME}/.tmux.conf.local ${BACKUP}
+
+mv ${HOME}/.vimrc ${BACKUP}
 mv ${CONFIG}/nvim ${BACKUP}
 mv ${CONFIG}/alacritty ${BACKUP}
 mv ${CONFIG}/vifm ${BACKUP}
@@ -20,13 +23,16 @@ mv ${CONFIG}/vifm ${BACKUP}
 echo "move original files to ${BACKUP}"
 
 # set the symlink
-ln -s ${DOTFILES}/zsh/.zshrc ${HOME}/.zshrc
-ln -s ${DOTFILES}/bash/.bashrc ${HOME}/.zshrc
-ln -s ${DOTFILES}/vim/.vimrc ${HOME}/.vimrc
-ln -s ${DOTFILES}/.tmux.conf ${HOME}/.tmux.conf
+ln -sf ${DOTFILES}/zsh/.zshrc ${HOME}/.zshrc
+ln -sf ${DOTFILES}/bash/.bashrc ${HOME}/.bashrc
 
-ln -s ${DOTFILES}/nvim ${CONFIG}/nvim
-ln -s ${DOTFILES}/alacritty ${CONFIG}/alacritty
-ln -s ${DOTFILES}/vifm ${CONFIG}/vifm
+ln -sf ${DOTFILES}/tmux/.tmux ${HOME}/.tmux
+ln -sf ${DOTFILES}/tmux/.tmux/.tmux.conf ${HOME}/.tmux.conf
+ln -sf ${DOTFILES}/tmux/.tmux/.tmux.conf.local ${HOME}/.tmux.conf.local
+
+ln -sf ${DOTFILES}/vim/.vimrc ${HOME}/.vimrc
+ln -sf ${DOTFILES}/nvim ${CONFIG}/nvim
+ln -sf ${DOTFILES}/alacritty ${CONFIG}/alacritty
+ln -sf ${DOTFILES}/vifm ${CONFIG}/vifm
 
 echo "create symlink"

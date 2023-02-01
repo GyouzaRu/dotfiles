@@ -10,6 +10,8 @@ local pluginKeys = {}
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- 取消 s 默认功能
+map("n", "s", "", opt)
 -- jk = <esc>
 map("i", "jk", "<Esc>", opt)
 -- 移动
@@ -21,27 +23,25 @@ map("v", "J", "5j", opt)
 map("v", "K", "5k", opt)
 map("v", "H", "^", opt)
 map("v", "L", "$", opt)
-map("n", "<C-J>", "J", opt)
--- 取消 s 默认功能
--- map("n", "s", "", opt)
+map("n", "<leader>j", "J", opt)
 -- 取消高亮
 map("n", "<leader><CR>", ":nohl<CR>", opt)
 -- windows 分屏快捷键
-map("n", "<leader>sv", ":vsp<CR>", opt)
-map("n", "<leader>sh", ":sp<CR>", opt)
+map("n", "sv", ":vsp<CR>", opt)
+map("n", "sh", ":sp<CR>", opt)
 -- 关闭当前
-map("n", "<leader>sc", "<C-w>c", opt)
+map("n", "sc", "<C-w>c", opt)
 -- 关闭其他
-map("n", "<leader>so", "<C-w>o", opt)
+map("n", "so", "<C-w>o", opt)
 -- Ctrl + hjkl  窗口之间跳转
-map("n", "<A-h>", "<C-w>h", opt)
-map("n", "<A-j>", "<C-w>j", opt)
-map("n", "<A-k>", "<C-w>k", opt)
-map("n", "<A-l>", "<C-w>l", opt)
-map("i", "<A-h>", "<Esc><C-w>h", opt)
-map("i", "<A-j>", "<Esc><C-w>j", opt)
-map("i", "<A-k>", "<Esc><C-w>k", opt)
-map("i", "<A-l>", "<Esc><C-w>l", opt)
+map("n", "<C-h>", "<C-w>h", opt)
+map("n", "<C-j>", "<C-w>j", opt)
+map("n", "<C-k>", "<C-w>k", opt)
+map("n", "<C-l>", "<C-w>l", opt)
+map("i", "<C-h>", "<Esc><C-w>h", opt)
+map("i", "<C-j>", "<Esc><C-w>j", opt)
+map("i", "<C-k>", "<Esc><C-w>k", opt)
+map("i", "<C-l>", "<Esc><C-w>l", opt)
 -- 左右比例控制
 map("n", "<C-Left>", ":vertical resize -5<CR>", opt)
 map("n", "<C-Right>", ":vertical resize +5<CR>", opt)
@@ -50,19 +50,28 @@ map("n", "<C-Up>", ":resize -5<CR>", opt)
 -- tab 切换与创建
 map("n", "tb", ":tabe<CR>", opt)
 -- map("n", "tc", ":tabc<CR>", opt) -- 使用插件vim--bbye
+-- if packer_plugins["bufferline.nvim"] and packer_plugins["bufferline.nvim"].loaded then
+    -- map("n", "[t", ":bprevious<CR>", opt)
+    -- map("n", "]t", ":bnext<CR>", opt)
+--     print("loaded!")
+-- else
+--     print("unloaded!")
+    -- map("n", "[t", ":tabp<CR>", opt)
+    -- map("n", "]t", ":tabn<CR>", opt)
+-- end
 map("n", "[t", ":tabp<CR>", opt)
 map("n", "]t", ":tabn<CR>", opt)
 -- buffer 切换
 map("n", "[b", ":bprevious<CR>", opt)
 map("n", "]b", ":bnext<CR>", opt)
 -- Terminal相关
-map("n", "tt", ":sp | terminal<CR>", opt)
-map("n", "tvt", ":vsp | terminal<CR>", opt)
-map("t", "<Esc>", "<C-\\><C-n>", opt)
-map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
-map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
-map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
-map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
+-- map("n", "tt", ":sp | terminal<CR>", opt)
+-- map("n", "tvt", ":vsp | terminal<CR>", opt)
+-- map("t", "<Esc>", "<C-\\><C-n>", opt)
+-- map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
+-- map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
+-- map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
+-- map("t", "<A-l>", [[ <C-\><C-N><C-w>l ]], opt)
 
 -- visual模式下缩进代码
 map("v", "<", "<gv", opt)
@@ -82,13 +91,15 @@ map("n","tc", ":Bdelete!<CR>", opt)
 map("n", "<leader>n", ":NvimTreeToggle<CR>", opt)
 -- 列表快捷键
 pluginKeys.nvimTreeList = {
+  { key = "J", action = "" },
+  { key = "K", action = "" },
+  { key = "H", action = "" },
   { key = {"<CR>", "o", "l", "<2-LeftMouse>"}, action = "edit" },
+  { key = {"O", "go"}, action = "edit_no_picker" },
   { key = "sv", action = "vsplit" },
   { key = "sh", action = "split" },
   { key = "tb", action = "tabnew" },
   { key = "h", action = "close_node" },
-  { key = "J", action = "" },
-  { key = "K", action = "" },
   { key = "cw", action = "rename" },
   { key = "R", action = "refresh" },
   { key = "a", action = "create" },
@@ -214,5 +225,3 @@ pluginKeys.cmp = function(cmp)
 end
 
 return pluginKeys
-
-

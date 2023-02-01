@@ -7,6 +7,9 @@ PROMPT="%{$bg[black]%}%{$fg[blue]%}%n%{$reset_color%} %{$fg[green]%}%~%{$reset_c
 
 setopt histignorealldups sharehistory
 
+# Zsh to use the same colors as ls
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
@@ -25,7 +28,7 @@ compinit
 # repo mirror address
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo'
 
-# android studio platform-tools
+# android studio platform-tools and repo
 export PATH=$PATH:~/Android/Sdk/platform-tools:~/bin
 
 # segement core

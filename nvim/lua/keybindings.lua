@@ -10,6 +10,9 @@ local pluginKeys = {}
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Reload config
+map("n","<leader>R",":w<CR>:luafile %<CR>",opt)
+
 -- 取消 s 默认功能
 map("n", "s", "", opt)
 -- jk = <esc>
@@ -116,13 +119,16 @@ pluginKeys.nvimTreeList = {
 map('n', '<A-t>', '<CMD>lua require("FTerm").toggle()<CR>')
 map('t', '<A-t>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
+-- Git  signs
+map("n", "]c", ":Gitsigns next_hunk<CR>", opt)
+map("n", "[c", ":Gitsigns prev_hunk<CR>", opt)
+
 -- Debugger
 map({"i", "n", "v"}, "<F5>", "<cmd>lua require'dap'.continue()<CR>", opt)
 map({"i", "n", "v"}, "<F10>", "<cmd>lua require'dap'.step_over()<CR>", opt)
 map({"i", "n", "v"}, "<F11>", "<cmd>lua require'dap'.step_into()<CR>", opt)
 map({"i", "n", "v"}, "<F12>", "<cmd>lua require'dap'.step_over()<CR>", opt)
 map({"i", "n", "v"}, "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opt)
-
 
 -- Telescope
 -- 查找文件

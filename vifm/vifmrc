@@ -88,6 +88,7 @@ command! reload :write | restart full
 command! tar tar -zcvf %a.tar.gz %f
 command! untar tar -zxvf %a --one-top-level
 command! lg lazygit -p %d
+command! vim vim %a
 
 " ------------------------------------------------------------------------------
 
@@ -105,9 +106,10 @@ command! lg lazygit -p %d
 
 "===== Mappings =====
 " !!!Note: default leader key is <space>
+nnoremap <space> <nop>
 
 " Start shell in current directory
-nnoremap s :shell<cr>
+nnoremap S :shell<cr>
 
 " Restart
 nnoremap R :restart<CR>
@@ -120,7 +122,7 @@ nnoremap K 5k
 nnoremap qq :q<CR>
 
 " Display sorting dialog
-nnoremap S :sort<cr>
+nnoremap s :sort<cr>
 
 " Tab control
 nnoremap T :tabnew<CR>

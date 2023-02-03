@@ -61,7 +61,7 @@ let &t_EI = "\e[2 q"
 "" color schemes
 ""===========================
 colo ron
-"colo murphy
+" colo murphy
 
 
 ""===========================
@@ -70,6 +70,9 @@ colo ron
 let mapleader=" "
 map s <nop>
 inoremap jk <ESC>
+
+" reload vimrc config
+nnoremap <leader>R :w<CR>:source %<CR>
 
 "" moving cursor
 nnoremap J 5j
@@ -84,7 +87,7 @@ onoremap H ^
 onoremap L $
 
 "" change join keybind
-nnoremap <C-j> J
+nnoremap <leader>j J
 
 "" split window
 map sv :set splitright<CR>:vsplit<CR>
@@ -114,7 +117,8 @@ nnoremap [B :bfirst<CR>
 nnoremap ]B :blast<CR>
 
 "" control tab
-map tb :tabe<CR>
+nnoremap tb :tabe<CR>
+nnoremap tc :tabc<CR>
 nnoremap [t :tabprevious<CR>
 nnoremap ]t :tabnext<CR>
 
@@ -122,10 +126,10 @@ nnoremap ]t :tabnext<CR>
 if has('ide')
     map <A-t> <Action>(ActivateTerminalToolWindow)
     inoremap <A-t> <ESC><Action>(ActivateTerminalToolWindow)
-" else
-"     nnoremap <ESC>t :below term<CR>
-"     inoremap <ESC>t <ESC>:below term<CR>
-"     tnoremap <C-\><C-\> <C-\><C-n>
+    " else
+    "     nnoremap <ESC>t :below term<CR>
+    "     inoremap <ESC>t <ESC>:below term<CR>
+    "     tnoremap <C-\><C-\> <C-\><C-n>
 end
 
 "" cancel search highlight
@@ -141,44 +145,9 @@ nnoremap <leader>lg :!lazygit<CR>
 ""===========================
 "" Plugin setting
 ""===========================
-call plug#begin()
-call plug#begin('~/.dotfiles/vim/.vim/plugged')
-
-"" NERDTree: file explore
-Plug 'preservim/nerdtree'|
-            \ Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-" tagbar
-Plug 'preservim/tagbar'
-
-" comment plugin
-Plug 'tpope/vim-commentary'
-
-" surround
-Plug 'tpope/vim-surround'
-
-" auto pairs
-Plug 'jiangmiao/auto-pairs'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" git diff marks
-Plug 'airblade/vim-gitgutter'
-
-" fugitive
-Plug 'tpope/vim-fugitive'
-
-" ALE
-" Plug 'dense-analysis/ale'
-
-call plug#end()
-
+source ~/.dotfiles/vim/plugins.vimrc
 
 ""==Nerdtree==
-
 nnoremap <leader>n :NERDTreeToggle<CR>
 " Start NERDTree and leave the cursor in it.
 " autocmd VimEnter * NERDTree
@@ -197,23 +166,23 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
             \ 'Unknown'   :'?',
             \ }
 
-""==Comment==
-autocmd FileType apache setlocal commentstring=#\ %s
-
 ""==Airline==
-"" https://github.com/vim-airline/vim-airline
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 ""==Airline Theme==
-""https://github.com/vim-airline/vim-airline-themes#vim-airline-themes--
 let g:airline_theme='simple'
 
 ""==TagBar==
 nnoremap <leader>t :TagbarToggle<CR>
 
-""==GitGutter==
-nnoremap <leader>g :GitGutterToggle<CR>
+""==signify==
+nnoremap <leader>g :SignifyToggle<CR>
+highlight SignColumn ctermbg=NONE cterm=NONE guibg=NONE gui=NONE
+highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 cterm=NONE gui=NONE
+highlight SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
+highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
 
-""==ALE==
-let g:ale_sign_error = ''
-let g:ale_sign_warning = ''
+""===========================
+"" Autocmds
+""===========================
+source ~/.dotfiles/vim/autocmds.vimrc

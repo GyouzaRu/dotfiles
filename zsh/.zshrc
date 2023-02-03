@@ -5,11 +5,6 @@ ZSH=$HOME/.dotfiles/zsh
 autoload -U colors && colors
 PROMPT="%{$bg[black]%}%{$fg[blue]%}%n%{$reset_color%} %{$fg[green]%}%~%{$reset_color%} %B%#%b "
 
-setopt histignorealldups sharehistory
-
-# Zsh to use the same colors as ls
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
@@ -20,10 +15,15 @@ bindkey -e
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=${ZSH}/.zsh_history
+setopt histignorealldups sharehistory
 
 # Use modern completion system
 autoload -Uz compinit
 compinit
+
+# always display English
+export LANG=en_US.UTF-8
+export LANGUAGE=en
 
 # repo mirror address
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo'

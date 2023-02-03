@@ -12,8 +12,8 @@ project.setup({
   patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", ".sln" },
 })
 
-local status, telescope = pcall(require, "telescope")
-if not status then
+local tele_status, telescope = pcall(require, "telescope")
+if not tele_status then
   vim.notify("没有找到 telescope")
   return
 end

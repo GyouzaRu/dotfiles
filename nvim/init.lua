@@ -6,6 +6,8 @@ require('keybindings')
 require('plugins')
 -- 主题管理
 require('colorscheme')
+-- 自动执行vim cmds
+require('autocmds')
 -- 插件配置
 require('plugin-config.nvim-tree')
 require("plugin-config.bufferline")
@@ -18,6 +20,7 @@ require("plugin-config.nvim-surround")
 require("plugin-config.nvim-autopairs")
 require("plugin-config.comment")
 require("plugin-config.FTerm")
+require("plugin-config.gitsigns")
 
 -- LSP
 require("lsp.setup")

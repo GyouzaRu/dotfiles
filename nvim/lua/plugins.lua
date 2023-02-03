@@ -32,6 +32,8 @@ packer.startup({
     use({"numToStr/Comment.nvim"})
     -- Float terminal
     use({"numToStr/FTerm.nvim"})
+    -- git sign
+    use({"lewis6991/gitsigns.nvim"})
 
     -- mason
     use({"williamboman/mason.nvim" })

@@ -60,7 +60,8 @@ let &t_EI = "\e[2 q"
 ""===========================
 "" color schemes
 ""===========================
-colo ron
+colo desert
+" colo ron
 " colo murphy
 
 

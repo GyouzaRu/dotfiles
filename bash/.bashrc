@@ -7,6 +7,9 @@ BASH=${HOME}/.dotfiles/bash
 # vi mode
 set -o vi
 
+# choose vim as default editor
+export EDITOR=vim
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -26,8 +29,8 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 
 # always display English
-export LANG=en_US.UTF-8
-export LANGUAGE=en
+# export LANG=en_US.UTF-8
+# export LANGUAGE=en
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.

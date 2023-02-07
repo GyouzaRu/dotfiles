@@ -54,7 +54,7 @@ endif
 
 
 "===== color scheme =====
-colorscheme Default-256 zenburn_1
+colorscheme zenburn_1
 
 "===== marks =====
 " :mark mark /full/directory/path [filename]
@@ -88,7 +88,7 @@ command! reload :write | restart full
 command! tar tar -zcvf %a.tar.gz %f
 command! untar tar -zxvf %a --one-top-level
 command! lg lazygit -p %d
-command! vim vim %a
+command! vim vim %c
 
 " ------------------------------------------------------------------------------
 

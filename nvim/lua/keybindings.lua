@@ -91,7 +91,7 @@ map("n","tc", ":Bdelete!<CR>", opt)
 
 -- nvim-tree
 -- tt 键打开关闭tree
-map("n", "<leader>n", ":NvimTreeToggle<CR>", opt)
+-- map("n", "<leader>n", ":NvimTreeToggle<CR>", opt)
 -- 列表快捷键
 pluginKeys.nvimTreeList = {
   { key = "J", action = "" },

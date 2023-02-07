@@ -2,8 +2,23 @@
 require('basic')
 -- 键位绑定
 require('keybindings')
--- Packer 插件管理
-require('plugins')
+
+-- lazy.nvim 插件管理
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require('plugins-lazy')
+
 -- 主题管理
 require('colorscheme')
 -- 自动执行vim cmds

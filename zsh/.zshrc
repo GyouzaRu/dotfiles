@@ -11,6 +11,9 @@ bindkey -e
 # set vi mode
 # bindkey -v
 
+# choose vim as default editor
+export EDITOR=vim
+
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
@@ -22,8 +25,8 @@ autoload -Uz compinit
 compinit
 
 # always display English
-export LANG=en_US.UTF-8
-export LANGUAGE=en
+# export LANG=en_US.UTF-8
+# export LANGUAGE=en
 
 # repo mirror address
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo'

@@ -4,6 +4,8 @@ if not status then
   return
 end
 
+-- local nvim_tree = require("nvim-tree")
+
 nvim_tree.setup({
     -- 不显示 git 状态图标
     git = {

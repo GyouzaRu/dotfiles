@@ -40,14 +40,6 @@ set timeout timeoutlen=1000     "按下后等待1000ms
 set ttimeout ttimeoutlen=100     "keycode 按下后等待100ms
 set updatetime=200
 
-"" setting for ideavim
-if has('ide')
-    set surround
-    set multiple-cursors
-    set commentary
-    set NERDTree
-end
-
 "" change path of vim setting files
 set viminfo+=n~/.dotfiles/vim/.viminfo
 set runtimepath+=~/.dotfiles/vim
@@ -60,8 +52,8 @@ let &t_EI = "\e[2 q"
 ""===========================
 "" color schemes
 ""===========================
-colo desert
-" colo ron
+" colo desert
+colo ron
 " colo murphy
 
 
@@ -127,6 +119,7 @@ nnoremap ]t :tabnext<CR>
 if has('ide')
     map <A-t> <Action>(ActivateTerminalToolWindow)
     inoremap <A-t> <ESC><Action>(ActivateTerminalToolWindow)
+    tnoremap <A-t> <Action>(ActivateTerminalToolWindow)
     " else
     "     nnoremap <ESC>t :below term<CR>
     "     inoremap <ESC>t <ESC>:below term<CR>
@@ -142,6 +135,30 @@ vnoremap <C-C> "+y
 "" open lazygit
 nnoremap <leader>lg :!lazygit<CR>
 
+
+""===========================
+"" IDE setting
+""===========================
+if has('ide')
+"" setting for ideavim
+    set surround
+    set multiple-cursors
+    set commentary
+    set NERDTree
+
+    " Hide open panels
+    nmap <Leader>w :action HideAllWindows<CR>
+
+"" terminal
+    map <A-t> <Action>(ActivateTerminalToolWindow)
+    inoremap <A-t> <ESC><Action>(ActivateTerminalToolWindow)
+    tnoremap <A-t> <Action>(ActivateTerminalToolWindow)
+
+    " nmap <Leader>be :action Switcher<CR>
+    nmap <Leader>fb :action RecentFiles<CR>
+    nmap <Leader>ff :action GotoFile<CR>
+    nmap <Leader>fg :action SearchEverywhere<CR>
+end
 
 ""===========================
 "" Plugin setting

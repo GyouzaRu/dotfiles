@@ -1,4 +1,6 @@
 -- 复用 map
+    -- project
+    -- { "ahmedkhalf/project.nvim"},
 -- local map = vim.api.nvim_set_keymap
 local map = vim.keymap.set
 -- 复用 opt 参数

@@ -34,7 +34,7 @@ mason_config.setup({
   ensure_installed = {
     "clangd",
     "cmake",
-    "sumneko_lua",
+    "lua_ls",
     "bashls",
     "dockerls",
     "pyright",
@@ -50,7 +50,7 @@ mason_config.setup({
 local servers = {
   clangd = require("lsp.config.clangd"),
   cmake = require("lsp.config.cmake"),
-  sumneko_lua = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
+  lua_ls = require("lsp.config.lua"), -- lua/lsp/config/lua.lua
   bashls = require("lsp.config.bash"),
   dockerls = require("lsp.config.docker"),
   pyright = require("lsp.config.pyright"),

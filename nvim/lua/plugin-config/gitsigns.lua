@@ -1,8 +1,9 @@
-local status, gitsigns = pcall(require, "gitsigns")
-if not status then
-    vim.notify("没有找到 nvim-tree")
-  return
-end
+-- local status, gitsigns = pcall(require, "gitsigns")
+-- if not status then
+--     vim.notify("没有找到 nvim-tree")
+--   return
+-- end
+local gitsigns = require("gitsigns")
 
 gitsigns.setup({
   signs = {

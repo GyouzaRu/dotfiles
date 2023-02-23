@@ -87,7 +87,7 @@ command! vgrep vim "+grep %a"
 command! reload :write | restart full
 command! tar tar -zcvf %a.tar.gz %f
 command! untar tar -zxvf %a --one-top-level
-command! lg lazygit -p %d
+command! lg lazygit
 command! vim vim %c
 
 " ------------------------------------------------------------------------------

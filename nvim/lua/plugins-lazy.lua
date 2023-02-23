@@ -11,10 +11,14 @@ lazy.setup({
     {"folke/tokyonight.nvim",
         lazy = false,
         priority = 1000},
+    {"catppuccin/nvim",
+        name = "catppuccin",
+        lazy = false,
+        priority = 1000},
     ---- plugins ----
     -- nvim-tree
     {"nvim-tree/nvim-tree.lua",
-        lazy = true,
+        -- lazy = true,
         keys = { {"<leader>n",":NvimTreeToggle<CR>",desc="Nvim-Tree"} },
         dependencies = {"nvim-tree/nvim-web-devicons"}},
     -- bufferline
@@ -28,12 +32,14 @@ lazy.setup({
     -- telescope
     {"nvim-telescope/telescope.nvim",
         lazy = true,
-        dependencies = { "nvim-lua/plenary.nvim" }},
+        dependencies = {
+            -- necessary
+            "nvim-lua/plenary.nvim",
+            -- project search
+            "ahmedkhalf/project.nvim"}},
     -- dashboard-nvim
     { "glepnir/dashboard-nvim",
         lazy = true},
-    -- project
-    -- { "ahmedkhalf/project.nvim"},
     -- treesitter
     {"nvim-treesitter/nvim-treesitter",
         lazy = true,
@@ -52,7 +58,7 @@ lazy.setup({
         lazy = true},
     -- git sign
     {"lewis6991/gitsigns.nvim",
-        lazy = true},
+        lazy = false},
     -- suggest the key
     { "folke/which-key.nvim",
         lazy = true },

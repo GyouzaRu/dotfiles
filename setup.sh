@@ -19,6 +19,7 @@ mv ${HOME}/.vimrc ${BACKUP}
 mv ${CONFIG}/nvim ${BACKUP}
 mv ${CONFIG}/alacritty ${BACKUP}
 mv ${CONFIG}/vifm ${BACKUP}
+mv ${CONFIG}/lazygit ${BACKUP}
 
 echo "move original files to ${BACKUP}"
 
@@ -34,5 +35,7 @@ ln -sf ${DOTFILES}/vim/.vimrc ${HOME}/.vimrc
 ln -sf ${DOTFILES}/nvim ${CONFIG}/nvim
 ln -sf ${DOTFILES}/alacritty ${CONFIG}/alacritty
 ln -sf ${DOTFILES}/vifm ${CONFIG}/vifm
+ln -sf ${DOTFILES}/lazygit ${CONFIG}/lazygit
+cat ${DOTFILES}/git/.gitconfig >> ~/.gitconfig
 
 echo "create symlink"

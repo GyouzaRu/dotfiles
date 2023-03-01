@@ -54,7 +54,3 @@ nvim_tree.setup({
         cmd = 'wsl-open', -- mac 直接设置为 open
     },
 })
--- 自动关闭
-vim.cmd([[
-  autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
-]])

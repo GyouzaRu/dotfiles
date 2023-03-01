@@ -32,7 +32,7 @@ compinit
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo'
 
 # android studio platform-tools and repo
-export PATH=$PATH:~/Android/Sdk/platform-tools:~/bin
+export PATH=$PATH:~/Android/Sdk/platform-tools:~/bin:~/.local/bin/
 
 # segement core
 ulimit -c unlimited

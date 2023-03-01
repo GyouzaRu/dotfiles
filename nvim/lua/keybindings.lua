@@ -138,6 +138,9 @@ map("n", "<leader>ff", ":Telescope find_files<CR>", opt)
 -- 全局搜索
 map("n", "<leader>fg", ":Telescope live_grep<CR>", opt)
 map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
+map("n", "<leader>fh", ":Telescope help_tags<CR>", opt)
+map("n", "<leader>ft", ":Telescope tags<CR>", opt)
+map("n", "<leader>fo", ":Telescope oldfiles<CR>", opt)
 pluginKeys.telescopeList = {
   i = {
     -- 上下移动
@@ -170,9 +173,9 @@ pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
   -- diagnostic
   mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-  mapbuf("n", "gk", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-  mapbuf("n", "gj", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-  mapbuf("n", "<leader>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
+  mapbuf("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
+  mapbuf("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
+  mapbuf("n", "<leader>=", "<cmd>lua vim.lsp.buf.formatting()<CR>", opt)
 end
 
 -- nvim-cmp 自动补全

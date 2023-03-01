@@ -40,6 +40,7 @@ mason_config.setup({
     "pyright",
     "jsonls",
     "yamlls",
+    -- "jdtls",
   },
 })
 
@@ -56,6 +57,7 @@ local servers = {
   pyright = require("lsp.config.pyright"),
   jsonls = require("lsp.config.json"),
   yamlls = require("lsp.config.yamlls"),
+  -- jdtls = require("lsp.config.jdtls"),
   -- remark_ls = require("lsp.config.markdown"),
 }
 

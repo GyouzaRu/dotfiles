@@ -15,10 +15,16 @@ alias tma='tmux attach -t'
 alias tms='tmux switch -t'
 
 # git
+alias gst='git status'
 alias ga='git add'
 alias gc='git commit'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gd='git diff'
+alias gs='git switch'
 alias gl='git log'
-alias gs='git status'
+alias glog='git log --oneline --graph'
+
 alias lg='lazygit'
 
 # vifm

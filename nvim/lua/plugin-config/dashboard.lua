@@ -52,7 +52,7 @@ db.setup({
         footer = {
             "",
             "",
-            "https://github.com/GyouzaRu/MyConfig",
+            "https://github.com/GyouzaRu/dotfiles",
         }
     }
 })

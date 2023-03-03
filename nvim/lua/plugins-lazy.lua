@@ -18,8 +18,8 @@ lazy.setup({
     ---- plugins ----
     -- nvim-tree
     {"nvim-tree/nvim-tree.lua",
-        -- lazy = true,
-        keys = { {"<leader>n",":NvimTreeToggle<CR>",desc="Nvim-Tree"} },
+        lazy = true,
+        -- keys = { {"<leader>n",":NvimTreeToggle<CR>",desc="Nvim-Tree"} },
         dependencies = {"nvim-tree/nvim-web-devicons"}},
     -- bufferline
     {"akinsho/bufferline.nvim",
@@ -59,9 +59,9 @@ lazy.setup({
     -- git sign
     {"lewis6991/gitsigns.nvim",
         lazy = false},
-    -- suggest the key
-    { "folke/which-key.nvim",
-        lazy = true },
+    -- view symbols based on LSP
+    {"simrat39/symbols-outline.nvim",
+        lazy = true},
 
     -- mason
     {"williamboman/mason.nvim",

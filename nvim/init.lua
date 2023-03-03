@@ -36,6 +36,7 @@ require("plugin-config.nvim-autopairs")
 require("plugin-config.comment")
 require("plugin-config.FTerm")
 require("plugin-config.gitsigns")
+require("plugin-config.symbols-outline")
 
 -- LSP
 require("lsp.setup")

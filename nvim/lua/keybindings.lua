@@ -93,7 +93,7 @@ map("n","tc", ":Bdelete!<CR>", opt)
 
 -- nvim-tree
 -- tt 键打开关闭tree
--- map("n", "<leader>n", ":NvimTreeToggle<CR>", opt)
+map("n", "<leader>n", ":NvimTreeToggle<CR>", opt)
 -- 列表快捷键
 pluginKeys.nvimTreeList = {
   { key = "J", action = "" },
@@ -124,6 +124,9 @@ map('t', '<A-t>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 -- Git  signs
 map("n", "]c", ":Gitsigns next_hunk<CR>", opt)
 map("n", "[c", ":Gitsigns prev_hunk<CR>", opt)
+
+-- tags
+map("n", "<leader>t", "<cmd>SymbolsOutline<CR>", opt)
 
 -- Debugger
 map({"i", "n", "v"}, "<F5>", "<cmd>lua require'dap'.continue()<CR>", opt)

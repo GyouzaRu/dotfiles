@@ -25,7 +25,24 @@ alias gs='git switch'
 alias gl='git log'
 alias glog='git log --oneline --graph'
 
+# lazygit
+if [ -f "${HOME}/Software/lazygit" ];
+then
+    alias lazygit="${HOME}/Software/lazygit"
+fi
 alias lg='lazygit'
 
+# nvim
+if [ -f "${HOME}/Software/nvim.appimage" ];
+then
+    alias nvim="${HOME}/Software/nvim.appimage"
+fi
+
 # vifm
-alias vf='vifm'
+if [ -f "${HOME}/Software/vifm.appimage" ];
+then
+    alias vifm="${HOME}/Software/vifm.appimage"
+    alias vf="${HOME}/Software/vifm.appimage"
+else
+    alias vf='vifm'
+fi

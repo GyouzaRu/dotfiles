@@ -12,3 +12,6 @@ autocmd WinLeave * :set nocursorline
 
 " auto delete space at the end of the line
 autocmd BufWritePre * :%s/\s\+$//e
+
+" different autoindent
+autocmd BufNewFile,BufRead *.lua,.gitconfig :setlocal tabstop=2 shiftwidth=2 softtabstop=2

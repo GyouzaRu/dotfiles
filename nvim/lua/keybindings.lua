@@ -1,6 +1,6 @@
 -- 复用 map
-    -- project
-    -- { "ahmedkhalf/project.nvim"},
+-- project
+-- { "ahmedkhalf/project.nvim"},
 -- local map = vim.api.nvim_set_keymap
 local map = vim.keymap.set
 -- 复用 opt 参数
@@ -56,13 +56,13 @@ map("n", "<C-Up>", ":resize -5<CR>", opt)
 map("n", "tb", ":tabe<CR>", opt)
 -- map("n", "tc", ":tabc<CR>", opt) -- 使用插件vim--bbye
 -- if packer_plugins["bufferline.nvim"] and packer_plugins["bufferline.nvim"].loaded then
-    -- map("n", "[t", ":bprevious<CR>", opt)
-    -- map("n", "]t", ":bnext<CR>", opt)
+-- map("n", "[t", ":bprevious<CR>", opt)
+-- map("n", "]t", ":bnext<CR>", opt)
 --     print("loaded!")
 -- else
 --     print("unloaded!")
-    -- map("n", "[t", ":tabp<CR>", opt)
-    -- map("n", "]t", ":tabn<CR>", opt)
+-- map("n", "[t", ":tabp<CR>", opt)
+-- map("n", "]t", ":tabn<CR>", opt)
 -- end
 map("n", "[t", ":tabp<CR>", opt)
 map("n", "]t", ":tabn<CR>", opt)
@@ -193,13 +193,13 @@ pluginKeys.cmp = function(cmp)
   end
 
   return {
-   -- 出现补全
-   ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
-   -- 取消
-   ["<A-,>"] = cmp.mapping({
-       i = cmp.mapping.abort(),
-       c = cmp.mapping.close()
-   }),
+    -- 出现补全
+    ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
+    -- 取消
+    ["<A-,>"] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close()
+    }),
 
     -- Super Tab
     ["<Tab>"] = cmp.mapping(function(fallback)
@@ -222,19 +222,19 @@ pluginKeys.cmp = function(cmp)
       end
     end, {"i", "s"}),
     -- end of super Tab
-   -- -- 下一个
-   -- ["<Tab>"] = cmp.mapping.select_next_item(),
-   -- -- 上一个
-   -- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+    -- -- 下一个
+    -- ["<Tab>"] = cmp.mapping.select_next_item(),
+    -- -- 上一个
+    -- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
 
-   -- 确认
-   ["<CR>"] = cmp.mapping.confirm({
-       select = true,
-       behavior = cmp.ConfirmBehavior.Replace
-   }),
-   -- 如果窗口内容太多，可以滚动
-   ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
-   ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
+    -- 确认
+    ["<CR>"] = cmp.mapping.confirm({
+      select = true,
+      behavior = cmp.ConfirmBehavior.Replace
+    }),
+    -- 如果窗口内容太多，可以滚动
+    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
   }
 end
 

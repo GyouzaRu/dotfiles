@@ -16,10 +16,10 @@ api.nvim_create_autocmd(
 )
 
 -- tags
-api.nvim_create_autocmd(
-  {"BufNewFile", "BufRead"},
-  {pattern = {"*"}, command = [[:set tags=./.tags;,.tags]]}
-)
+-- api.nvim_create_autocmd(
+--   {"BufNewFile", "BufRead"},
+--   {pattern = {"*"}, command = [[:set tags=./.tags;,.tags]]}
+-- )
 
 -- auto delete space at the end of line
 api.nvim_create_autocmd(
@@ -28,10 +28,6 @@ api.nvim_create_autocmd(
 )
 
 -- different autoindent
-api.nvim_create_autocmd(
-  {"BufNewFile", "BufRead"},
-  {pattern = {"*.lua"}, command = [[:setlocal tabstop=2 shiftwidth=2 softtabstop=2]]}
-)
 api.nvim_create_autocmd(
   {"BufNewFile", "BufRead"},
   {pattern = {"*.lua,.gitconfig"}, command = [[:setlocal tabstop=2 shiftwidth=2 softtabstop=2]]}

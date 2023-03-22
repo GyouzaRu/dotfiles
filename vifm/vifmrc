@@ -441,8 +441,19 @@ filextype */
 " Explicitly set highlight type for some extensions
 "
 " 256-color terminal
-" fileviewer *.[ch],*.[ch]pp highlight -O xterm256 -s dante --syntax c %c
-" fileviewer Makefile,Makefile.* highlight -O xterm256 -s dante --syntax make %c
+fileviewer *.[ch],*.[ch]pp,*.cc highlight -O xterm256 --syntax c
+fileviewer Makefile,Makefile.* highlight -O xterm256 --syntax make
+fileviewer *.py highlight -O xterm256 --syntax python
+fileviewer *.json highlight -O xterm256 --syntax json
+fileviewer *.xml highlight -O xterm256 --syntax xml
+fileviewer *.xhtml,*html highlight -O xterm256 --syntax html
+fileviewer *.opf highlight -O xterm256 --syntax xml
+fileviewer *.md highlight -O xterm256 --syntax markdown
+fileviewer *.go highlight -O xterm256 --syntax go
+fileviewer *.css highlight -O xterm256 --syntax css
+fileviewer *.sh highlight -O xterm256 --syntax bash
+fileviewer *.yaml highlight -O xterm256 --syntax yaml
+
 "
 " 16-color terminal
 " fileviewer *.c,*.h highlight -O ansi -s dante %c

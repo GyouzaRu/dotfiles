@@ -1,5 +1,6 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+DOTFILES=${HOME}/.dotfiles
 ZSH=${HOME}/.dotfiles/zsh
 BASH=${HOME}/.dotfiles/bash
 
@@ -96,13 +97,24 @@ unset color_prompt force_color_prompt
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
-if [ -f ${ZSH}/.aliases ]; then
-    . ${ZSH}/.aliases 
+if [ -f ${ZSH}/aliases.bash ]; then
+    source ${ZSH}/aliases.bash
 fi
 
 # Scripts definitions
-if [ -f ${ZSH}/.scripts ]; then
-    . ${ZSH}/.scripts 
+if [ -f ${ZSH}/scripts.bash ]; then
+    source ${ZSH}/scripts.bash
+fi
+
+# fzf
+if [ -f ${DOTFILES}/fzf/shell/completion.bash ]; then
+    source ${DOTFILES}/fzf/shell/completion.bash
+fi
+if [ -f ${DOTFILES}/fzf/shell/key-bindings.bash ]; then
+    source ${DOTFILES}/fzf/shell/key-bindings.bash
+fi
+if [ -f ${DOTFILES}/fzf/setting.bash ]; then
+    source ${DOTFILES}/fzf/setting.bash
 fi
 
 # enable programmable completion features (you don't need to enable

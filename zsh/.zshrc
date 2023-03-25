@@ -1,5 +1,6 @@
 # Set up ZSH home
-ZSH=$HOME/.dotfiles/zsh
+DOTFILES=${HOME}/.dotfiles
+ZSH=${HOME}/.dotfiles/zsh
 
 # Set up the prompt
 autoload -U colors && colors
@@ -32,7 +33,7 @@ compinit
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo'
 
 # android studio platform-tools and repo
-export PATH=$PATH:~/Android/Sdk/platform-tools:~/bin:~/.local/bin/
+export PATH=$PATH:~/Android/Sdk/platform-tools:~/Software/bin:~/.local/bin/
 
 # segement core
 ulimit -c unlimited
@@ -45,11 +46,23 @@ source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
 
 # aliases
-if [ -f ${ZSH}/.aliases ]; then
-    . ${ZSH}/.aliases
+if [ -f ${ZSH}/aliases.bash ]; then
+    . ${ZSH}/aliases.bash
 fi
 
 # scripts
-if [ -f ${ZSH}/.scripts ]; then
-    . ${ZSH}/.scripts
+if [ -f ${ZSH}/scripts.bash ]; then
+    . ${ZSH}/scripts.bash
 fi
+
+# fzf
+if [ -f ${DOTFILES}/fzf/shell/completion.zsh ]; then
+    source ${DOTFILES}/fzf/shell/completion.zsh
+fi
+if [ -f ${DOTFILES}/fzf/shell/key-bindings.zsh ]; then
+    source ${DOTFILES}/fzf/shell/key-bindings.zsh
+fi
+if [ -f ${DOTFILES}/fzf/setting.bash ]; then
+    source ${DOTFILES}/fzf/setting.bash
+fi
+

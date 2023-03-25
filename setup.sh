@@ -2,6 +2,7 @@
 CONFIG="${HOME}/.config"
 DOTFILES="${HOME}/.dotfiles"
 BACKUP="${CONFIG}/.backup_origin"
+
 if [ ! -d "${BACKUP}" ];then
     mkdir ${BACKUP}
     echo "create backup folder ${BACKUP}"
@@ -36,6 +37,11 @@ ln -sf ${DOTFILES}/nvim ${CONFIG}/nvim
 ln -sf ${DOTFILES}/alacritty ${CONFIG}/alacritty
 ln -sf ${DOTFILES}/vifm ${CONFIG}/vifm
 ln -sf ${DOTFILES}/lazygit ${CONFIG}/lazygit
-cat ${DOTFILES}/git/.gitconfig >> ~/.gitconfig
+
+if [[ -f ${HOME}/.gitconfig ]]
+    cat ${DOTFILES}/git/.gitconfig >> ${HOME}/.gitconfig
+else
+    echo "Fail to set up .gitconfig"
+fi
 
 echo "create symlink"

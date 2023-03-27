@@ -30,3 +30,7 @@ alias lg='lazygit'
 
 # vifm
 alias vf='vifm'
+
+# clash
+alias clash='nohup ~/Software/clash/clash -d . &'
+alias unclash='pkill -9 clash && rm ~/Software/clash/nohup.out'

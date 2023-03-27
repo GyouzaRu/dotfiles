@@ -72,6 +72,10 @@ lazy.setup({
     {"neovim/nvim-lspconfig",
         lazy = true},
 
+  -- navi with tmux
+    {"alexghergh/nvim-tmux-navigation",
+        lazy = true},
+
     {"hrsh7th/nvim-cmp",
         -- load cmp on InsertEnter
         event = "InsertEnter",

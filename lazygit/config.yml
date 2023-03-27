@@ -46,10 +46,10 @@ gui:
   skipRewordInEditorWarning: false # for skipping the confirmation before launching the reword editor
 git:
   paging:
-    colorArg: always
-    useConfig: true
     # colorArg: always
-    # pager: delta --dark --paging=never
+    # useConfig: true
+    colorArg: always
+    pager: delta --dark --paging=never
   commit:
     signOff: false
     verbose: default # one of 'default' | 'always' | 'never'

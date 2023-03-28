@@ -4,7 +4,15 @@ ZSH=${HOME}/.dotfiles/zsh
 
 # Set up the prompt
 autoload -U colors && colors
-PROMPT="%{$bg[black]%}%{$fg[blue]%}%n%{$reset_color%} %{$fg[green]%}%~%{$reset_color%} %B%#%b "
+# PROMPT="%{$bg[black]%}%{$fg[blue]%}%n%{$reset_color%} %{$fg[green]%}%~%{$reset_color%} %B%#%b "
+
+# git branch info in prompt
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+setopt prompt_subst
+PROMPT='%F{green}%~%{%F{blue}%}$(parse_git_branch)%{%F{none}%} %B%#%b '
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e

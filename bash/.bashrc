@@ -77,7 +77,7 @@ parse_git_branch() {
 
 if [ "$color_prompt" = yes ]; then
     # PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\\[\033[01;34m\]\$(parse_git_branch)\[\033[00m\]$ "
+    PS1="\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\\[\033[01;34m\]\$(parse_git_branch)\[\033[00m\] \$ "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -122,6 +122,12 @@ fi
 if [ -f ${DOTFILES}/fzf/setting.bash ]; then
     source ${DOTFILES}/fzf/setting.bash
 fi
+
+# auto completion
+if [ -f /etc/profile.d/bash_completion.sh ]; then
+    source /etc/profile.d/bash_completion.sh
+fi
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile

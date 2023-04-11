@@ -25,6 +25,12 @@ alias gs='git switch'
 alias gl='git log'
 alias glog='git log --oneline --graph'
 
+# docker
+alias dim='docker image'
+alias dco='docker container'
+alias dex='docker exec'
+alias dru='docker run'
+
 # lazygit
 alias lg='lazygit'
 
@@ -32,5 +38,5 @@ alias lg='lazygit'
 alias vf='vifm'
 
 # clash
-alias clash='nohup ~/Software/clash/clash -d . &'
+alias clash='nohup ~/Software/clash/clash -d ~/Software/clash/ > ~/Software/clash/nohup.out &'
 alias unclash='pkill -9 clash && rm ~/Software/clash/nohup.out'

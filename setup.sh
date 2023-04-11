@@ -38,7 +38,7 @@ ln -sf ${DOTFILES}/alacritty ${CONFIG}/alacritty
 ln -sf ${DOTFILES}/vifm ${CONFIG}/vifm
 ln -sf ${DOTFILES}/lazygit ${CONFIG}/lazygit
 
-if [[ -f ${HOME}/.gitconfig ]]
+if [[ -f ${HOME}/.gitconfig ]]; then
     cat ${DOTFILES}/git/.gitconfig >> ${HOME}/.gitconfig
 else
     echo "Fail to set up .gitconfig"

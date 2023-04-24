@@ -62,6 +62,12 @@ lazy.setup({
     -- view symbols based on LSP
     {"simrat39/symbols-outline.nvim",
         lazy = true},
+    -- message UI
+    {"folke/noice.nvim",
+        lazy = true,
+        dependencies = {
+          "MunifTanjim/nui.nvim",
+          "rcarriga/nvim-notify"}},
 
     -- Lspconfig
     {"neovim/nvim-lspconfig",

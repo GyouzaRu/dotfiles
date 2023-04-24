@@ -38,6 +38,7 @@ require("plugin-config.FTerm")
 require("plugin-config.gitsigns")
 require("plugin-config.symbols-outline")
 require("plugin-config.nvim-tmux-navigation")
+require("plugin-config.null-ls")
 
 -- LSP
 require("lsp.setup")

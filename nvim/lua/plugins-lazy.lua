@@ -63,13 +63,15 @@ lazy.setup({
     {"simrat39/symbols-outline.nvim",
         lazy = true},
 
+    -- Lspconfig
+    {"neovim/nvim-lspconfig",
+        lazy = true},
     -- mason
     {"williamboman/mason.nvim",
         lazy = true},
     {"williamboman/mason-lspconfig.nvim",
         lazy = true},
-    -- Lspconfig
-    {"neovim/nvim-lspconfig",
+    {"jose-elias-alvarez/null-ls.nvim",
         lazy = true},
 
   -- navi with tmux

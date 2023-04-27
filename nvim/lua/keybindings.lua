@@ -93,28 +93,109 @@ map("n","tc", ":Bdelete!<CR>", opt)
 
 -- nvim-tree
 -- tt 键打开关闭tree
-map("n", "<leader>n", ":NvimTreeToggle<CR>", opt)
+-- map("n", "<leader>n", ":NvimTreeToggle<CR>", opt)
 -- 列表快捷键
-pluginKeys.nvimTreeList = {
-  { key = "J", action = "" },
-  { key = "K", action = "" },
-  { key = "H", action = "" },
-  { key = {"<CR>", "o", "l", "<2-LeftMouse>"}, action = "edit" },
-  { key = {"O", "go"}, action = "edit_no_picker" },
-  { key = "sv", action = "vsplit" },
-  { key = "sh", action = "split" },
-  { key = "tb", action = "tabnew" },
-  { key = "h", action = "close_node" },
-  { key = "cw", action = "rename" },
-  { key = "R", action = "refresh" },
-  { key = "a", action = "create" },
-  { key = "x", action = "cut" },
-  { key = "y", action = "copy" },
-  { key = "p", action = "paste" },
-  { key = "so", action = "system_open" },
-  -- 显示隐藏文件
-  { key = "i", action = "toggle_custom" }, -- 对应 filters 中的 custom (node_modules)
-  { key = { "za" , "."}, action = "toggle_dotfiles" }, -- Hide (dotfiles)
+-- pluginKeys.nvimTreeList = {
+--   { key = "J", action = "" },
+--   { key = "K", action = "" },
+--   { key = "H", action = "" },
+--   { key = {"<CR>", "o", "l", "<2-LeftMouse>"}, action = "edit" },
+--   { key = {"O", "go"}, action = "edit_no_picker" },
+--   { key = "sv", action = "vsplit" },
+--   { key = "sh", action = "split" },
+--   { key = "tb", action = "tabnew" },
+--   { key = "h", action = "close_node" },
+--   { key = "cw", action = "rename" },
+--   { key = "R", action = "refresh" },
+--   { key = "a", action = "create" },
+--   { key = "x", action = "cut" },
+--   { key = "y", action = "copy" },
+--   { key = "p", action = "paste" },
+--   { key = "so", action = "system_open" },
+--   -- 显示隐藏文件
+--   { key = "i", action = "toggle_custom" }, -- 对应 filters 中的 custom (node_modules)
+--   { key = { "za" , "."}, action = "toggle_dotfiles" }, -- Hide (dotfiles)
+-- }
+
+-- neo-tree
+map("n", "<leader>n", "<CMD>Neotree toggle<CR>", opt)
+pluginKeys.neotreeList = {
+  default = {
+    ["<space>"] = {
+      "toggle_node",
+      nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+    },
+    ["<2-LeftMouse>"] = "open",
+    ["<cr>"] = "open",
+    ["l"] = "open",
+    ["<esc>"] = "revert_preview",
+    ["P"] = { "toggle_preview", config = { use_float = true } },
+    -- ["l"] = "focus_preview",
+    ["S"] = "open_split",
+    ["s"] = "open_vsplit",
+    -- ["S"] = "split_with_window_picker",
+    -- ["s"] = "vsplit_with_window_picker",
+    ["t"] = "open_tabnew",
+    -- ["<cr>"] = "open_drop",
+    -- ["t"] = "open_tab_drop",
+    ["w"] = "open_with_window_picker",
+    --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
+    ["C"] = "close_node",
+    ["h"] = "close_node",
+    -- ['C'] = 'close_all_subnodes',
+    ["H"] = "close_all_nodes",
+    --["Z"] = "expand_all_nodes",
+    ["z"] = "",
+    ["a"] = {
+      "add",
+      -- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
+      -- some commands may take optional config options, see `:h neo-tree-mappings` for details
+      config = {
+        show_path = "none" -- "none", "relative", "absolute"
+      }
+    },
+    ["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also supports BASH style brace expansion.
+    ["d"] = "delete",
+    ["r"] = "rename",
+    ["y"] = "copy_to_clipboard",
+    ["x"] = "cut_to_clipboard",
+    ["p"] = "paste_from_clipboard",
+    ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
+    -- ["c"] = {
+    --  "copy",
+    --  config = {
+    --    show_path = "none" -- "none", "relative", "absolute"
+    --  }
+    --}
+    ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
+    ["q"] = "close_window",
+    ["R"] = "refresh",
+    ["?"] = "show_help",
+    ["<"] = "prev_source",
+    [">"] = "next_source",
+  },
+  filesystem = {
+    ["<bs>"] = "navigate_up",
+    ["."] = "set_root",
+    -- ["H"] = "toggle_hidden",
+    ["za"] = "toggle_hidden",
+    ["/"] = "fuzzy_finder",
+    ["D"] = "fuzzy_finder_directory",
+    ["#"] = "fuzzy_sorter", -- fuzzy sorting using the fzy algorithm
+    -- ["D"] = "fuzzy_sorter_directory",
+    ["f"] = "filter_on_submit",
+    ["<c-x>"] = "clear_filter",
+    ["[g"] = "prev_git_modified",
+    ["]g"] = "next_git_modified",
+  },
+  fuzzy_finder_mappings = { -- define keymaps for filter popup window in fuzzy_finder_mode
+    ["<down>"] = "move_cursor_down",
+    ["<C-n>"] = "move_cursor_down",
+    ["<C-j>"] = "move_cursor_down",
+    ["<up>"] = "move_cursor_up",
+    ["<C-p>"] = "move_cursor_up",
+    ["<C-k>"] = "move_cursor_up",
+  },
 }
 
 -- Float terminal

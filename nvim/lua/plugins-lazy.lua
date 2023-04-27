@@ -17,14 +17,25 @@ lazy.setup({
         priority = 1000},
     ---- plugins ----
     -- nvim-tree
-    {"nvim-tree/nvim-tree.lua",
+    -- {"nvim-tree/nvim-tree.lua",
+    --     lazy = true,
+    --     -- keys = { {"<leader>n",":NvimTreeToggle<CR>",desc="Nvim-Tree"} },
+    --     dependencies = {"nvim-tree/nvim-web-devicons"}},
+    -- neotree
+    {"nvim-neo-tree/neo-tree.nvim",
         lazy = true,
-        -- keys = { {"<leader>n",":NvimTreeToggle<CR>",desc="Nvim-Tree"} },
-        dependencies = {"nvim-tree/nvim-web-devicons"}},
+        dependencies = {
+            -- necessary
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim"}},
     -- bufferline
     {"akinsho/bufferline.nvim",
         lazy = true,
         dependencies = {"moll/vim-bbye" }},
+    -- tabline
+    -- {"nanozuki/tabby.nvim",
+    --     lazy = true},
     -- lualine
     {"nvim-lualine/lualine.nvim",
         lazy = false,

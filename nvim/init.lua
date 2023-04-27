@@ -24,8 +24,10 @@ require('colorscheme')
 -- 自动执行vim cmds
 require('autocmds')
 -- 插件配置
-require('plugin-config.nvim-tree')
+-- require('plugin-config.nvim-tree')
+require('plugin-config.neotree')
 require("plugin-config.bufferline")
+-- require("plugin-config.tabby")
 require("plugin-config.lualine")
 require("plugin-config.telescope")
 require("plugin-config.dashboard")

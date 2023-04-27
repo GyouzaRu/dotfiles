@@ -1,4 +1,8 @@
-local cmp = require("cmp")
+local mason_status, cmp = pcall(require, "cmp")
+if not mason_status then
+  vim.notify("没有找到 cmp")
+  return
+end
 
 cmp.setup({
   -- 指定 snippet 引擎

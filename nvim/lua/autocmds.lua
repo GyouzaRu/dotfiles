@@ -6,14 +6,14 @@ api.nvim_create_autocmd(
 )
 
 -- add cursorline
-api.nvim_create_autocmd(
-  {"WinEnter"},
-  {pattern = {"*"}, command = [[:set cursorline]]}
-)
-api.nvim_create_autocmd(
-  {"WinLeave"},
-  {pattern = {"*"}, command = [[:set nocursorline]]}
-)
+-- api.nvim_create_autocmd(
+--   {"WinEnter"},
+--   {pattern = {"*"}, command = [[:set cursorline]]}
+-- )
+-- api.nvim_create_autocmd(
+--   {"WinLeave"},
+--   {pattern = {"*"}, command = [[:set nocursorline]]}
+-- )
 
 -- tags
 -- api.nvim_create_autocmd(

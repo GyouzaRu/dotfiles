@@ -119,6 +119,7 @@ map("n","tc", ":Bdelete!<CR>", opt)
 
 -- neo-tree
 map("n", "<leader>n", "<CMD>Neotree toggle<CR>", opt)
+map("n", "<leader>b", "<CMD>Neotree buffers toggle<CR>", opt)
 pluginKeys.neotreeList = {
   default = {
     ["<space>"] = {
@@ -196,6 +197,14 @@ pluginKeys.neotreeList = {
     ["<C-p>"] = "move_cursor_up",
     ["<C-k>"] = "move_cursor_up",
   },
+  buffer = {
+    ["bd"] = "buffer_delete",
+    ["<bs>"] = "navigate_up",
+    ["."] = "set_root",
+    ["S"] = "open_split",
+    ["s"] = "open_vsplit",
+    ["t"] = "open_tabnew",
+  }
 }
 
 -- Float terminal

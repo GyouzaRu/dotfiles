@@ -28,6 +28,8 @@ map("v", "J", "5j", opt)
 map("v", "K", "5k", opt)
 map("v", "H", "^", opt)
 map("v", "L", "$", opt)
+map("o", "H", "^", opt)
+map("o", "L", "$", opt)
 map("n", "<leader>j", "J", opt)
 -- 取消高亮
 map("n", "<leader><CR>", ":nohl<CR>", opt)

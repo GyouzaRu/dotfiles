@@ -23,7 +23,10 @@ lazy.setup({
     --     dependencies = {"nvim-tree/nvim-web-devicons"}},
     -- neotree
     {"nvim-neo-tree/neo-tree.nvim",
-        lazy = true,
+        event = 'VimEnter',
+        config = function()
+            require("plugin-config.neotree")
+        end,
         dependencies = {
             -- necessary
             "nvim-lua/plenary.nvim",
@@ -31,18 +34,27 @@ lazy.setup({
             "MunifTanjim/nui.nvim"}},
     -- bufferline
     {"akinsho/bufferline.nvim",
-        lazy = true,
+        event = {'BufNewFile', 'BufReadPre'},
+        config = function()
+            require("plugin-config.bufferline")
+        end,
         dependencies = {"moll/vim-bbye" }},
     -- tabline
     -- {"nanozuki/tabby.nvim",
     --     lazy = true},
     -- lualine
     {"nvim-lualine/lualine.nvim",
-        lazy = false,
+        event = 'VimEnter',
+        config = function()
+            require("plugin-config.lualine")
+        end,
         dependencies = {"arkav/lualine-lsp-progress"}},
     -- telescope
     {"nvim-telescope/telescope.nvim",
-        lazy = true,
+        event = 'VimEnter',
+        config = function()
+            require("plugin-config.telescope")
+        end,
         dependencies = {
             -- necessary
             "nvim-lua/plenary.nvim",
@@ -50,54 +62,109 @@ lazy.setup({
             "ahmedkhalf/project.nvim"}},
     -- dashboard-nvim
     { "glepnir/dashboard-nvim",
-        lazy = true},
+        event = 'VimEnter',
+        config = function()
+            require("plugin-config.dashboard")
+        end,
+    dependencies = {"nvim-tree/nvim-web-devicons"}},
     -- treesitter
     {"nvim-treesitter/nvim-treesitter",
-        lazy = true,
-        cmd = "TSUpdate" },
-    -- surround
+        event = {'BufNewFile', 'BufReadPre'},
+        config = function()
+            require("plugin-config.nvim-treesitter")
+        end,
+        -- cmd = "TSUpdate"
+    },
+  -- surround
     {"kylechui/nvim-surround",
+        event = {'BufNewFile', 'BufReadPre'},
+        config = function()
+            require("plugin-config.nvim-surround")
+        end,
         lazy=true},
     -- nvim-autopairs
     {"windwp/nvim-autopairs",
-        lazy=true},
+        event = "InsertEnter",
+        config = function()
+            require("plugin-config.nvim-autopairs")
+        end,
+        },
+
     -- comment
     {"numToStr/Comment.nvim",
-        lazy=true},
+        event = {'BufNewFile', 'BufReadPre'},
+        config = function()
+            require("plugin-config.comment")
+        end,
+        },
     -- Float terminal
     {"numToStr/FTerm.nvim",
-        lazy = true},
+        event = 'VimEnter',
+        config = function()
+            require("plugin-config.FTerm")
+        end,
+        },
     -- git sign
     {"lewis6991/gitsigns.nvim",
-        lazy = false},
+        event = {'BufNewFile', 'BufReadPre'},
+        config = function()
+            require("plugin-config.gitsigns")
+        end,
+        },
+  -- navi with tmux
+    {"alexghergh/nvim-tmux-navigation",
+        event = 'VimEnter',
+        config = function()
+            require("plugin-config.nvim-tmux-navigation")
+        end,
+      },
+
     -- view symbols based on LSP
     {"simrat39/symbols-outline.nvim",
+        config = function()
+            require("plugin-config.symbols-outline")
+        end,
         lazy = true},
     -- message UI
     {"folke/noice.nvim",
-        lazy = true,
+        event = 'VimEnter',
+        config = function()
+            require("plugin-config.noice")
+        end,
         dependencies = {
           "MunifTanjim/nui.nvim",
           "rcarriga/nvim-notify"}},
 
     -- Lspconfig
     {"neovim/nvim-lspconfig",
+        event = 'VimEnter',
+        config = function()
+            require("lsp.setup")
+            require("lsp.ui")
+        end,
         lazy = true},
     -- mason
     {"williamboman/mason.nvim",
-        lazy = true},
+        event = 'VimEnter',
+        config = function()
+            require("plugin-config.mason")
+        end,
+        -- lazy = true
+    },
     {"williamboman/mason-lspconfig.nvim",
         lazy = true},
     {"jose-elias-alvarez/null-ls.nvim",
-        lazy = true},
-
-  -- navi with tmux
-    {"alexghergh/nvim-tmux-navigation",
+        config = function()
+            require("plugin-config.null-ls")
+        end,
         lazy = true},
 
     {"hrsh7th/nvim-cmp",
         -- load cmp on InsertEnter
-        event = "InsertEnter",
+        event = "VimEnter",
+        config = function()
+            require("lsp.cmp")
+        end,
         -- these dependencies will only be loaded when cmp loads
         -- dependencies are always lazy-loaded unless specified otherwise
         dependencies = {
@@ -113,11 +180,15 @@ lazy.setup({
     },
     -- 常见编程语言代码段
     { "rafamadriz/friendly-snippets",
-        lazy=true},
+        -- lazy=true
+      },
 
     -- Debugger
     {"mfussenegger/nvim-dap",
         lazy = true,
+        config = function()
+            require("dap.setup")
+        end,
         dependencies = {
             "rcarriga/nvim-dap-ui",
             "theHamsta/nvim-dap-virtual-text",

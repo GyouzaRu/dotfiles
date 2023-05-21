@@ -7,8 +7,7 @@ end
 treesitter.setup({
   -- 安装 language parser
   -- :TSInstallInfo 命令查看支持的语言
-  ensure_installed = { "cpp", "cmake","python","json", "vim", "lua",
-                      "help","regex","markdown","markdown_inline"},
+  ensure_installed = { "cpp", "cmake","python","json", "vim", "lua","regex","markdown","markdown_inline"},
   -- 自动安装缺失语言
   auto_install = true,
   -- 启用代码高亮模块

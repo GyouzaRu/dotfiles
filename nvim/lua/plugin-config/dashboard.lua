@@ -4,55 +4,44 @@ if not status then
   return
 end
 
-db.setup({
-  config = {
+  db.setup({
     theme = 'hyper',
-    header = {
-      [[]],
-      [[]],
-      [[          ▀████▀▄▄              ▄█ ]],
-      [[            █▀    ▀▀▄▄▄▄▄    ▄▄▀▀█ ]],
-      [[    ▄        █          ▀▀▀▀▄  ▄▀  ]],
-      [[   ▄▀ ▀▄      ▀▄              ▀▄▀  ]],
-      [[  ▄▀    █     █▀   ▄█▀▄      ▄█    ]],
-      [[  ▀▄     ▀▄  █     ▀██▀     ██▄█   ]],
-      [[   ▀▄    ▄▀ █   ▄██▄   ▄  ▄  ▀▀ █  ]],
-      [[    █  ▄▀  █    ▀██▀    ▀▀ ▀▀  ▄▀  ]],
-      [[   █   █  █      ▄▄           ▄▀   ]],
-      [[]],
-      [[]],
-    },
-    shortcut = {
-      {
-        desc = "  Projects",
-        action = "Telescope projects",
-        key = "p",
+    config = {
+      week_header = {
+       enable = true,
       },
-      {
-        desc = "  Recently files",
-        action = "Telescope oldfiles",
-        key = "rf",
-      },
-      {
-        desc = "  Find file",
-        action = "Telescope find_files",
-        key = "ff",
-      },
-      {
-        desc = "  Find text",
-        action = "Telescope live_grep",
-        key = "ft",
-      },
-      {
-        desc = "  Edit keybindings",
-        action = "edit ~/.config/nvim/lua/keybindings.lua",
-        key = "ek",
+      shortcut = {
+        {
+          icon = ' ',
+          icon_hl = '@variable',
+          desc = 'Projects',
+          group = 'Label',
+          action = 'Telescope projects',
+          key = 'sp',
+        },
+        {
+          icon = ' ',
+          icon_hl = '@variable',
+          desc = 'Recently Files',
+          group = 'Label',
+          action = 'Telescope oldfiles',
+          key = 'so',
+        },
+        {
+          icon = ' ',
+          icon_hl = '@variable',
+          desc = 'Files',
+          group = 'Label',
+          action = 'Telescope find_files',
+          key = 'sf',
+        },
+        {
+          desc = ' dotfiles',
+          group = 'Number',
+          action = 'Telescope dotfiles',
+          key = 'd',
+        },
+        { desc = '󰊳 Update', group = '@property', action = 'Lazy update', key = 'u' },
       },
     },
-    footer = {
-      "",
-      "",
-      "https://github.com/GyouzaRu/dotfiles",
-    }
-  }
-})
+  })

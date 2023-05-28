@@ -2,6 +2,8 @@
 require('basic')
 -- 键位绑定
 require('keybindings')
+-- 自动执行vim cmds
+require('autocmds')
 
 -- lazy.nvim 插件管理
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -21,8 +23,6 @@ require('plugins-lazy')
 
 -- 主题管理
 require('colorscheme')
--- 自动执行vim cmds
-require('autocmds')
 -- 插件配置
 -- require('plugin-config.nvim-tree')
 -- require('plugin-config.neotree')

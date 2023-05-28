@@ -35,7 +35,7 @@ alias dru='docker run'
 alias lg='lazygit'
 
 # lazydocker
-alias ldo='lazydocker'
+alias lzd='lazydocker'
 
 # vifm
 alias vf='vifm'

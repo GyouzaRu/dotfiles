@@ -49,6 +49,7 @@ lazy.setup({
             require("plugin-config.lualine")
         end,
         dependencies = {"arkav/lualine-lsp-progress"}},
+
     -- telescope
     {"nvim-telescope/telescope.nvim",
         event = 'VimEnter',
@@ -57,9 +58,14 @@ lazy.setup({
         end,
         dependencies = {
             -- necessary
-            "nvim-lua/plenary.nvim",
-            -- project search
-            "ahmedkhalf/project.nvim"}},
+            "nvim-lua/plenary.nvim", }},
+    {"ahmedkhalf/project.nvim",
+        event = 'VimEnter',
+        config = function()
+            require("plugin-config.project")
+        end,
+        dependencies = {"nvim-telescope/telescope.nvim"}},
+
     -- dashboard-nvim
     { "glepnir/dashboard-nvim",
         event = 'VimEnter',
@@ -121,10 +127,11 @@ lazy.setup({
 
     -- view symbols based on LSP
     {"simrat39/symbols-outline.nvim",
+        event = {'BufNewFile', 'BufReadPre'},
         config = function()
             require("plugin-config.symbols-outline")
         end,
-        lazy = true},
+      },
     -- message UI
     {"folke/noice.nvim",
         event = 'VimEnter',
@@ -133,7 +140,8 @@ lazy.setup({
         end,
         dependencies = {
           "MunifTanjim/nui.nvim",
-          "rcarriga/nvim-notify"}},
+          -- "rcarriga/nvim-notify"
+    }},
 
     -- Lspconfig
     {"neovim/nvim-lspconfig",
@@ -154,10 +162,11 @@ lazy.setup({
     {"williamboman/mason-lspconfig.nvim",
         lazy = true},
     {"jose-elias-alvarez/null-ls.nvim",
+        event = 'VimEnter',
         config = function()
             require("plugin-config.null-ls")
         end,
-        lazy = true},
+        },
 
     {"hrsh7th/nvim-cmp",
         -- load cmp on InsertEnter
@@ -180,7 +189,11 @@ lazy.setup({
     },
     -- 常见编程语言代码段
     { "rafamadriz/friendly-snippets",
-        -- lazy=true
+        event = {'BufNewFile', 'BufReadPre'},
+        dependencies = {
+            -- snippet 引擎
+            "hrsh7th/vim-vsnip",
+        },
       },
 
     -- Debugger

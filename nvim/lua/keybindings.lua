@@ -86,6 +86,9 @@ map("v", ">", ">gv", opt)
 -- 上下移动选中文本
 -- map("v", "J", ":move '>+1<CR>gv-gv", opt)
 -- map("v", "K", ":move '<-2<CR>gv-gv", opt)
+--
+map("n", "<C-w><C-]>", ":vsp<CR><C-]>")
+map("n", "<C-w>]", ":sp<CR><C-]>")
 
 ---- Plugins ----
 
@@ -229,19 +232,16 @@ map({"i", "n", "v"}, "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", op
 
 -- Telescope
 -- 查找文件
--- map("n", "<leader>ff", ":Telescope find_files<CR>", opt)
 map("n", "sf", ":Telescope find_files<CR>", opt)
 -- 全局搜索
--- map("n", "<leader>fg", ":Telescope live_grep<CR>", opt)
--- map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
--- map("n", "<leader>fh", ":Telescope help_tags<CR>", opt)
--- map("n", "<leader>ft", ":Telescope tags<CR>", opt)
--- map("n", "<leader>fo", ":Telescope oldfiles<CR>", opt)
 map("n", "sg", ":Telescope live_grep<CR>", opt)
 map("n", "sb", ":Telescope buffers<CR>", opt)
 map("n", "so", ":Telescope oldfiles<CR>", opt)
 map("n", "sh", ":Telescope help_tags<CR>", opt)
 map("n", "st", ":Telescope tags<CR>", opt)
+-- project插件
+map("n", "sp", ":Telescope projects<CR>", opt)
+
 pluginKeys.telescopeList = {
   i = {
     -- 上下移动

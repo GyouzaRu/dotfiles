@@ -51,7 +51,7 @@ lazy.setup({
         dependencies = {"arkav/lualine-lsp-progress"}},
 
     -- telescope
-    {"nvim-telescope/telescope.nvim",
+    {"nvim-telescope/telescope.nvim", tag = '0.1.1',
         event = 'VimEnter',
         config = function()
             require("plugin-config.telescope")
@@ -133,15 +133,15 @@ lazy.setup({
         end,
       },
     -- message UI
-    {"folke/noice.nvim",
-        event = 'VimEnter',
-        config = function()
-            require("plugin-config.noice")
-        end,
-        dependencies = {
-          "MunifTanjim/nui.nvim",
-          -- "rcarriga/nvim-notify"
-    }},
+    -- {"folke/noice.nvim",
+    --     event = 'VimEnter',
+    --     config = function()
+    --         require("plugin-config.noice")
+    --     end,
+    --     dependencies = {
+    --       "MunifTanjim/nui.nvim",
+    --       -- "rcarriga/nvim-notify"
+    -- }},
 
     -- Lspconfig
     {"neovim/nvim-lspconfig",
@@ -197,6 +197,13 @@ lazy.setup({
       },
 
     -- Debugger
+
+    {"sakhnik/nvim-gdb",
+        event = {'BufNewFile', 'BufReadPre'},
+        config = function()
+            require("plugin-config.nvim-gdb")
+        end,
+    },
     {"mfussenegger/nvim-dap",
         lazy = true,
         config = function()

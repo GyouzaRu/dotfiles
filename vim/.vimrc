@@ -83,9 +83,9 @@ onoremap L $
 nnoremap <leader>j J
 
 "" split window
-map sv :set splitright<CR>:vsplit<CR>
-map sh :set splitbelow<CR>:split<CR>
-map sc <C-w>q
+map s= :set splitright<CR>:vsplit<CR>
+map s- :set splitbelow<CR>:split<CR>
+map sc <C-w>c
 
 "" move cursor to split window
 noremap <C-l> <C-W>l
@@ -116,15 +116,15 @@ nnoremap [t :tabprevious<CR>
 nnoremap ]t :tabnext<CR>
 
 "" terminal
-if has('ide')
-    map <A-t> <Action>(ActivateTerminalToolWindow)
-    inoremap <A-t> <ESC><Action>(ActivateTerminalToolWindow)
-    tnoremap <A-t> <Action>(ActivateTerminalToolWindow)
+" if has('ide')
+"     map <C-q> <Action>(ActivateTerminalToolWindow)
+"     inoremap <C-q> <ESC><Action>(ActivateTerminalToolWindow)
+"     tnoremap <C-q> <Action>(ActivateTerminalToolWindow)
     " else
     "     nnoremap <ESC>t :below term<CR>
     "     inoremap <ESC>t <ESC>:below term<CR>
     "     tnoremap <C-\><C-\> <C-\><C-n>
-end
+" end
 
 "" cancel search highlight
 map <leader><CR> :nohlsearch<CR>
@@ -150,14 +150,21 @@ if has('ide')
     nmap <Leader>w :action HideAllWindows<CR>
 
 "" terminal
-    map <A-t> <Action>(ActivateTerminalToolWindow)
-    inoremap <A-t> <ESC><Action>(ActivateTerminalToolWindow)
-    tnoremap <A-t> <Action>(ActivateTerminalToolWindow)
+    map <C-q> <Action>(ActivateTerminalToolWindow)
+    inoremap <C-q> <ESC><Action>(ActivateTerminalToolWindow)
+    tnoremap <C-q> <Action>(ActivateTerminalToolWindow)
 
     " nmap <Leader>be :action Switcher<CR>
-    nmap <Leader>fb :action RecentFiles<CR>
-    nmap <Leader>ff :action GotoFile<CR>
-    nmap <Leader>fg :action SearchEverywhere<CR>
+    nnoremap sp :action RecentProjectListGroup<CR>
+    nnoremap sb :action RecentFiles<CR>
+    nnoremap sf :action GotoFile<CR>
+    nnoremap sg :action SearchEverywhere<CR>
+
+    " diag
+    nnoremap gd :action GotoDeclaration
+    nnoremap gd :action GotoDeclaration
+    nnoremap ]d <Action>(GotoNextError)
+    nnoremap [d <Action>(GotoPreviousError)
 end
 
 ""===========================
@@ -171,6 +178,9 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 " autocmd VimEnter * NERDTree
 
 "" Nerdtree git plugin config
+let NERDTreeMapActivateNode = 'l'
+let NERDTreeCloseDir = 'h'
+
 let g:NERDTreeGitStatusIndicatorMapCustom = {
             \ 'Modified'  :'✹',
             \ 'Staged'    :'✚',

@@ -14,8 +14,9 @@ neotree.setup({
   source_selector = {
     winbar = true,
     sources = {
-      { source = "filesystem" },
-      { source = "buffers" },
+      { source = "filesystem", display_name = " 󰉓 Files " },
+      { source = "buffers", display_name = " 󱇧 Buffers " },
+      -- { source = "git_status", display_name = " 󰊢 Git " },
     }
   },
   open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
@@ -49,7 +50,8 @@ neotree.setup({
     icon = {
       folder_closed = "",
       folder_open = "",
-      folder_empty = "ﰊ",
+      folder_empty = "󰜌",
+      folder_empty_open = "󰜌",
       -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
       -- then these will never be used.
       default = "*",
@@ -69,18 +71,17 @@ neotree.setup({
         -- Change type
         added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
         modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-        deleted   = "✖",-- this can only be used in the git_status source
-        renamed   = "",-- this can only be used in the git_status source
+        deleted   = "",-- this can only be used in the git_status source
+        renamed   = "",-- this can only be used in the git_status source
         -- Status type
         untracked = "",
         ignored   = "",
-        unstaged  = "",
+        unstaged  = "",
         staged    = "",
         conflict  = "",
       }
     },
   },
-
   -- A list of functions, each representing a global custom command
   -- that will be available in all sources (if not overridden in `opts[source_name].commands`)
   -- see `:h neo-tree-global-custom-commands`
@@ -143,6 +144,27 @@ neotree.setup({
     show_unloaded = true,
     window = {
       mappings = require('keybindings').neotreeList.buffer,
+    },
+  },
+  document_symbols = {
+    follow_cursor = false,
+    client_filters = "first",
+    renderers = {
+      root = {
+        {"indent"},
+        {"icon", default="C" },
+        {"name", zindex = 10},
+      },
+      symbol = {
+        {"indent", with_expanders = true},
+        {"kind_icon", default="?" },
+        {"container",
+          content = {
+            {"name", zindex = 10},
+            {"kind_name", zindex = 20, align = "right"},
+          }
+        }
+      },
     },
   },
 })

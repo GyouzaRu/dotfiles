@@ -9,11 +9,11 @@ proxy(){
         export https_proxy="http://127.0.0.1:7890"
         echo "start proxy"
     else
-        export ALL_PROXY="sock5://$wsl_hostip:7890"
-        export all_proxy="sock5://$wsl_hostip:7890"
-        export http_proxy="http://$wsl_hostip:7890"
-        export https_proxy="http://$wsl_hostip:7890"
-        echo "start wsl proxy, $wsl_hostip"
+        export ALL_PROXY="sock5://$host_ip:7890"
+        export all_proxy="sock5://$host_ip:7890"
+        export http_proxy="http://$host_ip:7890"
+        export https_proxy="http://$host_ip:7890"
+        echo "start wsl proxy, $host_ip"
     fi
 }
 

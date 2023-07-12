@@ -22,6 +22,8 @@ mv ${CONFIG}/alacritty ${BACKUP}
 mv ${CONFIG}/vifm ${BACKUP}
 mv ${CONFIG}/lazygit ${BACKUP}
 
+mv ${HOME}/.gitconfig ${BACKUP}
+
 echo "move original files to ${BACKUP}"
 
 # set the symlink
@@ -37,11 +39,7 @@ ln -sf ${DOTFILES}/nvim ${CONFIG}/nvim
 ln -sf ${DOTFILES}/alacritty ${CONFIG}/alacritty
 ln -sf ${DOTFILES}/vifm ${CONFIG}/vifm
 ln -sf ${DOTFILES}/lazygit ${CONFIG}/lazygit
+ln -sf ${DOTFILES}/git/.gitconfig ${HOME}/.gitconfig
 
-if [[ -f ${HOME}/.gitconfig ]]; then
-    cat ${DOTFILES}/git/.gitconfig >> ${HOME}/.gitconfig
-else
-    echo "Fail to set up .gitconfig"
-fi
 
 echo "create symlink"

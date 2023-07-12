@@ -1,0 +1,15 @@
+[user]
+  name = lujw2
+  email = lujw2@lenovo.com
+
+[color]
+  ui = auto
+
+[core]
+  editor = nvim
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default

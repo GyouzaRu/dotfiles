@@ -17,6 +17,6 @@ null_ls.setup({
 
     -- c/cpp
     formatting.clang_format,
-    diagnostics.cppcheck,
+    -- diagnostics.cppcheck,
   }
 })

@@ -21,8 +21,18 @@
 [merge]
   conflictstyle = diff3
 
-[diff]
-  colorMoved = default
+; no need to input user and passwd when use http to git push
+[credential]
+  helper = store
 
+; use neovim as gitdiff tool
+[difftool]
+    prompt = true
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+
+; use new id when in this path
 [includeIf "gitdir:~/Project/lenovo/"]
   path = ~/.dotfiles/git/.gitconfig_work

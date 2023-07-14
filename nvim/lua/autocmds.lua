@@ -22,10 +22,22 @@ api.nvim_create_autocmd(
 -- )
 
 -- auto delete space at the end of line
-api.nvim_create_autocmd(
-  {"BufWritePre"},
-  {pattern = {"*"}, command = [[:%s/\s\+$//e]]}
+api.nvim_create_autocmd({"BufWritePre"},{
+  pattern = {"*"},
+  callback = function()
+    if vim.bo.filetype == "markdown" then
+      return
+    end
+    api.nvim_command(":%s/\\s\\+$//e")
+  end}
 )
+-- api.nvim_create_autocmd(
+--   {"BufWritePre"},
+--   {pattern = {"*"}, command = [[:%s/\s\+$//e]]}
+-- )
+-- vim.cmd([[
+-- autocmd BufRead,BufNewFile * if &ft !=# 'markdown' | :%s/\s\+$//e | endif
+-- ]])
 
 -- different autoindent
 api.nvim_create_autocmd(

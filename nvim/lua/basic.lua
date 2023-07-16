@@ -79,4 +79,4 @@ vim.o.showmode = false
 -- tags
 vim.opt.tags=("./tags;,tags")
 -- clipboard
-vim.opt.clipboard:append {"unnamedplus"}
+-- vim.opt.clipboard:append {"unnamedplus"}

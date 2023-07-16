@@ -51,7 +51,7 @@ lazy.setup({
         dependencies = {"arkav/lualine-lsp-progress"}},
 
     -- telescope
-    {"nvim-telescope/telescope.nvim", tag = '0.1.1',
+    {"nvim-telescope/telescope.nvim",
         event = 'VimEnter',
         config = function()
             require("plugin-config.telescope")
@@ -145,12 +145,14 @@ lazy.setup({
 
     -- Lspconfig
     {"neovim/nvim-lspconfig",
-        event = 'VimEnter',
+        -- event = 'VimEnter',
+        event = {'BufNewFile', 'BufReadPre'},
         config = function()
             require("lsp.setup")
             require("lsp.ui")
         end,
-        lazy = true},
+        -- lazy = true
+    },
     -- mason
     {"williamboman/mason.nvim",
         event = 'VimEnter',
@@ -160,7 +162,8 @@ lazy.setup({
         -- lazy = true
     },
     {"williamboman/mason-lspconfig.nvim",
-        lazy = true},
+        event = 'VimEnter',
+    },
     {"jose-elias-alvarez/null-ls.nvim",
         event = 'VimEnter',
         config = function()

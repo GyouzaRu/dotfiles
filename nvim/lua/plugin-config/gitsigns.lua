@@ -7,7 +7,7 @@ local gitsigns = require("gitsigns")
 
 gitsigns.setup({
   signs = {
-    add          = { text = '│' },
+    add          = { text = '+' },
     change       = { text = '│' },
     delete       = { text = '_' },
     topdelete    = { text = '‾' },
@@ -48,8 +48,8 @@ gitsigns.setup({
   },
 })
 
-vim.cmd([[
-highlight GitSignsAdd guifg=#ff00ff
-highlight GitSignsChange guifg=#40e0d0
-highlight GitSignsDelete guifg=#00ff00
-]])
+-- vim.cmd([[
+-- highlight GitSignsAdd guifg=#ff00ff
+-- highlight GitSignsChange guifg=#40e0d0
+-- highlight GitSignsDelete guifg=#00ff00
+-- ]])

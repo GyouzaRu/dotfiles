@@ -153,16 +153,16 @@ lazy.setup({
         end,
         -- lazy = true
     },
-    -- mason
+    -- mason !!! Lazy-loading mason is not recommended
     {"williamboman/mason.nvim",
-        event = 'VimEnter',
+        -- event = 'VimEnter',
         config = function()
             require("plugin-config.mason")
         end,
         -- lazy = true
     },
     {"williamboman/mason-lspconfig.nvim",
-        event = 'VimEnter',
+        -- event = 'VimEnter',
     },
     {"jose-elias-alvarez/null-ls.nvim",
         event = 'VimEnter',

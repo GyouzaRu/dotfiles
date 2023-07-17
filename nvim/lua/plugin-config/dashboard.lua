@@ -20,7 +20,7 @@ end
           key = 'sp',
         },
         {
-          icon = ' ',
+          icon = '󱋡 ',
           icon_hl = '@variable',
           desc = 'Recently Files',
           group = 'Label',
@@ -28,7 +28,7 @@ end
           key = 'so',
         },
         {
-          icon = ' ',
+          icon = '󰈔 ',
           icon_hl = '@variable',
           desc = 'Files',
           group = 'Label',

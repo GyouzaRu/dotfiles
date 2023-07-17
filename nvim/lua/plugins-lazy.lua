@@ -124,6 +124,13 @@ lazy.setup({
             require("plugin-config.nvim-tmux-navigation")
         end,
       },
+    -- indent blank line
+    {"lukas-reineke/indent-blankline.nvim",
+        event = {'BufNewFile', 'BufReadPre'},
+        config = function()
+            require("plugin-config.indent-blankline")
+        end,
+      },
 
     -- view symbols based on LSP
     {"simrat39/symbols-outline.nvim",

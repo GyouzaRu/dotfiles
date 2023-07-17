@@ -13,11 +13,12 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+# font pango:monospace 8
+font pango:FiraCode Nerd Font 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+# font pango:DejaVu Sans Mono 8
 
 
 # ==== autostart ====
@@ -35,9 +36,12 @@ exec --no-startup-id nm-applet
 # blue manager
 exec --no-startup-id blueman-applet
 
+# compton on 2 monitor
+exec_always bash seq 0 1 | xargs -l1 -I@ compton -b -d :0.@
+
 # clash
-exec --no-startup-id bash unclash
-exec --no-startup-id $HOME/Software/Clash.for.Windows/cfw
+# exec --no-startup-id bash unclash
+exec $HOME/Software/Clash.for.Windows/cfw &
 
 # ibus daemon
 exec --no-startup-id ibus-daemon -dr
@@ -47,9 +51,6 @@ exec --no-startup-id setxkbmap -option caps:swapescape
 
 # multiscreen
 exec --no-startup-id bash ~/.config/i3/screen.sh
-
-# start polybar
-# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -263,8 +264,12 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status -c $HOME/.config/i3/i3status.conf
 
+        i3bar_command i3bar --transparency
+
         # 状态栏位置 bottom top
         position top
+        # padding 2px
+        font pango:FiraCode Nerd Font 10
 
         # 隐藏 hide
         # mode hide
@@ -273,14 +278,28 @@ bar {
         workspace_buttons yes
 
         # 状态栏颜色
+        # colors {
+        #     background #285477
+        #     statusline #dedede
+        #     separator #2d2d2d
+        #     focused_workspace #636e88 #285de7 #dedfdg
+        #     active_workspace #556677 #234567 #56ef67
+        #     inactive_workspace #636d72 #2d2d2d #dedede
+        #     urgent_workspace #ffffff #900000 #d23d32
+        # }
         colors {
-            background #285477
-            statusline #dedede
-            separator #2d2d2d
-            focused_workspace #636e88 #285de7 #dedfdg
-            active_workspace #556677 #234567 #56ef67
-            inactive_workspace #636d72 #2d2d2d #dedede
-            urgent_workspace #ffffff #900000 #d23d32
-        }
+        background #000000
+        statusline #ffffff
+        separator #666666
+
+        focused_workspace  #4c7899 #285577 #ffffff
+        active_workspace   #333333 #5f676a #ffffff
+        inactive_workspace #333333 #222222 #888888
+        urgent_workspace   #2f343a #900000 #ffffff
+        binding_mode       #2f343a #900000 #ffffff
+    }
 }
+
+# start polybar
+# exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 

@@ -209,7 +209,8 @@ lazy.setup({
     -- Debugger
 
     {"sakhnik/nvim-gdb",
-        event = {'BufNewFile', 'BufReadPre'},
+        -- event = {'BufNewFile', 'BufReadPre'},
+        ft = {'cpp', 'c', 'sh', 'python'},
         config = function()
             require("plugin-config.nvim-gdb")
         end,

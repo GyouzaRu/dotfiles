@@ -292,17 +292,25 @@ pluginKeys.cmp = function(cmp)
 
   return {
     -- 出现补全
-    ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
-    -- 取消
-    ["<A-,>"] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close()
-    }),
+    -- ["<A-.>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
+    -- -- 取消
+    -- ["<A-,>"] = cmp.mapping({
+    --   i = cmp.mapping.abort(),
+    --   c = cmp.mapping.close()
+    -- }),
+
+    ["<C-n>"] = cmp.mapping(function()
+      if cmp.visible() then
+        cmp.abort()
+      else
+        cmp.complete()
+      end
+    end, {"i", "c"}),
 
     -- Super Tab
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item()
+        cmp.select_next_item({behavior = cmp.SelectBehavior.Insert})
       elseif vim.fn["vsnip#available"](1) == 1 then
         feedkey("<Plug>(vsnip-expand-or-jump)", "")
       elseif has_words_before() then
@@ -314,7 +322,7 @@ pluginKeys.cmp = function(cmp)
 
     ["<S-Tab>"] = cmp.mapping(function()
       if cmp.visible() then
-        cmp.select_prev_item()
+        cmp.select_prev_item({behavior = cmp.SelectBehavior.Insert})
       elseif vim.fn["vsnip#jumpable"](-1) == 1 then
         feedkey("<Plug>(vsnip-jump-prev)", "")
       end

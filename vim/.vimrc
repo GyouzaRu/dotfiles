@@ -114,6 +114,8 @@ nnoremap tb :tabe<CR>
 nnoremap tc :tabc<CR>
 nnoremap [t :tabprevious<CR>
 nnoremap ]t :tabnext<CR>
+nnoremap <Tab> :tabnext<CR>
+nnoremap <S-Tab> :tabprevious<CR>
 
 "" terminal
 " if has('ide')
@@ -148,6 +150,8 @@ if has('ide')
 
     " Hide open panels
     nmap <Leader>w :action HideAllWindows<CR>
+    nnoremap <Tab> :bnext<CR>
+    nnoremap <S-Tab> :bprevious<CR>
 
 "" terminal
     map <C-q> <Action>(ActivateTerminalToolWindow)

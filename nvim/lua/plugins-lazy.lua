@@ -33,12 +33,12 @@ lazy.setup({
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim"}},
     -- bufferline
-    {"akinsho/bufferline.nvim",
-        event = {'BufNewFile', 'BufReadPre'},
-        config = function()
-            require("plugin-config.bufferline")
-        end,
-        dependencies = {"moll/vim-bbye" }},
+    -- {"akinsho/bufferline.nvim",
+    --     event = {'BufNewFile', 'BufReadPre'},
+    --     config = function()
+    --         require("plugin-config.bufferline")
+    --     end,
+    --     dependencies = {"moll/vim-bbye" }},
     -- tabline
     -- {"nanozuki/tabby.nvim",
     --     lazy = true},
@@ -125,12 +125,12 @@ lazy.setup({
         end,
       },
     -- indent blank line
-    {"lukas-reineke/indent-blankline.nvim",
-        event = {'BufNewFile', 'BufReadPre'},
-        config = function()
-            require("plugin-config.indent-blankline")
-        end,
-      },
+    -- {"lukas-reineke/indent-blankline.nvim",
+    --     event = {'BufNewFile', 'BufReadPre'},
+    --     config = function()
+    --         require("plugin-config.indent-blankline")
+    --     end,
+    --   },
 
     -- view symbols based on LSP
     {"simrat39/symbols-outline.nvim",

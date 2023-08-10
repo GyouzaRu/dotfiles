@@ -44,3 +44,18 @@ api.nvim_create_autocmd(
   {"BufNewFile", "BufRead"},
   {pattern = {"*.lua,.gitconfig"}, command = [[:setlocal tabstop=2 shiftwidth=2 softtabstop=2]]}
 )
+
+api.nvim_create_autocmd(
+  {"BufNewFile", "BufRead"},
+  {pattern = {"*.c,*.cpp,*.cc,*.h,*.hpp"}, command = [[:setlocal equalprg=clang-format]]}
+)
+
+-- sava and load fold
+api.nvim_create_autocmd(
+  {"BufWinLeave"},
+  {pattern = {"*.*"}, command = [[:mkview]]}
+)
+api.nvim_create_autocmd(
+  {"BufWinEnter"},
+  {pattern = {"*.*"}, command = [[:silent! loadview]]}
+)

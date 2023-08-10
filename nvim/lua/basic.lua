@@ -80,3 +80,5 @@ vim.o.showmode = false
 vim.opt.tags=("./tags;,tags")
 -- clipboard
 -- vim.opt.clipboard:append {"unnamedplus"}
+-- switchbuf
+vim.opt.switchbuf = {"usetab", "newtab"}

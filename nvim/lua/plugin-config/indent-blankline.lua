@@ -6,4 +6,5 @@ end
 
 blankline.setup{
   show_end_of_line = true,
+  show_foldtext = false
 }

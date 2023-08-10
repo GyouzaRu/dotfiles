@@ -66,6 +66,8 @@ map("n", "tb", ":tabe<CR>", opt)
 -- map("n", "[t", ":tabp<CR>", opt)
 -- map("n", "]t", ":tabn<CR>", opt)
 -- end
+map("n", "<Tab>", ":tabn<CR>", opt)
+map("n", "<S-Tab>", ":tabp<CR>", opt)
 map("n", "[t", ":tabp<CR>", opt)
 map("n", "]t", ":tabn<CR>", opt)
 -- buffer 切换

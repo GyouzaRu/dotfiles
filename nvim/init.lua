@@ -4,6 +4,7 @@ require('basic')
 require('keybindings')
 -- 自动执行vim cmds
 require('autocmds')
+-- require('usercmds')
 
 -- lazy.nvim 插件管理
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"

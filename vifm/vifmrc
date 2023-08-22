@@ -54,7 +54,7 @@ endif
 
 
 "===== color scheme =====
-colorscheme zenburn_1
+colorscheme palenight
 
 "===== marks =====
 " :mark mark /full/directory/path [filename]

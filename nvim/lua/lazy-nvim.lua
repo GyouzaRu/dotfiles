@@ -22,16 +22,22 @@ lazy.setup({
     --     -- keys = { {"<leader>n",":NvimTreeToggle<CR>",desc="Nvim-Tree"} },
     --     dependencies = {"nvim-tree/nvim-web-devicons"}},
     -- neotree
-    {"nvim-neo-tree/neo-tree.nvim",
+    -- {"nvim-neo-tree/neo-tree.nvim",
+    --     event = 'VimEnter',
+    --     config = function()
+    --         require("plugin-config.neotree")
+    --     end,
+    --     dependencies = {
+    --         -- necessary
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+    --         "MunifTanjim/nui.nvim"}},
+    -- fm-nbim
+    {'is0n/fm-nvim',
         event = 'VimEnter',
         config = function()
-            require("plugin-config.neotree")
-        end,
-        dependencies = {
-            -- necessary
-            "nvim-lua/plenary.nvim",
-            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-            "MunifTanjim/nui.nvim"}},
+            require("plugin-config.fm-nvim")
+        end,},
     -- bufferline
     -- {"akinsho/bufferline.nvim",
     --     event = {'BufNewFile', 'BufReadPre'},

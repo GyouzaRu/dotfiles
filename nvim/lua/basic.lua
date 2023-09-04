@@ -78,7 +78,11 @@ vim.o.showtabline = 2
 vim.o.showmode = false
 -- tags
 vim.opt.tags=("./tags;,tags")
+-- rg replace grep
+if vim.fn.executable('rg') == 1 then
+  vim.o.grepprg = "rg --vimgrep --smart-case --follow"
+end
 -- clipboard
 -- vim.opt.clipboard:append {"unnamedplus"}
 -- switchbuf
-vim.opt.switchbuf = {"usetab", "newtab"}
+-- vim.opt.switchbuf = {"usetab", "newtab"}

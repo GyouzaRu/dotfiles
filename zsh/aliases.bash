@@ -1,6 +1,6 @@
 # common
 alias ls='ls --color'
-alias ll='ls -alF'
+alias ll='ls -ahlF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -31,6 +31,9 @@ alias dco='docker container'
 alias dex='docker exec'
 alias dru='docker run'
 
+# nvim
+alias vim='nvim'
+
 # lazygit
 alias lg='lazygit'
 
@@ -39,6 +42,9 @@ alias lzd='lazydocker'
 
 # vifm
 alias vf='vifm'
+
+# joshuto
+alias jo='joshuto'
 
 # clash
 alias clash='nohup ~/Software/clash/clash -d ~/Software/clash/ > ~/Software/clash/nohup.out &'

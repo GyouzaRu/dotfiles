@@ -8,7 +8,7 @@ vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 neotree.setup({
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-  popup_border_style = "rounded",
+  popup_border_style = "double",
   enable_git_status = true,
   enable_diagnostics = false,
   source_selector = {
@@ -87,7 +87,7 @@ neotree.setup({
   -- see `:h neo-tree-global-custom-commands`
   commands = {},
   window = {
-    position = "left",
+    position = "float",
     width = 40,
     mapping_options = {
       noremap = true,
@@ -121,7 +121,9 @@ neotree.setup({
         --".null-ls_*",
       },
     },
-    follow_current_file = false, -- This will find and focus the file in the active buffer every
+    follow_current_file = {
+      enabled = false, -- This will find and focus the file in the active buffer every
+    },
     -- time the current file is changed while the tree is open.
     group_empty_dirs = false, -- when true, empty folders will be grouped together
     hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
@@ -138,7 +140,9 @@ neotree.setup({
     commands = {} -- Add a custom command or override a global one using the same function name
   },
   buffers = {
-    follow_current_file = true, -- This will find and focus the file in the active buffer every
+    follow_current_file = {
+        enabled = true -- This will find and focus the file in the active buffer every
+    },
     -- time the current file is changed while the tree is open.
     group_empty_dirs = true, -- when true, empty folders will be grouped together
     show_unloaded = true,

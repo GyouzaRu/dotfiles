@@ -41,7 +41,7 @@ compinit
 export REPO_URL='https://mirrors.tuna.tsinghua.edu.cn/git/git-repo'
 
 # android studio platform-tools and repo
-export PATH=$PATH:~/Android/Sdk/platform-tools:~/Software/bin:~/.local/bin/
+export PATH=~/Android/Sdk/platform-tools:$PATH
 
 # segement core
 ulimit -c unlimited
@@ -52,6 +52,12 @@ source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Theme
 # source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
+
+# X11 forwarding
+if [ -v SSH_CLIENT ]; then
+    client_ip=$(echo $SSH_CLIENT | awk '{print $1}')
+    export DISPLAY=$client_ip:0.0
+fi
 
 # aliases
 if [ -f ${ZSH}/aliases.bash ]; then
@@ -73,4 +79,20 @@ fi
 if [ -f ${DOTFILES}/fzf/setting.bash ]; then
     source ${DOTFILES}/fzf/setting.bash
 fi
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/jasper/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/jasper/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/jasper/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/jasper/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 

@@ -22,22 +22,22 @@ lazy.setup({
     --     -- keys = { {"<leader>n",":NvimTreeToggle<CR>",desc="Nvim-Tree"} },
     --     dependencies = {"nvim-tree/nvim-web-devicons"}},
     -- neotree
-    -- {"nvim-neo-tree/neo-tree.nvim",
-    --     event = 'VimEnter',
-    --     config = function()
-    --         require("plugin-config.neotree")
-    --     end,
-    --     dependencies = {
-    --         -- necessary
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    --         "MunifTanjim/nui.nvim"}},
-    -- fm-nbim
-    {'is0n/fm-nvim',
+    {"nvim-neo-tree/neo-tree.nvim",
         event = 'VimEnter',
         config = function()
-            require("plugin-config.fm-nvim")
-        end,},
+            require("plugin-config.neotree")
+        end,
+        dependencies = {
+            -- necessary
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim"}},
+    -- fm-nbim
+    -- {'is0n/fm-nvim',
+    --     event = 'VimEnter',
+    --     config = function()
+    --         require("plugin-config.fm-nvim")
+    --     end,},
     -- bufferline
     -- {"akinsho/bufferline.nvim",
     --     event = {'BufNewFile', 'BufReadPre'},
@@ -177,12 +177,13 @@ lazy.setup({
     {"williamboman/mason-lspconfig.nvim",
         -- event = 'VimEnter',
     },
-    {"jose-elias-alvarez/null-ls.nvim",
-        event = 'VimEnter',
-        config = function()
-            require("plugin-config.null-ls")
-        end,
-        },
+    -- -- No update
+    -- {"jose-elias-alvarez/null-ls.nvim",
+    --     event = 'VimEnter',
+    --     config = function()
+    --         require("plugin-config.null-ls")
+    --     end,
+    --     },
 
     {"hrsh7th/nvim-cmp",
         -- load cmp on InsertEnter

@@ -34,5 +34,5 @@
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
 ; use new id when in this path
-[includeIf "gitdir:~/Project/lenovo/"]
+[includeIf "gitdir:~/project/"]
   path = ~/.dotfiles/git/.gitconfig_work

@@ -32,7 +32,7 @@ alias dex='docker exec'
 alias dru='docker run'
 
 # nvim
-alias vim='nvim'
+alias vim='nvim --listen /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe'
 
 # lazygit
 alias lg='lazygit'

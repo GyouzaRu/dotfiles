@@ -41,5 +41,12 @@ ln -sf ${DOTFILES}/vifm ${CONFIG}/vifm
 ln -sf ${DOTFILES}/lazygit ${CONFIG}/lazygit
 ln -sf ${DOTFILES}/git/.gitconfig ${HOME}/.gitconfig
 
+echo "create symlink of config file"
 
-echo "create symlink"
+sudo apt update
+sudo apt install build-essential curl riggrep fd-find python3-venv nodejs
+sudo apt install npm
+echo "install necessary package for neovim"
+
+sudo ln -s $(which fdfind) /usr/local/bin/fd
+echo "set symlink of fdfind"

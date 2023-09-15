@@ -73,7 +73,7 @@ map("n", "]b", ":bnext<CR>", opt)
 -- Terminal相关
 -- map("n", "tt", ":sp | terminal<CR>", opt)
 -- map("n", "tvt", ":vsp | terminal<CR>", opt)
--- map("t", "<Esc>", "<C-\\><C-n>", opt)
+map("t", "<Esc>", "<C-\\><C-n>", opt)
 -- map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
 -- map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
 -- map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
@@ -93,7 +93,7 @@ map("n", "<C-w>]", ":sp<CR><C-]>")
 
 -- 关闭标签页
 -- "moll/vim-bbye"
-map("n","tc", ":Bdelete!<CR>", opt)
+-- map("n","tc", ":Bdelete!<CR>", opt)
 
 -- nvim-tree
 -- tt 键打开关闭tree

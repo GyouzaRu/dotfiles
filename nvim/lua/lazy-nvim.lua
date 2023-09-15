@@ -215,13 +215,13 @@ lazy.setup({
 
     -- Debugger
 
-    {"sakhnik/nvim-gdb",
-        -- event = {'BufNewFile', 'BufReadPre'},
-        ft = {'cpp', 'c', 'sh', 'python'},
-        config = function()
-            require("plugin-config.nvim-gdb")
-        end,
-    },
+    -- {"sakhnik/nvim-gdb",
+    --     -- event = {'BufNewFile', 'BufReadPre'},
+    --     ft = {'cpp', 'c', 'sh', 'python'},
+    --     config = function()
+    --         require("plugin-config.nvim-gdb")
+    --     end,
+    -- },
     {"mfussenegger/nvim-dap",
         lazy = true,
         config = function()

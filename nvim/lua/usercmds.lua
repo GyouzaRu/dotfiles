@@ -6,12 +6,23 @@ vim.api.nvim_create_user_command(
     'TermToggle',
     function()
     -- tab term
+      -- if the cursor is under term buf
       if term_buf_id == vim.api.nvim_get_current_buf() then
-        vim.cmd("tabnext #")
-        vim.cmd("tabclose $")
+        -- check the last access tabpage is exist or not
+        if vim.fn.tabpagenr('#') ~= 0 then
+          vim.cmd("tabnext #")
+        end
+        -- check the current tabpage is the last one or not
+        if vim.fn.tabpagenr('$') ~= 1 then
+          vim.cmd("tabclose $")
+        else
+          print("Cannot close the last tabpage!")
+        end
+      -- the term is exist but the cursor is not under term buf
       elseif vim.api.nvim_buf_is_valid(term_buf_id) then
           vim.cmd("$tab sbuffer" .. term_buf_id)
           vim.cmd("startinsert")
+      -- the term is not exist yet
       else
         vim.cmd("$tabnew term://zsh")
         term_buf_id = vim.api.nvim_get_current_buf()

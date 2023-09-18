@@ -78,6 +78,8 @@ vim.o.showtabline = 2
 vim.o.showmode = false
 -- tags
 vim.opt.tags=("./tags;,tags")
+-- sbuffer use window, tab first
+vim.opt.switchbuf = "usetab"
 -- rg replace grep
 if vim.fn.executable('rg') == 1 then
   vim.o.grepprg = "rg --vimgrep --smart-case --follow"

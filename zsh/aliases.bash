@@ -32,7 +32,11 @@ alias dex='docker exec'
 alias dru='docker run'
 
 # nvim
-alias vim='nvim --listen /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe'
+if [ -n "$VIMRUNTIME" ]; then
+    alias vim='nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote'
+else
+    alias vim='nvim --listen /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe'
+fi
 
 # lazygit
 alias lg='lazygit'

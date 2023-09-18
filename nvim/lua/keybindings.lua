@@ -73,7 +73,9 @@ map("n", "]b", ":bnext<CR>", opt)
 -- Terminal相关
 -- map("n", "tt", ":sp | terminal<CR>", opt)
 -- map("n", "tvt", ":vsp | terminal<CR>", opt)
-map("t", "<Esc>", "<C-\\><C-n>", opt)
+map("t", "<C-\\><C-\\>", "<C-\\><C-n>", opt)
+map('n', '<C-q>', '<CMD>TermToggle<CR>')
+map('t', '<C-q>', '<C-\\><C-n><CMD>TermToggle<CR>')
 -- map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
 -- map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
 -- map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
@@ -217,8 +219,8 @@ pluginKeys.neotreeList = {
 -- map("n", "<leader>lg", "<CMD>Lazygit<CR>", opt)
 
 -- Float terminal
-map('n', '<C-q>', '<CMD>lua require("FTerm").toggle()<CR>')
-map('t', '<C-q>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+-- map('n', '<C-q>', '<CMD>lua require("FTerm").toggle()<CR>')
+-- map('t', '<C-q>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
 -- Git  signs
 map("n", "]c", ":Gitsigns next_hunk<CR>", opt)

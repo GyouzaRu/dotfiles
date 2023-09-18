@@ -78,9 +78,9 @@ git:
     diffContextSize: 3 # how many lines of context are shown around a change in diffs
 os:
     editPreset: 'nvim' # see 'Configuring File Editing' section
-    edit: nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote-tab "$(pwd)/{{filename}}"
-    editAtLine: nvim --line {{line}} --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote-tab "$(pwd)/{{filename}}"
-    editAtLineAndWait: nvim --block --line {{line}} --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote-tab "$(pwd)/{{filename}}"
+    edit: nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote "$(pwd)/{{filename}}"
+    editAtLine: nvim --line {{line}} --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote "$(pwd)/{{filename}}"
+    editAtLineAndWait: nvim --block --line {{line}} --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote "$(pwd)/{{filename}}"
     # open: nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote-tab "$(pwd)/{{filename}}"
     open: 'xdg-open {{filename}} >/dev/null'
 refresher:

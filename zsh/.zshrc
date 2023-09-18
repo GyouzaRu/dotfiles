@@ -69,6 +69,15 @@ if [ -f ${ZSH}/scripts.bash ]; then
     . ${ZSH}/scripts.bash
 fi
 
+# tmux
+# if [[ $TERM_PROGRAM != "tmux" ]]; then
+#     if [ $(pgrep -c tmux) != "0" ]; then
+#         tmux a
+#     elif [ -n $(which tmux) ]; then
+#         tmux new -t daily
+#     fi
+# fi
+
 # fzf
 if [ -f ${DOTFILES}/fzf/shell/completion.zsh ]; then
     source ${DOTFILES}/fzf/shell/completion.zsh

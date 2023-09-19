@@ -9,7 +9,15 @@ BASH=${HOME}/.dotfiles/bash
 set -o vi
 
 # choose vim as default editor
-export EDITOR=vim
+if [ -n "$VIMRUNTIME" ]; then
+    if [ -n "$TMUX_PROGRAM" ]; then
+        export EDITOR='nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote'
+    else
+        export EDITOR='nvim --server /tmp/nvim-server.pipe --remote'
+    fi
+else
+    export EDITOR=nvim
+fi
 
 # If not running interactively, don't do anything
 case $- in

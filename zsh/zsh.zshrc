@@ -15,13 +15,27 @@ setopt prompt_subst
 PROMPT='%F{green}%~%{%F{blue}%}$(parse_git_branch)%{%F{none}%} %B%#%b '
 
 # Use emacs keybindings even if our EDITOR is set to vi
-bindkey -e
+# bindkey -e
 
 # set vi mode
-# bindkey -v
+bindkey -v
 
 # choose vim as default editor
-export EDITOR=vim
+# export EDITOR=nvim
+if [ -n "$VIMRUNTIME" ]; then
+    if [ -n "$TMUX_PROGRAM" ]; then
+        export EDITOR='nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote'
+    else
+        export EDITOR='nvim --server /tmp/nvim-server.pipe --remote'
+    fi
+else
+    export EDITOR=nvim
+    # if [ -n "$TMUX_PROGRAM" ]; then
+    #     export EDITOR='nvim --listen /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe'
+    # else
+    #     export EDITOR='nvim --listen /tmp/nvim-server.pipe'
+    # fi
+fi
 
 # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
 HISTSIZE=1000

@@ -7,7 +7,6 @@
 
 [core]
   ; pager = delta
-  editor = nvim
 
 ; [interactive]
 ;   diffFilter = delta --color-only
@@ -35,4 +34,4 @@
 
 ; use new id when in this path
 [includeIf "gitdir:~/project/"]
-  path = ~/.dotfiles/git/.gitconfig_work
+  path = ~/.dotfiles/git/gitconfig_work

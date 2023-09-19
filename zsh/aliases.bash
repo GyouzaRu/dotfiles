@@ -33,9 +33,17 @@ alias dru='docker run'
 
 # nvim
 if [ -n "$VIMRUNTIME" ]; then
-    alias vim='nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote'
+    if [ -n "$TMUX_PROGRAM" ]; then
+        alias vim='nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote'
+    else
+        alias vim='nvim --server /tmp/nvim-server.pipe --remote'
+    fi
 else
-    alias vim='nvim --listen /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe'
+    if [ -n "$TMUX_PROGRAM" ]; then
+        alias vim='nvim --listen /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe'
+    else
+        alias vim='nvim --listen /tmp/nvim-server.pipe'
+    fi
 fi
 
 # lazygit

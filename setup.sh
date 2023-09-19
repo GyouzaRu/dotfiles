@@ -27,19 +27,19 @@ mv ${HOME}/.gitconfig ${BACKUP}
 echo "move original files to ${BACKUP}"
 
 # set the symlink
-ln -sf ${DOTFILES}/zsh/.zshrc ${HOME}/.zshrc
-ln -sf ${DOTFILES}/bash/.bashrc ${HOME}/.bashrc
+ln -sf ${DOTFILES}/zsh/zsh.zshrc ${HOME}/.zshrc
+ln -sf ${DOTFILES}/bash/bash.bashrc ${HOME}/.bashrc
 
-ln -sf ${DOTFILES}/tmux/.tmux ${HOME}/.tmux
-ln -sf ${DOTFILES}/tmux/.tmux.conf ${HOME}/.tmux.conf
+ln -sf ${DOTFILES}/tmux/tmux ${HOME}/.tmux
+ln -sf ${DOTFILES}/tmux/tmux.conf ${HOME}/.tmux.conf
 # ln -sf ${DOTFILES}/tmux/oh-my-tmux/.tmux.conf.local ${HOME}/.tmux.conf.local
 
-ln -sf ${DOTFILES}/vim/.vimrc ${HOME}/.vimrc
+ln -sf ${DOTFILES}/vim/vim.vimrc ${HOME}/.vimrc
 ln -sf ${DOTFILES}/nvim ${CONFIG}/nvim
 ln -sf ${DOTFILES}/alacritty ${CONFIG}/alacritty
 ln -sf ${DOTFILES}/vifm ${CONFIG}/vifm
 ln -sf ${DOTFILES}/lazygit ${CONFIG}/lazygit
-ln -sf ${DOTFILES}/git/.gitconfig ${HOME}/.gitconfig
+ln -sf ${DOTFILES}/git/gitconfig.gitconfig ${HOME}/.gitconfig
 
 echo "create symlink of config file"
 

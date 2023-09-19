@@ -110,12 +110,12 @@ lazy.setup({
         end,
         },
     -- Float terminal
-    {"numToStr/FTerm.nvim",
-        event = 'VimEnter',
-        config = function()
-            require("plugin-config.FTerm")
-        end,
-        },
+    -- {"numToStr/FTerm.nvim",
+    --     event = 'VimEnter',
+    --     config = function()
+    --         require("plugin-config.FTerm")
+    --     end,
+    --     },
     -- git sign
     {"lewis6991/gitsigns.nvim",
         event = {'BufNewFile', 'BufReadPre'},

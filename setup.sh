@@ -31,8 +31,8 @@ ln -sf ${DOTFILES}/zsh/zsh.zshrc ${HOME}/.zshrc
 ln -sf ${DOTFILES}/bash/bash.bashrc ${HOME}/.bashrc
 
 ln -sf ${DOTFILES}/tmux/tmux ${HOME}/.tmux
-ln -sf ${DOTFILES}/tmux/tmux.conf ${HOME}/.tmux.conf
-# ln -sf ${DOTFILES}/tmux/oh-my-tmux/.tmux.conf.local ${HOME}/.tmux.conf.local
+ln -sf ${DOTFILES}/tmux/oh-my-tmux/tmux.conf.local ${HOME}/.tmux.conf.local
+ln -sf ${DOTFILES}/tmux/oh-my-tmux/tmux.conf ${HOME}/.tmux.conf
 
 ln -sf ${DOTFILES}/vim/vim.vimrc ${HOME}/.vimrc
 ln -sf ${DOTFILES}/nvim ${CONFIG}/nvim

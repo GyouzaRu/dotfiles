@@ -1,6 +1,7 @@
 # Set up ZSH home
 DOTFILES=${HOME}/.dotfiles
 ZSH=${HOME}/.dotfiles/zsh
+BASH=${HOME}/.dotfiles/bash
 
 # Set up the prompt
 autoload -U colors && colors
@@ -61,8 +62,15 @@ export PATH=~/Android/Sdk/platform-tools:$PATH
 ulimit -c unlimited
 
 # plugin
-source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -f /usr/share/zsh-antigen/antigen.zsh ]; then
+source /usr/share/zsh-antigen/antigen.zsh
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle jeffreytse/zsh-vi-mode
+
+antigen apply
+fi
 
 # Theme
 # source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
@@ -74,13 +82,13 @@ if [ -v SSH_CLIENT ]; then
 fi
 
 # aliases
-if [ -f ${ZSH}/aliases.bash ]; then
-    . ${ZSH}/aliases.bash
+if [ -f ${BASH}/aliases.bash ]; then
+    . ${BASH}/aliases.bash
 fi
 
 # scripts
-if [ -f ${ZSH}/scripts.bash ]; then
-    . ${ZSH}/scripts.bash
+if [ -f ${BASH}/scripts.bash ]; then
+    . ${BASH}/scripts.bash
 fi
 
 # tmux

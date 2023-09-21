@@ -12,8 +12,6 @@ vim.g.maplocalleader = " "
 -- Reload config
 map("n","<leader>R",":w<CR>:luafile %<CR>",opt)
 
--- 取消 s 默认功能
-map("n", "s", "", opt)
 -- jk = <esc>
 map("i", "jk", "<Esc>", opt)
 -- 移动
@@ -30,13 +28,11 @@ map("o", "L", "$", opt)
 map("n", "<leader>j", "J", opt)
 -- 取消高亮
 map("n", "<leader><CR>", ":nohl<CR>", opt)
--- windows 分屏快捷键
-map("n", "s=", ":vsp<CR>", opt)
-map("n", "s-", ":sp<CR>", opt)
+-- win 分屏快捷键
+map("n", "<leader>v", "<C-w>v", opt)
+map("n", "<leader>s", "<C-w>s", opt)
 -- 关闭当前
-map("n", "sc", "<C-w>c", opt)
--- 关闭其他
-map("n", "so", "<C-w>o", opt)
+map("n", "<leader>c", "<C-w>c", opt)
 -- Ctrl + hjkl  窗口之间跳转
 map("n", "<C-h>", "<C-w>h", opt)
 map("n", "<C-j>", "<C-w>j", opt)
@@ -63,16 +59,12 @@ map("n", "tb", ":tabe<CR>", opt)
 -- map("n", "[t", ":tabp<CR>", opt)
 -- map("n", "]t", ":tabn<CR>", opt)
 -- end
-map("n", "<Tab>", ":tabn<CR>", opt)
-map("n", "<S-Tab>", ":tabp<CR>", opt)
 map("n", "[t", ":tabp<CR>", opt)
 map("n", "]t", ":tabn<CR>", opt)
 -- buffer 切换
 map("n", "[b", ":bprevious<CR>", opt)
 map("n", "]b", ":bnext<CR>", opt)
 -- Terminal相关
--- map("n", "tt", ":sp | terminal<CR>", opt)
--- map("n", "tvt", ":vsp | terminal<CR>", opt)
 map("t", "<C-\\><C-\\>", "<C-\\><C-n>", opt)
 map('n', '<C-q>', '<CMD>TermToggle<CR>')
 map('t', '<C-q>', '<C-\\><C-n><CMD>TermToggle<CR>')
@@ -87,9 +79,13 @@ map("v", ">", ">gv", opt)
 -- 上下移动选中文本
 -- map("v", "J", ":move '>+1<CR>gv-gv", opt)
 -- map("v", "K", ":move '<-2<CR>gv-gv", opt)
---
+-- jump to tag
 map("n", "<C-w><C-]>", ":vsp<CR><C-]>")
 map("n", "<C-w>]", ":sp<CR><C-]>")
+-- copy to register
+map("n", "<leader>0p", "\"0p")
+map("n", "<leader><leader>y", "\"+y")
+map("n", "<leader><leader>p", "\"+p")
 
 ---- Plugins ----
 
@@ -125,7 +121,7 @@ map("n", "<C-w>]", ":sp<CR><C-]>")
 
 -- neo-tree
 map("n", "<leader>n", "<CMD>Neotree toggle<CR>", opt)
-map("n", "<leader>b", "<CMD>Neotree buffers toggle<CR>", opt)
+-- map("n", "<leader>b", "<CMD>Neotree buffers toggle<CR>", opt)
 pluginKeys.neotreeList = {
   default = {
     ["<space>"] = {
@@ -214,10 +210,6 @@ pluginKeys.neotreeList = {
   }
 }
 
--- fm-nvim
--- map("n", "<leader>n", "<CMD>Vifm<CR>", opt)
--- map("n", "<leader>lg", "<CMD>Lazygit<CR>", opt)
-
 -- Float terminal
 -- map('n', '<C-q>', '<CMD>lua require("FTerm").toggle()<CR>')
 -- map('t', '<C-q>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
@@ -238,15 +230,15 @@ map({"i", "n", "v"}, "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", op
 
 -- Telescope
 -- 查找文件
-map("n", "sf", ":Telescope find_files<CR>", opt)
+map("n", "<leader>f", ":Telescope find_files<CR>", opt)
 -- 全局搜索
-map("n", "sg", ":Telescope live_grep<CR>", opt)
-map("n", "sb", ":Telescope buffers<CR>", opt)
-map("n", "so", ":Telescope oldfiles<CR>", opt)
-map("n", "sh", ":Telescope help_tags<CR>", opt)
-map("n", "st", ":Telescope tags<CR>", opt)
+map("n", "<leader>g", ":Telescope live_grep<CR>", opt)
+map("n", "<leader>b", ":Telescope buffers<CR>", opt)
+map("n", "<leader>o", ":Telescope oldfiles<CR>", opt)
+-- map("n", "sh", ":Telescope help_tags<CR>", opt)
+-- map("n", "st", ":Telescope tags<CR>", opt)
 -- project插件
-map("n", "sp", ":Telescope projects<CR>", opt)
+map("n", "<leader>p", ":Telescope projects<CR>", opt)
 
 pluginKeys.telescopeList = {
   i = {
@@ -270,10 +262,8 @@ pluginKeys.telescopeList = {
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
   mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
-  -- code action
-  mapbuf("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
   -- go xx
-  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opt)
+  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition({reuse_win=true})<CR>", opt)
   mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
   mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
   mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
@@ -283,6 +273,7 @@ pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
   mapbuf("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
   mapbuf("n", "<leader>=", "<cmd>lua vim.lsp.buf.format()<CR>", opt)
+  mapbuf("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
 end
 
 -- nvim-cmp 自动补全

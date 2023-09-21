@@ -137,7 +137,7 @@ vnoremap w :view<cr>gv
 nnoremap <space>lg :lg<CR>
 
 " Open file in existing instance of nvim
-noremap o :!nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote %f<cr>
+noremap o :!nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote %d/%f<cr>
 " Open file in new instance of nvim
 nnoremap O :!nvim %f<cr>
 

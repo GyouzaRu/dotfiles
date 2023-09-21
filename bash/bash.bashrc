@@ -1,7 +1,6 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 DOTFILES=${HOME}/.dotfiles
-ZSH=${HOME}/.dotfiles/zsh
 BASH=${HOME}/.dotfiles/bash
 
 # for examples
@@ -111,13 +110,13 @@ unset color_prompt force_color_prompt
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
-if [ -f ${ZSH}/aliases.bash ]; then
-    source ${ZSH}/aliases.bash
+if [ -f ${BASH}/aliases.bash ]; then
+    source ${BASH}/aliases.bash
 fi
 
 # Scripts definitions
-if [ -f ${ZSH}/scripts.bash ]; then
-    source ${ZSH}/scripts.bash
+if [ -f ${BASH}/scripts.bash ]; then
+    source ${BASH}/scripts.bash
 fi
 
 # fzf

@@ -1,7 +1,7 @@
 # Set up ZSH home
-DOTFILES=${HOME}/.dotfiles
-ZSH=${HOME}/.dotfiles/zsh
-BASH=${HOME}/.dotfiles/bash
+DOTFILES=${HOME}/.config/dotfiles
+ZSH=${DOTFILES}/zsh
+BASH=${DOTFILES}/bash
 
 # Set up the prompt
 autoload -U colors && colors
@@ -70,6 +70,9 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle jeffreytse/zsh-vi-mode
 
 antigen apply
+
+# Always starting with insert mode for each command line
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
 fi
 
 # Theme

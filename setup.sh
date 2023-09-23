@@ -1,7 +1,7 @@
 # create backup folder
 CONFIG="${HOME}/.config"
-DOTFILES="${HOME}/.dotfiles"
-BACKUP="${CONFIG}/.backup_origin"
+DOTFILES="$(pwd)"
+BACKUP="${CONFIG}/backup_origin"
 
 if [ ! -d "${BACKUP}" ];then
     mkdir ${BACKUP}
@@ -30,7 +30,7 @@ echo "move original files to ${BACKUP}"
 ln -sf ${DOTFILES}/zsh/zsh.zshrc ${HOME}/.zshrc
 ln -sf ${DOTFILES}/bash/bash.bashrc ${HOME}/.bashrc
 
-ln -sf ${DOTFILES}/tmux/tmux ${HOME}/.tmux
+# ln -sf ${DOTFILES}/tmux/tmux ${HOME}/.tmux
 ln -sf ${DOTFILES}/tmux/oh-my-tmux/tmux.conf.local ${HOME}/.tmux.conf.local
 ln -sf ${DOTFILES}/tmux/oh-my-tmux/tmux.conf ${HOME}/.tmux.conf
 
@@ -43,10 +43,10 @@ ln -sf ${DOTFILES}/git/gitconfig.gitconfig ${HOME}/.gitconfig
 
 echo "create symlink of config file"
 
-sudo apt update
-sudo apt install build-essential curl riggrep fd-find python3-venv nodejs
-sudo apt install npm
-echo "install necessary package for neovim"
-
-sudo ln -s $(which fdfind) /usr/local/bin/fd
-echo "set symlink of fdfind"
+# sudo apt update
+# sudo apt install build-essential curl riggrep fd-find python3-venv nodejs
+# sudo apt install npm
+# echo "install necessary package for neovim"
+#
+# sudo ln -sf $(which fdfind) /usr/local/bin/fd
+# echo "set symlink of fdfind"

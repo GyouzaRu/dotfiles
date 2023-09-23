@@ -6,6 +6,7 @@
 local gitsigns = require("gitsigns")
 
 gitsigns.setup({
+  on_attach = require("keybindings").gitsigns,
   signs = {
     add          = { text = '+' },
     change       = { text = '│' },

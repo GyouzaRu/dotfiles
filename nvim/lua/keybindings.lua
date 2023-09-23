@@ -29,10 +29,10 @@ map("n", "<leader>j", "J", opt)
 -- 取消高亮
 map("n", "<leader><CR>", ":nohl<CR>", opt)
 -- win 分屏快捷键
-map("n", "<leader>v", "<C-w>v", opt)
-map("n", "<leader>s", "<C-w>s", opt)
+map("n", "<leader>-", "<C-w>s", opt)
+map("n", "<leader>=", "<C-w>v", opt)
 -- 关闭当前
-map("n", "<leader>c", "<C-w>c", opt)
+-- map("n", "<leader>c", "<C-w>c", opt)
 -- Ctrl + hjkl  窗口之间跳转
 map("n", "<C-h>", "<C-w>h", opt)
 map("n", "<C-j>", "<C-w>j", opt)
@@ -86,6 +86,9 @@ map("n", "<C-w>]", ":sp<CR><C-]>")
 map("n", "<leader>0p", "\"0p")
 map("n", "<leader><leader>y", "\"+y")
 map("n", "<leader><leader>p", "\"+p")
+-- quickfix
+map("n", "[q", ":cprevious<CR>", opt)
+map("n", "]q", ":cnext<CR>", opt)
 
 ---- Plugins ----
 
@@ -214,9 +217,47 @@ pluginKeys.neotreeList = {
 -- map('n', '<C-q>', '<CMD>lua require("FTerm").toggle()<CR>')
 -- map('t', '<C-q>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
--- Git  signs
-map("n", "]c", ":Gitsigns next_hunk<CR>", opt)
-map("n", "[c", ":Gitsigns prev_hunk<CR>", opt)
+-- Gitsigns
+pluginKeys.gitsigns = function (bufnr)
+    local gs = package.loaded.gitsigns
+
+    local function gitsign_map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    -- Navigation
+    gitsign_map('n', ']c', function()
+      if vim.wo.diff then return ']c' end
+      vim.schedule(function() gs.next_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    gitsign_map('n', '[c', function()
+      if vim.wo.diff then return '[c' end
+      vim.schedule(function() gs.prev_hunk() end)
+      return '<Ignore>'
+    end, {expr=true})
+
+    -- Actions
+    -- gitsign_map('n', '<leader>hs', gs.stage_hunk)
+    -- gitsign_map('n', '<leader>hr', gs.reset_hunk)
+    -- gitsign_map('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+    -- gitsign_map('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+    -- gitsign_map('n', '<leader>hS', gs.stage_buffer)
+    -- gitsign_map('n', '<leader>hu', gs.undo_stage_hunk)
+    -- gitsign_map('n', '<leader>hR', gs.reset_buffer)
+    gitsign_map('n', '<leader>hp', gs.preview_hunk)
+    gitsign_map('n', '<leader>hb', function() gs.blame_line{full=true} end)
+    -- gitsign_map('n', '<leader>tb', gs.toggle_current_line_blame)
+    gitsign_map('n', '<leader>hd', gs.diffthis)
+    -- gitsign_map('n', '<leader>hD', function() gs.diffthis('~') end)
+    -- gitsign_map('n', '<leader>td', gs.toggle_deleted)
+
+    -- Text object
+    -- gitsign_map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+end
 
 -- tags
 map("n", "<leader>t", "<cmd>SymbolsOutline<CR>", opt)
@@ -272,7 +313,7 @@ pluginKeys.mapLSP = function(mapbuf)
   mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
   mapbuf("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
   mapbuf("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-  mapbuf("n", "<leader>=", "<cmd>lua vim.lsp.buf.format()<CR>", opt)
+  mapbuf("n", "<leader><leader>=", "<cmd>lua vim.lsp.buf.format()<CR>", opt)
   mapbuf("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
 end
 

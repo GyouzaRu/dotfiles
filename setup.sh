@@ -1,6 +1,6 @@
 # create backup folder
 CONFIG="${HOME}/.config"
-DOTFILES="$(pwd)"
+DOTFILES="${HOME}/.config/dotfiles"
 BACKUP="${CONFIG}/backup_origin"
 
 if [ ! -d "${BACKUP}" ];then
@@ -12,7 +12,7 @@ fi
 mv ${HOME}/.zshrc ${BACKUP}
 mv ${HOME}/.bashrc ${BACKUP}
 
-mv ${HOME}/.tmux ${BACKUP}
+# mv ${HOME}/.tmux ${BACKUP}
 mv ${HOME}/.tmux.conf ${BACKUP}
 mv ${HOME}/.tmux.conf.local ${BACKUP}
 

@@ -1,7 +1,7 @@
 ""===========================
 "" Plugin setting
 ""===========================
-call plug#begin('~/.dotfiles/vim/.vim/plugged')
+call plug#begin('~/.config/dotfiles/vim/.vim/plugged')
 
 "" NERDTree: file explore
 Plug 'preservim/nerdtree'|
@@ -28,7 +28,7 @@ Plug 'jiangmiao/auto-pairs'
 " Plug 'airblade/vim-gitgutter'
 
 " fugitive
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 
 " git diff marks
 Plug 'mhinz/vim-signify'

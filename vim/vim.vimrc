@@ -41,9 +41,9 @@ set ttimeout ttimeoutlen=100     "keycode 按下后等待100ms
 set updatetime=200
 
 "" change path of vim setting files
-set viminfo+=n~/.dotfiles/vim/.viminfo
-set runtimepath+=~/.dotfiles/vim
-set packpath+=~/.dotfiles/vim
+set viminfo+=n~/.config/dotfiles/vim/.viminfo
+set runtimepath+=~/.config/dotfiles/vim
+set packpath+=~/.config/dotfiles/vim
 
 "" cursor shape
 let &t_SI = "\e[6 q"
@@ -61,7 +61,7 @@ colo ron
 "" map
 ""===========================
 let mapleader=" "
-map s <nop>
+" map s <nop>
 inoremap jk <ESC>
 
 " reload vimrc config
@@ -83,19 +83,19 @@ onoremap L $
 nnoremap <leader>j J
 
 "" split window
-map s= :set splitright<CR>:vsplit<CR>
-map s- :set splitbelow<CR>:split<CR>
-map sc <C-w>c
+map <leader>= <C-w>s
+map <leader>- <C-w>v
+" map sc <C-w>c
 
 "" move cursor to split window
-noremap <C-l> <C-W>l
-noremap <C-h> <C-W>h
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-inoremap <C-l> <ESC><C-W>l
-inoremap <C-h> <ESC><C-W>h
-inoremap <C-j> <ESC><C-W>j
-inoremap <C-k> <ESC><C-W>k
+noremap <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+inoremap <C-l> <ESC><C-w>l
+inoremap <C-h> <ESC><C-w>h
+inoremap <C-j> <ESC><C-w>j
+inoremap <C-k> <ESC><C-w>k
 
 "" control window size
 map <up> :res +5<CR>
@@ -114,19 +114,6 @@ nnoremap tb :tabe<CR>
 nnoremap tc :tabc<CR>
 nnoremap [t :tabprevious<CR>
 nnoremap ]t :tabnext<CR>
-nnoremap <Tab> :tabnext<CR>
-nnoremap <S-Tab> :tabprevious<CR>
-
-"" terminal
-" if has('ide')
-"     map <C-q> <Action>(ActivateTerminalToolWindow)
-"     inoremap <C-q> <ESC><Action>(ActivateTerminalToolWindow)
-"     tnoremap <C-q> <Action>(ActivateTerminalToolWindow)
-    " else
-    "     nnoremap <ESC>t :below term<CR>
-    "     inoremap <ESC>t <ESC>:below term<CR>
-    "     tnoremap <C-\><C-\> <C-\><C-n>
-" end
 
 "" cancel search highlight
 map <leader><CR> :nohlsearch<CR>
@@ -150,8 +137,8 @@ if has('ide')
 
     " Hide open panels
     nmap <Leader>w :action HideAllWindows<CR>
-    nnoremap <Tab> :bnext<CR>
-    nnoremap <S-Tab> :bprevious<CR>
+    " nnoremap <Tab> :bnext<CR>
+    " nnoremap <S-Tab> :bprevious<CR>
 
 "" terminal
     map <C-q> <Action>(ActivateTerminalToolWindow)
@@ -159,10 +146,10 @@ if has('ide')
     tnoremap <C-q> <Action>(ActivateTerminalToolWindow)
 
     " nmap <Leader>be :action Switcher<CR>
-    nnoremap sp :action RecentProjectListGroup<CR>
-    nnoremap sb :action RecentFiles<CR>
-    nnoremap sf :action GotoFile<CR>
-    nnoremap sg :action SearchEverywhere<CR>
+    nnoremap <leader>p :action RecentProjectListGroup<CR>
+    nnoremap <leader>b :action RecentFiles<CR>
+    nnoremap <leader>f :action GotoFile<CR>
+    nnoremap <leader>g :action SearchEverywhere<CR>
 
     " diag
     nnoremap gd :action GotoDeclaration
@@ -174,7 +161,7 @@ end
 ""===========================
 "" Plugin setting
 ""===========================
-source ~/.dotfiles/vim/plugins.vimrc
+source ~/.config/dotfiles/vim/plugins.vimrc
 
 ""==Nerdtree==
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -200,6 +187,9 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 
 ""==Airline==
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '>'
 
 ""==Airline Theme==
 let g:airline_theme='simple'
@@ -217,4 +207,4 @@ highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
 ""===========================
 "" Autocmds
 ""===========================
-source ~/.dotfiles/vim/autocmds.vimrc
+source ~/.config/dotfiles/vim/autocmds.vimrc

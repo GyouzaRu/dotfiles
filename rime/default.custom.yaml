@@ -1,0 +1,3 @@
+patch:
+  # 每页显示五个候选词
+  "menu/page_size": 5

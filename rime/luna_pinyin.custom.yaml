@@ -1,0 +1,5 @@
+patch:
+  "switches/@0/reset": 1 # 默认英文输出
+  # 按下放开esc回到英文模式
+  "key_binder/bindings":
+    - {accept: "Release+Escape", toggle: ascii_mode, when: always}

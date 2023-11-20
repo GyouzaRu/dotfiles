@@ -34,9 +34,9 @@ alias dru='docker run'
 # nvim
 if [ -n "$VIMRUNTIME" ]; then
     if [ -n "$TMUX_PROGRAM" ]; then
-        alias vim='nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote'
+        alias vim='nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote-tab'
     else
-        alias vim='nvim --server /tmp/nvim-server.pipe --remote'
+        alias vim='nvim --server /tmp/nvim-server.pipe --remote-tab'
     fi
 else
     if [ -n "$TMUX_PROGRAM" ]; then

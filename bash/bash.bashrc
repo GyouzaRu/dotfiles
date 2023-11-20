@@ -10,9 +10,9 @@ set -o vi
 # choose vim as default editor
 if [ -n "$VIMRUNTIME" ]; then
     if [ -n "$TMUX_PROGRAM" ]; then
-        export EDITOR='nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote'
+        export EDITOR='nvim --server /tmp/nvim-server-$(tmux display-message -p "#{session_name}")-$(tmux display-message -p "#{window_index}")-$(tmux display-message -p "#{pane_index}").pipe --remote-tab'
     else
-        export EDITOR='nvim --server /tmp/nvim-server.pipe --remote'
+        export EDITOR='nvim --server /tmp/nvim-server.pipe --remote-tab'
     fi
 else
     export EDITOR=nvim

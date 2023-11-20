@@ -39,7 +39,7 @@ ln -sf ${DOTFILES}/nvim ${CONFIG}/nvim
 ln -sf ${DOTFILES}/alacritty ${CONFIG}/alacritty
 ln -sf ${DOTFILES}/vifm ${CONFIG}/vifm
 ln -sf ${DOTFILES}/lazygit ${CONFIG}/lazygit
-ln -sf ${DOTFILES}/git/gitconfig.gitconfig ${HOME}/.gitconfig
+ln -sf ${DOTFILES}/git/daily.gitconfig ${HOME}/.gitconfig
 
 echo "create symlink of config file"
 

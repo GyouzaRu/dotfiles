@@ -59,3 +59,12 @@ api.nvim_create_autocmd(
   {"BufWinEnter"},
   {pattern = {"*.*"}, command = [[:silent! loadview]]}
 )
+
+-- auto inlay hints
+api.nvim_create_autocmd({"BufNewFile", "BufRead"},{
+  callback = function()
+    if vim.lsp.inlay_hint then
+      vim.lsp.inlay_hint(0,true)
+    end
+  end}
+)

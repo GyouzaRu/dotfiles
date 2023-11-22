@@ -87,7 +87,7 @@ neotree.setup({
   -- see `:h neo-tree-global-custom-commands`
   commands = {},
   window = {
-    position = "float",
+    position = "left",
     width = 40,
     mapping_options = {
       noremap = true,

@@ -66,8 +66,8 @@ map("n", "[b", ":bprevious<CR>", opt)
 map("n", "]b", ":bnext<CR>", opt)
 -- Terminal相关
 map("t", "<C-\\><C-\\>", "<C-\\><C-n>", opt)
-map('n', '<C-q>', '<CMD>TermToggle<CR>')
-map('t', '<C-q>', '<C-\\><C-n><CMD>TermToggle<CR>')
+-- map('n', '<C-q>', '<CMD>TermToggle<CR>')
+-- map('t', '<C-q>', '<C-\\><C-n><CMD>TermToggle<CR>')
 -- map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
 -- map("t", "<A-j>", [[ <C-\><C-N><C-w>j ]], opt)
 -- map("t", "<A-k>", [[ <C-\><C-N><C-w>k ]], opt)
@@ -84,7 +84,7 @@ map("n", "<C-w><C-]>", ":vsp<CR><C-]>")
 map("n", "<C-w>]", ":sp<CR><C-]>")
 -- copy to register
 map("n", "<leader>0p", "\"0p")
-map("n", "<leader><leader>y", "\"+y")
+map("v", "<leader><leader>y", "\"+y")
 map("n", "<leader><leader>p", "\"+p")
 -- quickfix
 map("n", "[q", ":cprevious<CR>", opt)
@@ -214,8 +214,8 @@ pluginKeys.neotreeList = {
 }
 
 -- Float terminal
--- map('n', '<C-q>', '<CMD>lua require("FTerm").toggle()<CR>')
--- map('t', '<C-q>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+map('n', '<C-q>', '<CMD>lua require("FTerm").toggle()<CR>')
+map('t', '<C-q>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
 -- Gitsigns
 pluginKeys.gitsigns = function (bufnr)
@@ -248,10 +248,10 @@ pluginKeys.gitsigns = function (bufnr)
     -- gitsign_map('n', '<leader>hS', gs.stage_buffer)
     -- gitsign_map('n', '<leader>hu', gs.undo_stage_hunk)
     -- gitsign_map('n', '<leader>hR', gs.reset_buffer)
-    gitsign_map('n', '<leader>hp', gs.preview_hunk)
-    gitsign_map('n', '<leader>hb', function() gs.blame_line{full=true} end)
-    -- gitsign_map('n', '<leader>tb', gs.toggle_current_line_blame)
-    gitsign_map('n', '<leader>hd', gs.diffthis)
+    gitsign_map('n', '<leader>cc', gs.preview_hunk)
+    gitsign_map('n', '<leader>cb', function() gs.blame_line{full=true} end)
+    gitsign_map('n', '<leader>ct', gs.toggle_current_line_blame)
+    gitsign_map('n', '<leader>cd', gs.diffthis)
     -- gitsign_map('n', '<leader>hD', function() gs.diffthis('~') end)
     -- gitsign_map('n', '<leader>td', gs.toggle_deleted)
 

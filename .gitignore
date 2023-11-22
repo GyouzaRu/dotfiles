@@ -7,6 +7,7 @@ zsh/.zsh_history
 # vifm
 vifm/vifminfo
 vifm/vifm-help.txt
+vifm/*.json
 
 # vim
 vim/.viminfo
@@ -14,6 +15,7 @@ vim/.vim
 
 # nvim
 nvim/plugin/
+nvim/*.json
 
 # lazygit
 lazygit/state.yml

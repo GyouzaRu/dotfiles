@@ -17,7 +17,7 @@ end
           desc = 'Projects',
           group = 'Label',
           action = 'Telescope projects',
-          key = 'sp',
+          key = 'p',
         },
         {
           icon = '󱋡 ',
@@ -25,7 +25,7 @@ end
           desc = 'Recently Files',
           group = 'Label',
           action = 'Telescope oldfiles',
-          key = 'so',
+          key = 'o',
         },
         {
           icon = '󰈔 ',
@@ -33,7 +33,7 @@ end
           desc = 'Files',
           group = 'Label',
           action = 'Telescope find_files',
-          key = 'sf',
+          key = 'f',
         },
         {
           desc = ' dotfiles',

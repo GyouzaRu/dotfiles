@@ -59,5 +59,5 @@ alias vf='vifm'
 alias jo='joshuto'
 
 # clash
-alias clash='nohup ~/Software/clash/clash -d ~/Software/clash/ > ~/Software/clash/nohup.out &'
-alias unclash='pkill -9 clash && rm ~/Software/clash/nohup.out'
+alias clash='nohup ~/Software/clash/clash-linux-amd64-v3-v1.18.0/clash-linux-amd64-v3 -f ~/Software/clash/MyConfig.yaml > /tmp/clash.log &'
+alias unclash='pkill -9 clash && rm /tmp/clash.log'

@@ -1,20 +1,16 @@
-[user]
-  name = GyouzaRu
-  email = lu291567698@hotmail.com
-
 [color]
   ui = auto
 
-[core]
-  ; pager = delta
-
+; [core]
+;   pager = delta --dark --paging=never
+;
 ; [interactive]
 ;   diffFilter = delta --color-only
 ;
 ; [delta]
 ;   navigate = true    # use n and N to move between diff sections
 ;   light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
-;   line-numbers = true
+;   line-numbers = false
 ;   side-by-side = false # double line to check diff
 
 [merge]
@@ -33,5 +29,4 @@
     cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
 ; use new id when in this path
-[includeIf "gitdir:~/Project/"]
-  path = ~/.config/dotfiles/git/work.gitconfig
+[includeIf "gitdir:~/.config/"]

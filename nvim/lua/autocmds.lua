@@ -68,3 +68,35 @@ api.nvim_create_autocmd({"BufNewFile", "BufRead"},{
     end
   end}
 )
+
+-- auto change input method
+local input_toggle = 0
+function To_en()
+  if vim.fn.has("Windows") then
+    -- 1033 en; 2052 zh
+    local input_method = tonumber(vim.fn.system("/mnt/c/Software/im-select/im-select.exe"))
+    if input_method ~= 1033 then
+      input_toggle = 1
+      vim.fn.system("/mnt/c/Software/im-select/im-select.exe 1033")
+    else
+      input_toggle = 0
+    end
+  end
+end
+
+function To_zh()
+  if vim.fn.has("Windows") then
+    if input_toggle == 1 then
+      vim.fn.system("/mnt/c/Software/im-select/im-select.exe 2052")
+    end
+  end
+end
+api.nvim_create_autocmd(
+  {"InsertLeave"},
+  {pattern = {"*.*"}, callback = To_en}
+  -- {pattern = {"*.*"}, command = "lua To_en()"}
+)
+api.nvim_create_autocmd(
+  {"InsertEnter"},
+  {pattern = {"*.*"}, callback = To_zh}
+)

@@ -69,34 +69,39 @@ api.nvim_create_autocmd({"BufNewFile", "BufRead"},{
   end}
 )
 
--- auto change input method
-local input_toggle = 0
-function To_en()
-  if vim.fn.has("Windows") then
-    -- 1033 en; 2052 zh
-    local input_method = tonumber(vim.fn.system("/mnt/c/Software/im-select/im-select.exe"))
-    if input_method ~= 1033 then
+-- auto change input method --
+if vim.fn.has("wsl") then
+  local input_toggle = 0
+  local en = 1033
+  local zh = 2052
+  local im_select = "/mnt/c/Software/im-select/im-select.exe "
+  local function To_en(args)
+    local input_method = tonumber(vim.fn.system(im_select))
+    if input_method ~= en then
       input_toggle = 1
-      vim.fn.system("/mnt/c/Software/im-select/im-select.exe 1033")
+      vim.fn.system(im_select .. en)
     else
       input_toggle = 0
     end
   end
-end
 
-function To_zh()
-  if vim.fn.has("Windows") then
+  local function To_zh(args)
     if input_toggle == 1 then
-      vim.fn.system("/mnt/c/Software/im-select/im-select.exe 2052")
+      vim.fn.system(im_select .. zh)
     end
   end
+
+  local ime_input = api.nvim_create_augroup("im_input", {clear = true})
+  api.nvim_create_autocmd(
+    {"InsertLeave"},
+    {pattern = {"*.*"},
+      group = ime_input,
+      callback = To_en}
+  )
+  api.nvim_create_autocmd(
+    {"InsertEnter"},
+    {pattern = {"*.*"},
+      group = ime_input,
+      callback = To_zh}
+  )
 end
-api.nvim_create_autocmd(
-  {"InsertLeave"},
-  {pattern = {"*.*"}, callback = To_en}
-  -- {pattern = {"*.*"}, command = "lua To_en()"}
-)
-api.nvim_create_autocmd(
-  {"InsertEnter"},
-  {pattern = {"*.*"}, callback = To_zh}
-)

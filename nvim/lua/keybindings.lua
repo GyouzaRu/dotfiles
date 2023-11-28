@@ -224,7 +224,7 @@ pluginKeys.gitsigns = function (bufnr)
     local function gitsign_map(mode, l, r, opts)
       opts = opts or {}
       opts.buffer = bufnr
-      vim.keymap.set(mode, l, r, opts)
+      map(mode, l, r, opts)
     end
 
     -- Navigation

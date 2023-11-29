@@ -70,38 +70,66 @@ api.nvim_create_autocmd({"BufNewFile", "BufRead"},{
 )
 
 -- auto change input method --
-if vim.fn.has("wsl") then
-  local input_toggle = 0
-  local en = 1033
-  local zh = 2052
-  local im_select = "/mnt/c/Software/im-select/im-select.exe "
-  local function To_en(args)
-    local input_method = tonumber(vim.fn.system(im_select))
+local input_toggle = 0
+local en = 1033
+local zh = 2052
+local im_select_wsl = "/mnt/c/Software/im-select/im-select.exe "
+local im_select_windows = "C:/Software/im-select/im-select.exe "
+
+local function To_en()
+  if vim.fn.has("wsl") then
+    local input_method = tonumber(vim.fn.system(im_select_wsl))
     if input_method ~= en then
       input_toggle = 1
-      vim.fn.system(im_select .. en)
+      vim.fn.system(im_select_wsl .. en)
+    else
+      input_toggle = 0
+    end
+  elseif vim.fn.has("Linux") then
+    local input_method = tonumber(vim.fn.system("fcitx5-remote"))
+    if input_method ~= 1 then
+      input_toggle = 1
+      vim.fn.system("fcitx5-remote -c")
+    else
+      input_toggle = 0
+    end
+  else
+    local input_method = tonumber(vim.fn.system(im_select_windows))
+    if input_method ~= en then
+      input_toggle = 1
+      vim.fn.system(im_select_windows .. en)
     else
       input_toggle = 0
     end
   end
+end
 
-  local function To_zh(args)
+local function To_zh()
+  if vim.fn.has("wsl") then
     if input_toggle == 1 then
-      vim.fn.system(im_select .. zh)
+      vim.fn.system(im_select_wsl .. zh)
+    end
+  elseif vim.fn.has("Linux") then
+    if input_toggle == 1 then
+      vim.fn.system("fcitx5-remote -o")
+    end
+  else
+    if input_toggle == 1 then
+      vim.fn.system(im_select_windows .. zh)
     end
   end
-
-  local ime_input = api.nvim_create_augroup("im_input", {clear = true})
-  api.nvim_create_autocmd(
-    {"InsertLeave"},
-    {pattern = {"*.*"},
-      group = ime_input,
-      callback = To_en}
-  )
-  api.nvim_create_autocmd(
-    {"InsertEnter"},
-    {pattern = {"*.*"},
-      group = ime_input,
-      callback = To_zh}
-  )
 end
+
+local ime_input = api.nvim_create_augroup("im_input", {clear = true})
+api.nvim_create_autocmd(
+  {"InsertLeave"},
+  {pattern = {"*.*"},
+    group = ime_input,
+    callback = To_en}
+)
+api.nvim_create_autocmd(
+  {"InsertEnter"},
+  {pattern = {"*.*"},
+    group = ime_input,
+    callback = To_zh}
+)

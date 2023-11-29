@@ -122,7 +122,8 @@ IncludeCategories:
 # 缩进case标签
 IndentCaseLabels:	true
 
-IndentPPDirectives:  AfterHash
+# 宏缩进
+IndentPPDirectives:  BeforeHash
 # 缩进宽度
 IndentWidth:	4
 # 函数返回类型换行时，缩进函数声明或函数定义的函数名

@@ -77,7 +77,7 @@ local im_select_wsl = "/mnt/c/Software/im-select/im-select.exe "
 local im_select_windows = "C:/Software/im-select/im-select.exe "
 
 local function To_en()
-  if vim.fn.has("wsl") then
+  if vim.fn.has("wsl") == 1 then
     local input_method = tonumber(vim.fn.system(im_select_wsl))
     if input_method ~= en then
       input_toggle = 1
@@ -85,7 +85,7 @@ local function To_en()
     else
       input_toggle = 0
     end
-  elseif vim.fn.has("Linux") then
+  elseif vim.fn.has("Linux") == 1 then
     local input_method = tonumber(vim.fn.system("fcitx5-remote"))
     if input_method ~= 1 then
       input_toggle = 1
@@ -105,11 +105,11 @@ local function To_en()
 end
 
 local function To_zh()
-  if vim.fn.has("wsl") then
+  if vim.fn.has("wsl") == 1 then
     if input_toggle == 1 then
       vim.fn.system(im_select_wsl .. zh)
     end
-  elseif vim.fn.has("Linux") then
+  elseif vim.fn.has("Linux") == 1 then
     if input_toggle == 1 then
       vim.fn.system("fcitx5-remote -o")
     end

@@ -76,6 +76,22 @@ local zh = 2052
 local im_select_wsl = "/mnt/c/Software/im-select/im-select.exe "
 local im_select_windows = "C:/Software/im-select/im-select.exe "
 
+local function Is_chinese()
+  local col = api.nvim_win_get_cursor(0)[2];
+  local charactor = string.sub(vim.api.nvim_get_current_line(), col, col)
+  -- return when empty under cursor
+  if charactor == "" then
+    return false
+  end
+  local charactor_ascii = string.byte(charactor)
+  -- print(charactor .. " " .. charactor_ascii)
+  if (charactor_ascii >= 32 and charactor_ascii <=126) then
+    return false
+  else
+    return true
+  end
+end
+
 local function To_en()
   if vim.fn.has("wsl") == 1 then
     local input_method = tonumber(vim.fn.system(im_select_wsl))
@@ -110,7 +126,7 @@ local function To_zh()
       vim.fn.system(im_select_wsl .. zh)
     end
   elseif vim.fn.has("Linux") == 1 then
-    if input_toggle == 1 then
+    if input_toggle == 1 or Is_chinese() then
       vim.fn.system("fcitx5-remote -o")
     end
   else

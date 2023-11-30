@@ -11,7 +11,7 @@ vifm/*.json
 
 # vim
 vim/.viminfo
-vim/.vim
+vim/plugins
 
 # nvim
 nvim/plugin/

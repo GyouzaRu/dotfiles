@@ -1,7 +1,7 @@
 ""===========================
 "" Plugin setting
 ""===========================
-call plug#begin('~/.config/dotfiles/vim/.vim/plugged')
+call plug#begin('~/.vim/plugins')
 
 "" NERDTree: file explore
 Plug 'preservim/nerdtree'|

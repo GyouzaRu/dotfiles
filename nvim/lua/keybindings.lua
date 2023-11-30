@@ -31,6 +31,7 @@ map("n", "<leader><CR>", ":nohl<CR>", opt)
 -- win 分屏快捷键
 map("n", "<leader>-", "<C-w>s", opt)
 map("n", "<leader>=", "<C-w>v", opt)
+map("n", "<leader><BS>", "<C-w>c", opt)
 -- 关闭当前
 -- map("n", "<leader>c", "<C-w>c", opt)
 -- Ctrl + hjkl  窗口之间跳转
@@ -138,7 +139,9 @@ pluginKeys.neotreeList = {
     ["P"] = { "toggle_preview", config = { use_float = true } },
     -- ["l"] = "focus_preview",
     ["S"] = "open_split",
+    ["-"] = "open_split",
     ["s"] = "open_vsplit",
+    ["="] = "open_vsplit",
     -- ["S"] = "split_with_window_picker",
     -- ["s"] = "vsplit_with_window_picker",
     ["t"] = "open_tabnew",
@@ -296,6 +299,8 @@ pluginKeys.telescopeList = {
     -- 预览窗口上下滚动
     ["<C-u>"] = "preview_scrolling_up",
     ["<C-d>"] = "preview_scrolling_down",
+    ["<M-->"] = "select_horizontal",
+    ["<M-=>"] = "select_vertical",
   },
 }
 

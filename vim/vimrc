@@ -41,9 +41,9 @@ set ttimeout ttimeoutlen=100     "keycode 按下后等待100ms
 set updatetime=200
 
 "" change path of vim setting files
-set viminfo+=n~/.config/dotfiles/vim/.viminfo
-set runtimepath+=~/.config/dotfiles/vim
-set packpath+=~/.config/dotfiles/vim
+set viminfo+=n~/.vim/.viminfo
+set runtimepath+=~/.vim
+set packpath+=~/.vim
 
 "" cursor shape
 let &t_SI = "\e[6 q"
@@ -161,7 +161,7 @@ end
 ""===========================
 "" Plugin setting
 ""===========================
-source ~/.config/dotfiles/vim/plugins.vimrc
+source ~/.vim/plugins.vimrc
 
 ""==Nerdtree==
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -207,4 +207,4 @@ highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
 ""===========================
 "" Autocmds
 ""===========================
-source ~/.config/dotfiles/vim/autocmds.vimrc
+source ~/.vim/autocmds.vimrc

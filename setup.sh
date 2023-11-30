@@ -12,9 +12,7 @@ fi
 mv ${HOME}/.zshrc ${BACKUP}
 mv ${HOME}/.bashrc ${BACKUP}
 
-# mv ${HOME}/.tmux ${BACKUP}
-mv ${HOME}/.tmux.conf ${BACKUP}
-mv ${HOME}/.tmux.conf.local ${BACKUP}
+mv ${CONFIG}/tmux ${BACKUP}
 
 mv ${HOME}/.vimrc ${BACKUP}
 mv ${CONFIG}/nvim ${BACKUP}
@@ -30,9 +28,7 @@ echo "move original files to ${BACKUP}"
 ln -sf ${DOTFILES}/zsh/zsh.zshrc ${HOME}/.zshrc
 ln -sf ${DOTFILES}/bash/bash.bashrc ${HOME}/.bashrc
 
-# ln -sf ${DOTFILES}/tmux/tmux ${HOME}/.tmux
-ln -sf ${DOTFILES}/tmux/oh-my-tmux/tmux.conf.local ${HOME}/.tmux.conf.local
-ln -sf ${DOTFILES}/tmux/oh-my-tmux/tmux.conf ${HOME}/.tmux.conf
+ln -sf ${DOTFILES}/tmux/oh-my-tmux ${CONFIG}/tmux
 
 ln -sf ${DOTFILES}/vim/vim.vimrc ${HOME}/.vimrc
 ln -sf ${DOTFILES}/nvim ${CONFIG}/nvim

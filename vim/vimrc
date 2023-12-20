@@ -9,9 +9,9 @@ set noerrorbells    "去除错误响铃
 set number          "显示行号
 set relativenumber "显示相对行号
 syntax on           "高亮语法
-"set showmode        "显示当前输入模式
+set noshowmode        "显示当前输入模式
 set showcmd         "命令行显示输入命令
-set autochdir       "执行命令在当前目录
+" set autochdir       "执行命令在当前目录
 set term=screen-256color        "设施256色
 set tabstop=4       "Tab显示为4个空格(仍是tab符号)
 set shiftwidth=4    "Tab替换的空格数量为4个
@@ -31,6 +31,7 @@ set incsearch       "增量搜索
 set ignorecase      "忽略大小写
 set smartcase       "智能大小写(与ignorecase联用时,搜索test,显示test和Test,搜索Test只显示Test)
 set autoread        "当文件外部被改变时,自动更新载入
+set hidden          "switch buffer without write
 set listchars=tab:»·,trail:·        "显示符号
 set list                            "显示符号
 set wildmode=longest,list,full
@@ -48,14 +49,6 @@ set packpath+=~/.vim
 "" cursor shape
 let &t_SI = "\e[6 q"
 let &t_EI = "\e[2 q"
-
-""===========================
-"" color schemes
-""===========================
-" colo desert
-colo ron
-" colo murphy
-
 
 ""===========================
 "" map
@@ -83,9 +76,9 @@ onoremap L $
 nnoremap <leader>j J
 
 "" split window
-map <leader>= <C-w>s
-map <leader>- <C-w>v
-" map sc <C-w>c
+map <leader>- <C-w>s
+map <leader>= <C-w>v
+map <leader><BS> <C-w>c
 
 "" move cursor to split window
 noremap <C-l> <C-w>l
@@ -188,6 +181,10 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 ""==Airline==
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#show_tab_count = 0
+let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '>'
 
@@ -204,7 +201,29 @@ highlight SignifySignAdd    ctermfg=green  guifg=#00ff00 cterm=NONE gui=NONE
 highlight SignifySignDelete ctermfg=red    guifg=#ff0000 cterm=NONE gui=NONE
 highlight SignifySignChange ctermfg=yellow guifg=#ffff00 cterm=NONE gui=NONE
 
+""==vim-tmux-navigator==
+let g:tmux_navigator_no_mappings = 1
+noremap <silent> <C-h> :<C-U>TmuxNavigateLeft<cr>
+noremap <silent> <C-j> :<C-U>TmuxNavigateDown<cr>
+noremap <silent> <C-k> :<C-U>TmuxNavigateUp<cr>
+noremap <silent> <C-l> :<C-U>TmuxNavigateRight<cr>
+"noremap <silent> {Previous-Mapping} :<C-U>TmuxNavigatePrevious<cr>
+
+""==vim fzf==
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>g :Rg<CR>
+
+
 ""===========================
 "" Autocmds
 ""===========================
 source ~/.vim/autocmds.vimrc
+
+
+""===========================
+"" color schemes
+""===========================
+colorscheme gruvbox
+set bg=dark
+let g:airline_theme='gruvbox'

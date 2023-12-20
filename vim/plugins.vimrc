@@ -7,6 +7,9 @@ call plug#begin('~/.vim/plugins')
 Plug 'preservim/nerdtree'|
             \ Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" theme gruvbox
+Plug 'morhetz/gruvbox'
+
 " airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -35,5 +38,12 @@ Plug 'mhinz/vim-signify'
 
 " ALE
 " Plug 'dense-analysis/ale'
+
+" navi between vim and tmux
+Plug 'christoomey/vim-tmux-navigator'
+
+" fzf support
+Plug 'junegunn/fzf', { 'do': { -> fzf#install()  }  }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()

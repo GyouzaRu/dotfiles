@@ -6,7 +6,7 @@ end
 
 -- Only load when Linux
 local function Unload_in_windows()
-  if vim.loop.os_uname().sysname == "Linux" then
+  if vim.uv.os_uname().sysname == "Linux" then
     return true
   else
     return false
@@ -17,13 +17,20 @@ lazy.setup({
   -- 你的插件列表...
   ---- colorschemes ----
   -- tokyonight
-  {"folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000},
+  -- {"folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000},
   {"catppuccin/nvim",
     name = "catppuccin",
+    config = function()
+        vim.cmd.colorscheme("catppuccin-macchiato")
+    end,
     lazy = false,
     priority = 1000},
+  -- { "ellisonleao/gruvbox.nvim",
+  --   priority = 1000 ,
+  --   config = true,
+  --   opts = ...},
   ---- plugins ----
   -- nvim-tree
   -- {"nvim-tree/nvim-tree.lua",
@@ -42,12 +49,13 @@ lazy.setup({
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim"}},
   -- bufferline
-  -- {"akinsho/bufferline.nvim",
-  --     event = {'BufNewFile', 'BufReadPre'},
-  --     config = function()
-  --         require("plugin-config.bufferline")
-  --     end,
-  --     dependencies = {"moll/vim-bbye" }},
+  {"akinsho/bufferline.nvim",
+      event = {'BufNewFile', 'BufReadPre'},
+      config = function()
+          require("plugin-config.bufferline")
+      end,
+      -- dependencies = {"moll/vim-bbye" }},
+      dependencies = {"nvim-tree/nvim-web-devicons" }},
   -- tabline
   -- {"nanozuki/tabby.nvim",
   --     lazy = true},
@@ -136,12 +144,13 @@ lazy.setup({
     enabled = Unload_in_windows,
   },
   -- indent blank line
-  -- {"lukas-reineke/indent-blankline.nvim",
-  --     event = {'BufNewFile', 'BufReadPre'},
-  --     config = function()
-  --         require("plugin-config.indent-blankline")
-  --     end,
-  --   },
+  {"lukas-reineke/indent-blankline.nvim",
+      main = "ibl",
+      event = {'BufNewFile', 'BufReadPre'},
+      config = function()
+          require("plugin-config.indent-blankline")
+      end,
+    },
 
   -- view symbols based on LSP
   {"simrat39/symbols-outline.nvim",

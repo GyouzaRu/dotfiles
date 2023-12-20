@@ -22,8 +22,5 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy-nvim')
 
--- Theme management
-require('colorscheme')
-
 -- GUI support
 require('gui')

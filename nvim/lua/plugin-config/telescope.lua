@@ -9,7 +9,7 @@ telescope.setup({
     -- 打开弹窗后进入的初始模式，默认为 insert，也可以是 normal
     initial_mode = "insert",
     -- 窗口内快捷键
-    mappings = require("keybindings").telescopeList,
+    mappings = require("keybindings").telescope.windowKeys,
   },
   pickers = {
     -- 内置 pickers 配置
@@ -22,3 +22,6 @@ telescope.setup({
     -- 扩展插件配置
   },
 })
+
+local builtin = require 'telescope.builtin'
+require("keybindings").telescope.functionKeys(builtin)

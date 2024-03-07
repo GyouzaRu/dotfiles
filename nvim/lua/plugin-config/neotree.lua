@@ -173,3 +173,5 @@ neotree.setup({
     },
   },
 })
+
+require('keybindings').neotreeList.functionKeys()

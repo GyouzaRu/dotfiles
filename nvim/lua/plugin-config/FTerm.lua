@@ -25,3 +25,5 @@ term.setup({
 -- vim.keymap.set('n', '<leader>lg', function()
 --     lazygit:toggle()
 -- end)
+
+require('keybindings').FTerm.functionKeys()

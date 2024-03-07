@@ -1,7 +1,8 @@
 -- 复用 map
 local map = vim.keymap.set
 -- 复用 opt 参数
-local opt = {noremap = true, silent = true }
+-- local opt = { noremap = true, silent = true }
+local opt = {}
 
 -- 插件快捷键
 local pluginKeys = {}
@@ -35,21 +36,21 @@ map("n", "<leader><BS>", "<C-w>c", opt)
 -- 关闭当前
 -- map("n", "<leader>c", "<C-w>c", opt)
 -- Ctrl + hjkl  窗口之间跳转
-map("n", "<C-h>", "<C-w>h", opt)
-map("n", "<C-j>", "<C-w>j", opt)
-map("n", "<C-k>", "<C-w>k", opt)
-map("n", "<C-l>", "<C-w>l", opt)
-map("i", "<C-h>", "<Esc><C-w>h", opt)
-map("i", "<C-j>", "<Esc><C-w>j", opt)
-map("i", "<C-k>", "<Esc><C-w>k", opt)
-map("i", "<C-l>", "<Esc><C-w>l", opt)
+map("n", "<C-h>", "<C-w>h", { desc = 'Move focus to the left window' })
+map("n", "<C-j>", "<C-w>j", { desc = 'Move focus to the lower window' })
+map("n", "<C-k>", "<C-w>k", { desc = 'Move focus to the upper window' })
+map("n", "<C-l>", "<C-w>l", { desc = 'Move focus to the right window' })
+map("i", "<C-h>", "<Esc><C-w>h", { desc = 'Move focus to the left window' })
+map("i", "<C-j>", "<Esc><C-w>j", { desc = 'Move focus to the lower window' })
+map("i", "<C-k>", "<Esc><C-w>k", { desc = 'Move focus to the upper window' })
+map("i", "<C-l>", "<Esc><C-w>l", { desc = 'Move focus to the right window' })
 -- 左右比例控制
 map("n", "<C-Left>", ":vertical resize -5<CR>", opt)
 map("n", "<C-Right>", ":vertical resize +5<CR>", opt)
 map("n", "<C-Down>", ":resize +5<CR>", opt)
 map("n", "<C-Up>", ":resize -5<CR>", opt)
 -- tab 切换与创建
-map("n", "tb", ":tabe<CR>", opt)
+-- map("n", "tb", ":tabe<CR>", opt)
 -- map("n", "tc", ":tabc<CR>", opt) -- 使用插件vim--bbye
 -- if packer_plugins["bufferline.nvim"] and packer_plugins["bufferline.nvim"].loaded then
 -- map("n", "[t", ":bprevious<CR>", opt)
@@ -66,7 +67,7 @@ map("n", "]t", ":tabn<CR>", opt)
 map("n", "[b", ":bprevious<CR>", opt)
 map("n", "]b", ":bnext<CR>", opt)
 -- Terminal相关
-map("t", "<C-\\><C-\\>", "<C-\\><C-n>", opt)
+map("t", "<Esc><Esc>", "<C-\\><C-n>", opt)
 -- map('n', '<C-q>', '<CMD>TermToggle<CR>')
 -- map('t', '<C-q>', '<C-\\><C-n><CMD>TermToggle<CR>')
 -- map("t", "<A-h>", [[ <C-\><C-N><C-w>h ]], opt)
@@ -124,9 +125,11 @@ map("n", "]q", ":cnext<CR>", opt)
 -- }
 
 -- neo-tree
-map("n", "<leader>n", "<CMD>Neotree toggle<CR>", opt)
--- map("n", "<leader>b", "<CMD>Neotree buffers toggle<CR>", opt)
 pluginKeys.neotreeList = {
+  functionKeys = function()
+    map("n", "<leader>n", "<CMD>Neotree toggle<CR>", opt)
+    -- map("n", "<leader>b", "<CMD>Neotree buffers toggle<CR>", opt)
+  end,
   default = {
     ["<space>"] = {
       "toggle_node",
@@ -217,8 +220,12 @@ pluginKeys.neotreeList = {
 }
 
 -- Float terminal
-map('n', '<C-q>', '<CMD>lua require("FTerm").toggle()<CR>')
-map('t', '<C-q>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+pluginKeys.FTerm = {
+  functionKeys = function()
+    map('n', '<C-q>', '<CMD>lua require("FTerm").toggle()<CR>')
+    map('t', '<C-q>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+  end
+}
 
 -- Gitsigns
 pluginKeys.gitsigns = function(bufnr)
@@ -262,46 +269,57 @@ pluginKeys.gitsigns = function(bufnr)
   -- gitsign_map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 end
 
--- tags
-map("n", "<leader>t", "<cmd>SymbolsOutline<CR>", opt)
+-- SymbolsOutline
+pluginKeys.SymbolsOutline = {
+  functionKeys = function()
+    map("n", "<leader>t", "<cmd>SymbolsOutline<CR>", opt)
+  end
+}
 
 -- Debugger
-map({ "i", "n", "v" }, "<F5>", "<cmd>lua require'dap'.continue()<CR>", opt)
-map({ "i", "n", "v" }, "<F10>", "<cmd>lua require'dap'.step_over()<CR>", opt)
-map({ "i", "n", "v" }, "<F11>", "<cmd>lua require'dap'.step_into()<CR>", opt)
-map({ "i", "n", "v" }, "<F12>", "<cmd>lua require'dap'.step_over()<CR>", opt)
-map({ "i", "n", "v" }, "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opt)
+pluginKeys.dap = {
+  functionKeys = function()
+    map({ "i", "n", "v" }, "<F5>", "<cmd>lua require'dap'.continue()<CR>", opt)
+    map({ "i", "n", "v" }, "<F10>", "<cmd>lua require'dap'.step_over()<CR>", opt)
+    map({ "i", "n", "v" }, "<F11>", "<cmd>lua require'dap'.step_into()<CR>", opt)
+    map({ "i", "n", "v" }, "<F12>", "<cmd>lua require'dap'.step_over()<CR>", opt)
+    map({ "i", "n", "v" }, "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opt)
+  end
+}
 
 -- Telescope
--- 查找文件
-map("n", "<leader>f", ":Telescope find_files<CR>", opt)
--- 全局搜索
-map("n", "<leader>g", ":Telescope live_grep<CR>", opt)
-map("n", "<leader>b", ":Telescope buffers<CR>", opt)
-map("n", "<leader>o", ":Telescope oldfiles<CR>", opt)
--- map("n", "sh", ":Telescope help_tags<CR>", opt)
--- map("n", "st", ":Telescope tags<CR>", opt)
--- project插件
-map("n", "<leader>p", ":Telescope projects<CR>", opt)
-
-pluginKeys.telescopeList = {
-  i = {
-    -- 上下移动
-    ["<C-j>"] = "move_selection_next",
-    ["<C-k>"] = "move_selection_previous",
-    ["<Down>"] = "move_selection_next",
-    ["<Up>"] = "move_selection_previous",
-    -- 历史记录
-    ["<C-n>"] = "cycle_history_next",
-    ["<C-p>"] = "cycle_history_prev",
-    -- 关闭窗口
-    ["<C-c>"] = "close",
-    -- 预览窗口上下滚动
-    ["<C-u>"] = "preview_scrolling_up",
-    ["<C-d>"] = "preview_scrolling_down",
-    ["<M-->"] = "select_horizontal",
-    ["<M-=>"] = "select_vertical",
-  },
+pluginKeys.telescope = {
+  functionKeys = function(builtin)
+    -- 查找文件
+    map("n", "<leader>f", builtin.find_files, opt)
+    -- 全局搜索
+    map("n", "<leader>g", builtin.live_grep, opt)
+    map("n", "<leader>b", builtin.buffers, opt)
+    map("n", "<leader>o", builtin.oldfiles, opt)
+    -- map("n", "sh", ":Telescope help_tags<CR>", opt)
+    -- map("n", "st", ":Telescope tags<CR>", opt)
+    -- project插件
+    map("n", "<leader>p", "<cmd>Telescope projects<CR>", opt)
+  end,
+  windowKeys = {
+    i = {
+      -- 上下移动
+      ["<C-j>"] = "move_selection_next",
+      ["<C-k>"] = "move_selection_previous",
+      ["<Down>"] = "move_selection_next",
+      ["<Up>"] = "move_selection_previous",
+      -- 历史记录
+      ["<C-n>"] = "cycle_history_next",
+      ["<C-p>"] = "cycle_history_prev",
+      -- 关闭窗口
+      ["<C-c>"] = "close",
+      -- 预览窗口上下滚动
+      ["<C-u>"] = "preview_scrolling_up",
+      ["<C-d>"] = "preview_scrolling_down",
+      ["<M-->"] = "select_horizontal",
+      ["<M-=>"] = "select_vertical",
+    },
+  }
 }
 
 -- lsp 回调函数快捷键设置

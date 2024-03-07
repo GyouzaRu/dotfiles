@@ -1,4 +1,10 @@
-require("symbols-outline").setup({
+local status, symbols = pcall(require, "symbols-outline")
+if not status then
+  vim.notify("没有找到 FTerm.nvim")
+  return
+end
+
+symbols.setup({
   keymaps = { -- These keymaps can be a string or a table for multiple keys
     close = { "<Esc>", "q" },
     goto_location = "<Cr>",
@@ -46,3 +52,5 @@ require("symbols-outline").setup({
     Fragment = { icon = "", hl = "@constant" },
   },
 })
+
+require('keybindings').SymbolsOutline.functionKeys()

@@ -65,7 +65,7 @@ vim.opt.background = "dark"
 vim.opt.termguicolors = true
 -- 不可见字符的显示，这里只把空格显示为一个点
 vim.opt.list = true
-vim.opt.listchars = { trail = "·", tab = "»~"}
+vim.opt.listchars = { trail = "·", tab = "»~" }
 -- 补全增强
 vim.opt.wildmenu = true
 -- Dont' pass messages to |ins-completin menu|
@@ -77,7 +77,7 @@ vim.opt.showtabline = 2
 -- 使用增强状态栏插件后不再需要 vim 的模式提示
 vim.opt.showmode = false
 -- tags
-vim.opt.tags=("./tags;,tags")
+vim.opt.tags = ("./tags;,tags")
 -- sbuffer use window, tab first
 vim.opt.switchbuf = "usetab"
 -- rg replace grep
@@ -85,6 +85,8 @@ if vim.fn.executable('rg') == 1 then
   vim.opt.grepprg = "rg --vimgrep --smart-case --follow"
 end
 -- clipboard
-vim.opt.clipboard = "unnamedplus"
+if vim.fn.has('WSL') ~= 1 then
+  vim.opt.clipboard = "unnamedplus"
+end
 -- switchbuf
 -- vim.opt.switchbuf = {"usetab", "newtab"}

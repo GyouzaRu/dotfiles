@@ -5,6 +5,6 @@ if not status then
 end
 
 local tag = "*", -- Use for stability; omit to use `main` branch for the latest features
-surround.setup({
-  -- Configuration here, or leave empty to use defaults
-})
+    surround.setup({
+      -- Configuration here, or leave empty to use defaults
+    })

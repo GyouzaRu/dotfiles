@@ -20,8 +20,8 @@ neotree.setup({
     }
   },
   open_files_do_not_replace_types = { "terminal", "trouble", "qf" }, -- when opening files, do not use windows containing these filetypes or buftypes
-  sort_case_insensitive = false, -- used when sorting files and directories in the tree
-  sort_function = nil , -- use a custom function for sorting files and directories in the tree
+  sort_case_insensitive = false,                                     -- used when sorting files and directories in the tree
+  sort_function = nil,                                               -- use a custom function for sorting files and directories in the tree
   -- sort_function = function (a,b)
   --       if a.type == b.type then
   --           return a.path > b.path
@@ -71,8 +71,8 @@ neotree.setup({
         -- Change type
         added     = "", -- or "✚", but this is redundant info if you use git_status_colors on the name
         modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-        deleted   = "",-- this can only be used in the git_status source
-        renamed   = "",-- this can only be used in the git_status source
+        deleted   = "", -- this can only be used in the git_status source
+        renamed   = "", -- this can only be used in the git_status source
         -- Status type
         untracked = "",
         ignored   = "",
@@ -125,7 +125,7 @@ neotree.setup({
       enabled = false, -- This will find and focus the file in the active buffer every
     },
     -- time the current file is changed while the tree is open.
-    group_empty_dirs = false, -- when true, empty folders will be grouped together
+    group_empty_dirs = false,               -- when true, empty folders will be grouped together
     hijack_netrw_behavior = "open_default", -- netrw disabled, opening a directory opens neo-tree
     -- in whatever position is specified in window.position
     -- "open_current",  -- netrw disabled, opening a directory opens within the
@@ -134,14 +134,14 @@ neotree.setup({
     use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
     -- instead of relying on nvim autocmd events.
     window = {
-      mappings = require('keybindings').neotreeList.filesystem,
-      fuzzy_finder_mappings  = require('keybindings').neotreeList.filesystem.fuzzy_finder_mappings,
+      mappings              = require('keybindings').neotreeList.filesystem,
+      fuzzy_finder_mappings = require('keybindings').neotreeList.filesystem.fuzzy_finder_mappings,
     },
     commands = {} -- Add a custom command or override a global one using the same function name
   },
   buffers = {
     follow_current_file = {
-        enabled = true -- This will find and focus the file in the active buffer every
+      enabled = true   -- This will find and focus the file in the active buffer every
     },
     -- time the current file is changed while the tree is open.
     group_empty_dirs = true, -- when true, empty folders will be grouped together
@@ -155,17 +155,18 @@ neotree.setup({
     client_filters = "first",
     renderers = {
       root = {
-        {"indent"},
-        {"icon", default="C" },
-        {"name", zindex = 10},
+        { "indent" },
+        { "icon",  default = "C" },
+        { "name",  zindex = 10 },
       },
       symbol = {
-        {"indent", with_expanders = true},
-        {"kind_icon", default="?" },
-        {"container",
+        { "indent",    with_expanders = true },
+        { "kind_icon", default = "?" },
+        {
+          "container",
           content = {
-            {"name", zindex = 10},
-            {"kind_name", zindex = 20, align = "right"},
+            { "name",      zindex = 10 },
+            { "kind_name", zindex = 20, align = "right" },
           }
         }
       },

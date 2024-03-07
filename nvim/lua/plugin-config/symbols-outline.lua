@@ -1,6 +1,6 @@
 require("symbols-outline").setup({
   keymaps = { -- These keymaps can be a string or a table for multiple keys
-    close = {"<Esc>", "q"},
+    close = { "<Esc>", "q" },
     goto_location = "<Cr>",
     focus_location = "o",
     hover_symbol = "<C-space>",
@@ -46,4 +46,3 @@ require("symbols-outline").setup({
     Fragment = { icon = "", hl = "@constant" },
   },
 })
-

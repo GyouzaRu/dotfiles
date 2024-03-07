@@ -11,7 +11,7 @@ if vim.g.neovide then
     change_scale_factor(1.1)
   end)
   vim.keymap.set("n", "<C-->", function()
-    change_scale_factor(1/1.1)
+    change_scale_factor(1 / 1.1)
   end)
 
   -- change ime

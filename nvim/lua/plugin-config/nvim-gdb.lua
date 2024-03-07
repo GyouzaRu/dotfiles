@@ -40,7 +40,7 @@ GdbSessionInit = function()
 
   -- jump to code view
   vim.api.nvim_command("wincmd w")
-  win_ID_code_view  = vim.api.nvim_get_current_win()
+  win_ID_code_view = vim.api.nvim_get_current_win()
   if vim.wo.relativenumber then
     vim.wo.relativenumber = false
   end

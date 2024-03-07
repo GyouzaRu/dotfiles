@@ -10,7 +10,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Reload config
-map("n","<leader>R",":w<CR>:luafile %<CR>",opt)
+map("n", "<leader>R", ":w<CR>:luafile %<CR>", opt)
 
 -- jk = <esc>
 map("i", "jk", "<Esc>", opt)
@@ -221,56 +221,56 @@ map('n', '<C-q>', '<CMD>lua require("FTerm").toggle()<CR>')
 map('t', '<C-q>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 
 -- Gitsigns
-pluginKeys.gitsigns = function (bufnr)
-    local gs = package.loaded.gitsigns
+pluginKeys.gitsigns = function(bufnr)
+  local gs = package.loaded.gitsigns
 
-    local function gitsign_map(mode, l, r, opts)
-      opts = opts or {}
-      opts.buffer = bufnr
-      map(mode, l, r, opts)
-    end
+  local function gitsign_map(mode, l, r, opts)
+    opts = opts or {}
+    opts.buffer = bufnr
+    map(mode, l, r, opts)
+  end
 
-    -- Navigation
-    gitsign_map('n', ']c', function()
-      if vim.wo.diff then return ']c' end
-      vim.schedule(function() gs.next_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
+  -- Navigation
+  gitsign_map('n', ']c', function()
+    if vim.wo.diff then return ']c' end
+    vim.schedule(function() gs.next_hunk() end)
+    return '<Ignore>'
+  end, { expr = true })
 
-    gitsign_map('n', '[c', function()
-      if vim.wo.diff then return '[c' end
-      vim.schedule(function() gs.prev_hunk() end)
-      return '<Ignore>'
-    end, {expr=true})
+  gitsign_map('n', '[c', function()
+    if vim.wo.diff then return '[c' end
+    vim.schedule(function() gs.prev_hunk() end)
+    return '<Ignore>'
+  end, { expr = true })
 
-    -- Actions
-    -- gitsign_map('n', '<leader>hs', gs.stage_hunk)
-    -- gitsign_map('n', '<leader>hr', gs.reset_hunk)
-    -- gitsign_map('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-    -- gitsign_map('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-    -- gitsign_map('n', '<leader>hS', gs.stage_buffer)
-    -- gitsign_map('n', '<leader>hu', gs.undo_stage_hunk)
-    -- gitsign_map('n', '<leader>hR', gs.reset_buffer)
-    gitsign_map('n', '<leader>cc', gs.preview_hunk)
-    gitsign_map('n', '<leader>cb', function() gs.blame_line{full=true} end)
-    gitsign_map('n', '<leader>ct', gs.toggle_current_line_blame)
-    gitsign_map('n', '<leader>cd', gs.diffthis)
-    -- gitsign_map('n', '<leader>hD', function() gs.diffthis('~') end)
-    -- gitsign_map('n', '<leader>td', gs.toggle_deleted)
+  -- Actions
+  -- gitsign_map('n', '<leader>hs', gs.stage_hunk)
+  -- gitsign_map('n', '<leader>hr', gs.reset_hunk)
+  -- gitsign_map('v', '<leader>hs', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+  -- gitsign_map('v', '<leader>hr', function() gs.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+  -- gitsign_map('n', '<leader>hS', gs.stage_buffer)
+  -- gitsign_map('n', '<leader>hu', gs.undo_stage_hunk)
+  -- gitsign_map('n', '<leader>hR', gs.reset_buffer)
+  gitsign_map('n', '<leader>cc', gs.preview_hunk)
+  gitsign_map('n', '<leader>cb', function() gs.blame_line { full = true } end)
+  gitsign_map('n', '<leader>ct', gs.toggle_current_line_blame)
+  gitsign_map('n', '<leader>cd', gs.diffthis)
+  -- gitsign_map('n', '<leader>hD', function() gs.diffthis('~') end)
+  -- gitsign_map('n', '<leader>td', gs.toggle_deleted)
 
-    -- Text object
-    -- gitsign_map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  -- Text object
+  -- gitsign_map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
 end
 
 -- tags
 map("n", "<leader>t", "<cmd>SymbolsOutline<CR>", opt)
 
 -- Debugger
-map({"i", "n", "v"}, "<F5>", "<cmd>lua require'dap'.continue()<CR>", opt)
-map({"i", "n", "v"}, "<F10>", "<cmd>lua require'dap'.step_over()<CR>", opt)
-map({"i", "n", "v"}, "<F11>", "<cmd>lua require'dap'.step_into()<CR>", opt)
-map({"i", "n", "v"}, "<F12>", "<cmd>lua require'dap'.step_over()<CR>", opt)
-map({"i", "n", "v"}, "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opt)
+map({ "i", "n", "v" }, "<F5>", "<cmd>lua require'dap'.continue()<CR>", opt)
+map({ "i", "n", "v" }, "<F10>", "<cmd>lua require'dap'.step_over()<CR>", opt)
+map({ "i", "n", "v" }, "<F11>", "<cmd>lua require'dap'.step_into()<CR>", opt)
+map({ "i", "n", "v" }, "<F12>", "<cmd>lua require'dap'.step_over()<CR>", opt)
+map({ "i", "n", "v" }, "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", opt)
 
 -- Telescope
 -- 查找文件
@@ -348,12 +348,12 @@ pluginKeys.cmp = function(cmp)
       else
         cmp.complete()
       end
-    end, {"i", "c"}),
+    end, { "i", "c" }),
 
     -- Super Tab
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.select_next_item({behavior = cmp.SelectBehavior.Insert})
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
       elseif vim.fn["vsnip#available"](1) == 1 then
         feedkey("<Plug>(vsnip-expand-or-jump)", "")
       elseif has_words_before() then
@@ -361,15 +361,15 @@ pluginKeys.cmp = function(cmp)
       else
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
 
     ["<S-Tab>"] = cmp.mapping(function()
       if cmp.visible() then
-        cmp.select_prev_item({behavior = cmp.SelectBehavior.Insert})
+        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
       elseif vim.fn["vsnip#jumpable"](-1) == 1 then
         feedkey("<Plug>(vsnip-jump-prev)", "")
       end
-    end, {"i", "s"}),
+    end, { "i", "s" }),
     -- end of super Tab
     -- -- 下一个
     -- ["<Tab>"] = cmp.mapping.select_next_item(),
@@ -382,8 +382,8 @@ pluginKeys.cmp = function(cmp)
       behavior = cmp.ConfirmBehavior.Replace
     }),
     -- 如果窗口内容太多，可以滚动
-    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), {"i", "c"}),
-    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), {"i", "c"}),
+    ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+    ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
   }
 end
 

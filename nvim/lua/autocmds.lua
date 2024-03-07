@@ -1,8 +1,8 @@
 -- set vifmrc filetype as vim when read it
 local api = vim.api
 api.nvim_create_autocmd(
-  {"BufNewFile", "BufRead"},
-  {pattern = {"vifmrc"}, command = [[:set filetype=vim]]}
+  { "BufNewFile", "BufRead" },
+  { pattern = { "vifmrc" }, command = [[:set filetype=vim]] }
 )
 
 -- add cursorline
@@ -22,14 +22,15 @@ api.nvim_create_autocmd(
 -- )
 
 -- auto delete space at the end of line
-api.nvim_create_autocmd({"BufWritePre"},{
-  pattern = {"*"},
+api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
   callback = function()
     if vim.bo.filetype == "markdown" then
       return
     end
     api.nvim_command(":%s/\\s\\+$//e")
-  end}
+  end
+}
 )
 -- api.nvim_create_autocmd(
 --   {"BufWritePre"},
@@ -41,32 +42,33 @@ api.nvim_create_autocmd({"BufWritePre"},{
 
 -- different autoindent
 api.nvim_create_autocmd(
-  {"BufNewFile", "BufRead"},
-  {pattern = {"*.lua,.gitconfig"}, command = [[:setlocal tabstop=2 shiftwidth=2 softtabstop=2]]}
+  { "BufNewFile", "BufRead" },
+  { pattern = { "*.lua,.gitconfig" }, command = [[:setlocal tabstop=2 shiftwidth=2 softtabstop=2]] }
 )
 
 api.nvim_create_autocmd(
-  {"BufNewFile", "BufRead"},
-  {pattern = {"*.c,*.cpp,*.cc,*.h,*.hpp"}, command = [[:setlocal equalprg=clang-format]]}
+  { "BufNewFile", "BufRead" },
+  { pattern = { "*.c,*.cpp,*.cc,*.h,*.hpp" }, command = [[:setlocal equalprg=clang-format]] }
 )
 
 -- sava and load fold
 api.nvim_create_autocmd(
-  {"BufWinLeave"},
-  {pattern = {"*.*"}, command = [[:mkview]]}
+  { "BufWinLeave" },
+  { pattern = { "*.*" }, command = [[:mkview]] }
 )
 api.nvim_create_autocmd(
-  {"BufWinEnter"},
-  {pattern = {"*.*"}, command = [[:silent! loadview]]}
+  { "BufWinEnter" },
+  { pattern = { "*.*" }, command = [[:silent! loadview]] }
 )
 
 -- auto inlay hints
-api.nvim_create_autocmd({"BufNewFile", "BufRead"},{
+api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   callback = function()
     if vim.lsp.inlay_hint then
-      vim.lsp.inlay_hint(0,true)
+      vim.lsp.inlay_hint(0, true)
     end
-  end}
+  end
+}
 )
 
 -- auto change input method --
@@ -85,7 +87,7 @@ local function Is_chinese()
   end
   local charactor_ascii = string.byte(charactor)
   -- print(charactor .. " " .. charactor_ascii)
-  if (charactor_ascii >= 32 and charactor_ascii <=126) then
+  if (charactor_ascii >= 32 and charactor_ascii <= 126) then
     return false
   else
     return true
@@ -136,16 +138,20 @@ local function To_zh()
   end
 end
 
-local ime_input = api.nvim_create_augroup("im_input", {clear = true})
+local ime_input = api.nvim_create_augroup("im_input", { clear = true })
 api.nvim_create_autocmd(
-  {"InsertLeave"},
-  {pattern = {"*.*"},
+  { "InsertLeave" },
+  {
+    pattern = { "*.*" },
     group = ime_input,
-    callback = To_en}
+    callback = To_en
+  }
 )
 api.nvim_create_autocmd(
-  {"InsertEnter"},
-  {pattern = {"*.*"},
+  { "InsertEnter" },
+  {
+    pattern = { "*.*" },
     group = ime_input,
-    callback = To_zh}
+    callback = To_zh
+  }
 )

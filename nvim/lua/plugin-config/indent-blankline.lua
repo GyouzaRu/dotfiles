@@ -4,7 +4,7 @@ if not status then
   return
 end
 
-blankline.setup{
+blankline.setup {
   -- show_end_of_line = true,
   -- show_foldtext = false
 }

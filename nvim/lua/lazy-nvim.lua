@@ -20,13 +20,15 @@ lazy.setup({
   -- {"folke/tokyonight.nvim",
   --   lazy = false,
   --   priority = 1000},
-  {"catppuccin/nvim",
+  {
+    "catppuccin/nvim",
     name = "catppuccin",
     config = function()
-        vim.cmd.colorscheme("catppuccin-macchiato")
+      vim.cmd.colorscheme("catppuccin-macchiato")
     end,
     lazy = false,
-    priority = 1000},
+    priority = 1000
+  },
   -- { "ellisonleao/gruvbox.nvim",
   --   priority = 1000 ,
   --   config = true,
@@ -35,10 +37,14 @@ lazy.setup({
   -- nvim-tree
   -- {"nvim-tree/nvim-tree.lua",
   --     lazy = true,
-  --     -- keys = { {"<leader>n",":NvimTreeToggle<CR>",desc="Nvim-Tree"} },
+  --     config = function()
+  --       require("plugin-config.nvim-tree")
+  --     end,
+  --     keys = { {"<leader>n",":NvimTreeToggle<CR>",desc="Nvim-Tree"} },
   --     dependencies = {"nvim-tree/nvim-web-devicons"}},
   -- neotree
-  {"nvim-neo-tree/neo-tree.nvim",
+  {
+    "nvim-neo-tree/neo-tree.nvim",
     event = 'VimEnter',
     config = function()
       require("plugin-config.neotree")
@@ -47,52 +53,64 @@ lazy.setup({
       -- necessary
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim"}},
+      "MunifTanjim/nui.nvim" }
+  },
   -- bufferline
-  {"akinsho/bufferline.nvim",
-      event = {'BufNewFile', 'BufReadPre'},
-      config = function()
-          require("plugin-config.bufferline")
-      end,
-      -- dependencies = {"moll/vim-bbye" }},
-      dependencies = {"nvim-tree/nvim-web-devicons" }},
+  {
+    "akinsho/bufferline.nvim",
+    event = { 'BufNewFile', 'BufReadPre' },
+    config = function()
+      require("plugin-config.bufferline")
+    end,
+    -- dependencies = {"moll/vim-bbye" }},
+    dependencies = { "nvim-tree/nvim-web-devicons" }
+  },
   -- tabline
   -- {"nanozuki/tabby.nvim",
   --     lazy = true},
   -- lualine
-  {"nvim-lualine/lualine.nvim",
+  {
+    "nvim-lualine/lualine.nvim",
     event = 'VimEnter',
     config = function()
       require("plugin-config.lualine")
     end,
-    dependencies = {"arkav/lualine-lsp-progress"}},
+    dependencies = { "arkav/lualine-lsp-progress" }
+  },
 
   -- telescope
-  {"nvim-telescope/telescope.nvim",
+  {
+    "nvim-telescope/telescope.nvim",
     event = 'VimEnter',
     config = function()
       require("plugin-config.telescope")
     end,
     dependencies = {
       -- necessary
-      "nvim-lua/plenary.nvim", }},
-  {"ahmedkhalf/project.nvim",
+      "nvim-lua/plenary.nvim", }
+  },
+  {
+    "ahmedkhalf/project.nvim",
     event = 'VimEnter',
     config = function()
       require("plugin-config.project")
     end,
-    dependencies = {"nvim-telescope/telescope.nvim"}},
+    dependencies = { "nvim-telescope/telescope.nvim" }
+  },
 
   -- dashboard-nvim
-  { "glepnir/dashboard-nvim",
+  {
+    "glepnir/dashboard-nvim",
     event = 'VimEnter',
     config = function()
       require("plugin-config.dashboard")
     end,
-    dependencies = {"nvim-tree/nvim-web-devicons"}},
+    dependencies = { "nvim-tree/nvim-web-devicons" }
+  },
   -- treesitter
-  {"nvim-treesitter/nvim-treesitter",
-    event = {'BufNewFile', 'BufReadPre'},
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = { 'BufNewFile', 'BufReadPre' },
     config = function()
       require("plugin-config.nvim-treesitter")
     end,
@@ -100,14 +118,17 @@ lazy.setup({
     -- cmd = "TSUpdate"
   },
   -- surround
-  {"kylechui/nvim-surround",
-    event = {'BufNewFile', 'BufReadPre'},
+  {
+    "kylechui/nvim-surround",
+    event = { 'BufNewFile', 'BufReadPre' },
     config = function()
       require("plugin-config.nvim-surround")
     end,
-    lazy=true},
+    lazy = true
+  },
   -- nvim-autopairs
-  {"windwp/nvim-autopairs",
+  {
+    "windwp/nvim-autopairs",
     event = "InsertEnter",
     config = function()
       require("plugin-config.nvim-autopairs")
@@ -115,28 +136,32 @@ lazy.setup({
   },
 
   -- comment
-  {"numToStr/Comment.nvim",
-    event = {'BufNewFile', 'BufReadPre'},
+  {
+    "numToStr/Comment.nvim",
+    event = { 'BufNewFile', 'BufReadPre' },
     config = function()
       require("plugin-config.comment")
     end,
   },
   -- Float terminal
-  {"numToStr/FTerm.nvim",
+  {
+    "numToStr/FTerm.nvim",
     event = 'VimEnter',
     config = function()
       require("plugin-config.FTerm")
     end,
   },
   -- git sign
-  {"lewis6991/gitsigns.nvim",
-    event = {'BufNewFile', 'BufReadPre'},
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { 'BufNewFile', 'BufReadPre' },
     config = function()
       require("plugin-config.gitsigns")
     end,
   },
   -- navi with tmux
-  {"alexghergh/nvim-tmux-navigation",
+  {
+    "alexghergh/nvim-tmux-navigation",
     event = 'VimEnter',
     config = function()
       require("plugin-config.nvim-tmux-navigation")
@@ -144,17 +169,19 @@ lazy.setup({
     enabled = Unload_in_windows,
   },
   -- indent blank line
-  {"lukas-reineke/indent-blankline.nvim",
-      main = "ibl",
-      event = {'BufNewFile', 'BufReadPre'},
-      config = function()
-          require("plugin-config.indent-blankline")
-      end,
-    },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    event = { 'BufNewFile', 'BufReadPre' },
+    config = function()
+      require("plugin-config.indent-blankline")
+    end,
+  },
 
   -- view symbols based on LSP
-  {"simrat39/symbols-outline.nvim",
-    event = {'BufNewFile', 'BufReadPre'},
+  {
+    "simrat39/symbols-outline.nvim",
+    event = { 'BufNewFile', 'BufReadPre' },
     config = function()
       require("plugin-config.symbols-outline")
     end,
@@ -171,9 +198,10 @@ lazy.setup({
   -- }},
 
   -- Lspconfig
-  {"neovim/nvim-lspconfig",
+  {
+    "neovim/nvim-lspconfig",
     -- event = 'VimEnter',
-    event = {'BufNewFile', 'BufReadPre'},
+    event = { 'BufNewFile', 'BufReadPre' },
     config = function()
       require("lsp.setup")
       require("lsp.ui")
@@ -182,7 +210,8 @@ lazy.setup({
     -- lazy = true
   },
   -- mason !!! Lazy-loading mason is not recommended
-  {"williamboman/mason.nvim",
+  {
+    "williamboman/mason.nvim",
     -- event = 'VimEnter',
     config = function()
       require("plugin-config.mason")
@@ -190,12 +219,14 @@ lazy.setup({
     enabled = Unload_in_windows,
     -- lazy = true
   },
-  {"williamboman/mason-lspconfig.nvim",
+  {
+    "williamboman/mason-lspconfig.nvim",
     enabled = Unload_in_windows,
     -- event = 'VimEnter',
   },
 
-  {"hrsh7th/nvim-cmp",
+  {
+    "hrsh7th/nvim-cmp",
     -- load cmp on InsertEnter
     event = "VimEnter",
     config = function()
@@ -209,14 +240,15 @@ lazy.setup({
       -- 补全源
       "hrsh7th/cmp-vsnip",
       "hrsh7th/cmp-nvim-lsp", -- { name = nvim_lsp }
-      "hrsh7th/cmp-buffer", -- { name = 'buffer' },
-      "hrsh7th/cmp-path", -- { name = 'path' }
-      "hrsh7th/cmp-cmdline", -- { name = 'cmdline' }
+      "hrsh7th/cmp-buffer",   -- { name = 'buffer' },
+      "hrsh7th/cmp-path",     -- { name = 'path' }
+      "hrsh7th/cmp-cmdline",  -- { name = 'cmdline' }
     },
   },
   -- 常见编程语言代码段
-  { "rafamadriz/friendly-snippets",
-    event = {'BufNewFile', 'BufReadPre'},
+  {
+    "rafamadriz/friendly-snippets",
+    event = { 'BufNewFile', 'BufReadPre' },
     dependencies = {
       -- snippet 引擎
       "hrsh7th/vim-vsnip",
@@ -232,7 +264,8 @@ lazy.setup({
   --         require("plugin-config.nvim-gdb")
   --     end,
   -- },
-  {"mfussenegger/nvim-dap",
+  {
+    "mfussenegger/nvim-dap",
     lazy = true,
     config = function()
       require("dap.setup")

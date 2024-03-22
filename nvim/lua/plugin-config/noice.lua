@@ -4,12 +4,6 @@ if not status_noice then
   return
 end
 
-local status_notify, notify = pcall(require, "notify")
-if not status_notify then
-  vim.notify("没有找到 notify")
-  return
-end
-
 noice.setup({
   views = {
     cmdline_popup = {
@@ -41,6 +35,12 @@ noice.setup({
       },
     },
   },
+  -- routes = {
+  --   {
+  --     view = "notify",
+  --     filter = { event = "msg_showmode" },
+  --   },
+  -- },
   lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
     override = {
@@ -58,6 +58,12 @@ noice.setup({
     lsp_doc_border = false,       -- add a border to hover docs and signature help
   },
 })
+
+local status_notify, notify = pcall(require, "notify")
+if not status_notify then
+  vim.notify("没有找到 notify")
+  -- return
+end
 
 notify.setup {
   background_colour = "NotifyBackground",

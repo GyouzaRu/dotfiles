@@ -5,6 +5,20 @@ if not status then
   return
 end
 
+local function display_recording_with_noice()
+  local status_noice, noice = pcall(require, "noice")
+  if status_noice then
+    local M = {
+      noice.api.statusline.mode.get,
+      cond = noice.api.statusline.mode.has,
+      color = { fg = "#ff9e64" },
+    }
+    return M
+  else
+    return ""
+  end
+end
+
 lualine.setup({
   options = {
     theme = "auto",
@@ -15,6 +29,7 @@ lualine.setup({
   extensions = { "nvim-tree", "toggleterm" },
   sections = {
     lualine_c = {
+      display_recording_with_noice(),
       "filename",
       {
         "lsp_progress",

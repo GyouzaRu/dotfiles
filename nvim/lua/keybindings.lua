@@ -325,19 +325,19 @@ pluginKeys.telescope = {
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
   -- rename
-  mapbuf("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opt)
+  mapbuf("n", "<leader>rn", vim.lsp.buf.rename, opt)
   -- go xx
-  mapbuf("n", "gd", "<cmd>lua vim.lsp.buf.definition({reuse_win=true})<CR>", opt)
-  mapbuf("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", opt)
-  mapbuf("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opt)
-  mapbuf("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opt)
-  mapbuf("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opt)
+  mapbuf("n", "gd", vim.lsp.buf.definition, opt)
+  mapbuf("n", "gh", vim.lsp.buf.hover, opt)
+  mapbuf("n", "gD", vim.lsp.buf.declaration, opt)
+  mapbuf("n", "gi", vim.lsp.buf.implementation, opt)
+  mapbuf("n", "gr", vim.lsp.buf.references, opt)
   -- diagnostic
-  mapbuf("n", "gp", "<cmd>lua vim.diagnostic.open_float()<CR>", opt)
-  mapbuf("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opt)
-  mapbuf("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opt)
-  mapbuf("n", "<leader><leader>=", "<cmd>lua vim.lsp.buf.format()<CR>", opt)
-  mapbuf("n", "<leader>a", "<cmd>lua vim.lsp.buf.code_action()<CR>", opt)
+  mapbuf("n", "gp", vim.diagnostic.open_float, opt)
+  mapbuf("n", "[d", vim.diagnostic.goto_prev, opt)
+  mapbuf("n", "]d", vim.diagnostic.goto_next, opt)
+  mapbuf("n", "<leader><leader>=", vim.lsp.buf.format, opt)
+  mapbuf("n", "<leader>a", vim.lsp.buf.code_action, opt)
 end
 
 -- nvim-cmp 自动补全

@@ -61,20 +61,6 @@ export PATH=~/Android/Sdk/platform-tools:~/.local/bin:$PATH
 # segement core
 ulimit -c unlimited
 
-# plugin
-if [ -f /usr/share/zsh-antigen/antigen.zsh ]; then
-source /usr/share/zsh-antigen/antigen.zsh
-
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle jeffreytse/zsh-vi-mode
-
-antigen apply
-
-# Always starting with insert mode for each command line
-ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
-fi
-
 # Theme
 # source /usr/share/powerlevel9k/powerlevel9k.zsh-theme
 
@@ -104,14 +90,32 @@ fi
 # fi
 
 # fzf
-if [ -f ${DOTFILES}/fzf/shell/completion.zsh ]; then
-    source ${DOTFILES}/fzf/shell/completion.zsh
-fi
-if [ -f ${DOTFILES}/fzf/shell/key-bindings.zsh ]; then
-    source ${DOTFILES}/fzf/shell/key-bindings.zsh
-fi
-if [ -f ${DOTFILES}/fzf/setting.bash ]; then
-    source ${DOTFILES}/fzf/setting.bash
+function fzf_init() {
+    if [ -f ${DOTFILES}/fzf/shell/completion.zsh ]; then
+        source ${DOTFILES}/fzf/shell/completion.zsh
+    fi
+    if [ -f ${DOTFILES}/fzf/shell/key-bindings.zsh ]; then
+        source ${DOTFILES}/fzf/shell/key-bindings.zsh
+    fi
+    if [ -f ${DOTFILES}/fzf/setting.bash ]; then
+        source ${DOTFILES}/fzf/setting.bash
+    fi
+}
+
+# plugin
+if [ -f /usr/share/zsh-antigen/antigen.zsh ]; then
+source /usr/share/zsh-antigen/antigen.zsh
+
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle jeffreytse/zsh-vi-mode
+antigen bundle agkozak/zsh-z
+
+antigen apply
+
+# Always starting with insert mode for each command line
+ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+zvm_after_init_commands+=(fzf_init)
 fi
 
 
@@ -130,3 +134,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export PATH="/usr/local/cuda-11.7/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda-11.7/lib64:$LD_LIBRARY_PATH"
+
+export PATH="/home/jasper/Project/AR/zhongke/repo:$PATH"

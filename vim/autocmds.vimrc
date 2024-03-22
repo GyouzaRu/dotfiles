@@ -13,5 +13,8 @@ autocmd WinLeave * :set nocursorline
 " auto delete space at the end of the line
 autocmd BufWritePre * :%s/\s\+$//e
 
+" format c/cpp code
+autocmd BufNewFile,BufRead *.c,*.cpp,*.cc,*.h,*.hpp :setlocal equalprg=clang-format
+
 " different autoindent
 autocmd BufNewFile,BufRead *.lua,.gitconfig :setlocal tabstop=2 shiftwidth=2 softtabstop=2

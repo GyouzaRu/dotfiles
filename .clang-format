@@ -29,7 +29,7 @@ AllowShortCaseLabelsOnASingleLine:	true
 # 允许短的函数放在同一行: None, InlineOnly(定义在类中), Empty(空函数), Inline(定义在类中，空函数), All
 AllowShortFunctionsOnASingleLine:	Empty
 # 允许短的if语句保持在同一行
-AllowShortIfStatementsOnASingleLine:	false
+AllowShortIfStatementsOnASingleLine:	true
 # 允许短的循环保持在同一行
 AllowShortLoopsOnASingleLine:	false
 
@@ -55,7 +55,7 @@ BraceWrapping:
   # enum定义后面
   AfterEnum:	false
   # 函数定义后面
-  AfterFunction:	true
+  AfterFunction:	false
   # 命名空间定义后面
   AfterNamespace:	false
   # ObjC定义后面
@@ -137,7 +137,7 @@ MacroBlockEnd:	''
 # 连续空行的最大数量
 MaxEmptyLinesToKeep:	1
 # 命名空间的缩进: None, Inner(缩进嵌套的命名空间中的内容), All
-NamespaceIndentation:	Inner
+NamespaceIndentation:	None
 # 使用ObjC块时缩进宽度
 ObjCBlockIndentWidth:	4
 # 在ObjC的@property后添加一个空格
@@ -164,7 +164,7 @@ PointerAlignment:	Left
 # 允许重新排版注释
 ReflowComments:	true
 # 允许排序#include
-SortIncludes:	true
+SortIncludes:	false
 
 # 在C风格类型转换后添加空格
 SpaceAfterCStyleCast:	false

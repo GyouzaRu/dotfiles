@@ -114,6 +114,7 @@ lazy.setup({
     config = function()
       require("plugin-config.nvim-treesitter")
     end,
+    tag = "v0.9.2",
     enabled = Unload_in_windows,
     -- cmd = "TSUpdate"
   },
@@ -187,15 +188,15 @@ lazy.setup({
     end,
   },
   -- message UI
-  -- {"folke/noice.nvim",
-  --     event = 'VimEnter',
-  --     config = function()
-  --         require("plugin-config.noice")
-  --     end,
-  --     dependencies = {
-  --       "MunifTanjim/nui.nvim",
-  --       -- "rcarriga/nvim-notify"
-  -- }},
+  {"folke/noice.nvim",
+      event = 'VeryLazy',
+      config = function()
+          require("plugin-config.noice")
+      end,
+      dependencies = {
+        "MunifTanjim/nui.nvim",
+        "rcarriga/nvim-notify"
+  }},
 
   -- Lspconfig
   {

@@ -40,6 +40,7 @@ set tags=./.tags;,.tags;       "自动设置tags
 set timeout timeoutlen=1000     "按下后等待1000ms
 set ttimeout ttimeoutlen=100     "keycode 按下后等待100ms
 set updatetime=200
+set clipboard=unnamedplus
 
 "" change path of vim setting files
 set viminfo+=n~/.vim/.viminfo
@@ -122,33 +123,43 @@ nnoremap <leader>lg :!lazygit<CR>
 "" IDE setting
 ""===========================
 if has('ide')
-"" setting for ideavim
+    "" setting for ideavim
+    nmap <Leader>R <Action>(IdeaVim.ReloadVimRc.reload)
+
+    " Hide open panels
+    nmap <Leader>w <Action>(HideAllWindows)
+
+    " terminal
+    nmap <C-q> <Action>(ActivateTerminalToolWindow)
+    imap <C-q> <ESC><Action>(ActivateTerminalToolWindow)
+    " map <C-q> <Action>(HideActiveTerminalToolWindow)
+
+    nmap <Leader>b <Action>(Switcher)
+    nmap <leader>p <Action>(RecentProjectListGroup)
+    nmap <leader>o <Action>(RecentFiles)
+    nmap <leader>f <Action>(GotoFile)
+    nmap <leader>g <Action>(FindInPath)
+
+    " diag
+    nmap gh <Action>(ShowErrorDescription)
+    nmap gd <Action>(GotoDeclaration)
+    nmap gr <Action>(GotoImplementation)
+    nmap ]d <Action>(GotoNextError)
+    nmap [d <Action>(GotoPreviousError)
+
+    " git
+    nmap ]c <Action>(VcsShowNextChangeMarker)
+    nmap [c <Action>(VcsShowPrevChangeMarker)
+
+    " Plugins
     set surround
     set multiple-cursors
     set commentary
+    set keep-english-in-normal-and-restore-in-insert
     set NERDTree
+    nmap <leader>n :NERDTree<CR>
 
-    " Hide open panels
-    nmap <Leader>w :action HideAllWindows<CR>
-    " nnoremap <Tab> :bnext<CR>
-    " nnoremap <S-Tab> :bprevious<CR>
-
-"" terminal
-    map <C-q> <Action>(ActivateTerminalToolWindow)
-    inoremap <C-q> <ESC><Action>(ActivateTerminalToolWindow)
-    tnoremap <C-q> <Action>(ActivateTerminalToolWindow)
-
-    " nmap <Leader>be :action Switcher<CR>
-    nnoremap <leader>p :action RecentProjectListGroup<CR>
-    nnoremap <leader>b :action RecentFiles<CR>
-    nnoremap <leader>f :action GotoFile<CR>
-    nnoremap <leader>g :action SearchEverywhere<CR>
-
-    " diag
-    nnoremap gd :action GotoDeclaration
-    nnoremap gd :action GotoDeclaration
-    nnoremap ]d <Action>(GotoNextError)
-    nnoremap [d <Action>(GotoPreviousError)
+    finish
 end
 
 ""===========================

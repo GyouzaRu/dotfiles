@@ -11,7 +11,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Reload config
-map("n", "<leader>R", ":w<CR>:luafile %<CR>", opt)
+map("n", "<leader>R", "<Cmd>w<CR><Cmd>luafile %<CR>", opt)
 
 -- jk = <esc>
 map("i", "jk", "<Esc>", opt)
@@ -28,7 +28,7 @@ map("o", "H", "^", opt)
 map("o", "L", "$", opt)
 map("n", "<leader>j", "J", opt)
 -- 取消高亮
-map("n", "<leader><CR>", ":nohl<CR>", opt)
+map("n", "<leader><CR>", "<Cmd>nohl<CR>", opt)
 -- win 分屏快捷键
 map("n", "<leader>-", "<C-w>s", opt)
 map("n", "<leader>=", "<C-w>v", opt)
@@ -45,27 +45,27 @@ map("i", "<C-j>", "<Esc><C-w>j", { desc = 'Move focus to the lower window' })
 map("i", "<C-k>", "<Esc><C-w>k", { desc = 'Move focus to the upper window' })
 map("i", "<C-l>", "<Esc><C-w>l", { desc = 'Move focus to the right window' })
 -- 左右比例控制
-map("n", "<C-Left>", ":vertical resize -5<CR>", opt)
-map("n", "<C-Right>", ":vertical resize +5<CR>", opt)
-map("n", "<C-Down>", ":resize +5<CR>", opt)
-map("n", "<C-Up>", ":resize -5<CR>", opt)
+map("n", "<C-Left>", "<Cmd>vertical resize -5<CR>", opt)
+map("n", "<C-Right>", "<Cmd>vertical resize +5<CR>", opt)
+map("n", "<C-Down>", "<Cmd>resize +5<CR>", opt)
+map("n", "<C-Up>", "<Cmd>resize -5<CR>", opt)
 -- tab 切换与创建
--- map("n", "tb", ":tabe<CR>", opt)
--- map("n", "tc", ":tabc<CR>", opt) -- 使用插件vim--bbye
+-- map("n", "tb", "<Cmd>tabe<CR>", opt)
+-- map("n", "tc", "<Cmd>tabc<CR>", opt) -- 使用插件vim--bbye
 -- if packer_plugins["bufferline.nvim"] and packer_plugins["bufferline.nvim"].loaded then
--- map("n", "[t", ":bprevious<CR>", opt)
--- map("n", "]t", ":bnext<CR>", opt)
+-- map("n", "[t", "<Cmd>bprevious<CR>", opt)
+-- map("n", "]t", "<Cmd>bnext<CR>", opt)
 --     print("loaded!")
 -- else
 --     print("unloaded!")
--- map("n", "[t", ":tabp<CR>", opt)
--- map("n", "]t", ":tabn<CR>", opt)
+-- map("n", "[t", "<Cmd>tabp<CR>", opt)
+-- map("n", "]t", "<Cmd>tabn<CR>", opt)
 -- end
-map("n", "[t", ":tabp<CR>", opt)
-map("n", "]t", ":tabn<CR>", opt)
+map("n", "[t", "<Cmd>tabp<CR>", opt)
+map("n", "]t", "<Cmd>tabn<CR>", opt)
 -- buffer 切换
-map("n", "[b", ":bprevious<CR>", opt)
-map("n", "]b", ":bnext<CR>", opt)
+map("n", "[b", "<Cmd>bprevious<CR>", opt)
+map("n", "]b", "<Cmd>bnext<CR>", opt)
 -- Terminal相关
 map("t", "<Esc><Esc>", "<C-\\><C-n>", opt)
 -- map('n', '<C-q>', '<CMD>TermToggle<CR>')
@@ -79,28 +79,28 @@ map("t", "<Esc><Esc>", "<C-\\><C-n>", opt)
 map("v", "<", "<gv", opt)
 map("v", ">", ">gv", opt)
 -- 上下移动选中文本
--- map("v", "J", ":move '>+1<CR>gv-gv", opt)
--- map("v", "K", ":move '<-2<CR>gv-gv", opt)
+-- map("v", "J", "<Cmd>move '>+1<CR>gv-gv", opt)
+-- map("v", "K", "<Cmd>move '<-2<CR>gv-gv", opt)
 -- jump to tag
-map("n", "<C-w><C-]>", ":vsp<CR><C-]>")
-map("n", "<C-w>]", ":sp<CR><C-]>")
+map("n", "<C-w><C-]>", "<Cmd>vsp<CR><C-]>")
+map("n", "<C-w>]", "<Cmd>sp<CR><C-]>")
 -- copy to register
 map("n", "<leader>0p", "\"0p")
 map("v", "<leader><leader>y", "\"+y")
 map("n", "<leader><leader>p", "\"+p")
 -- quickfix
-map("n", "[q", ":cprevious<CR>", opt)
-map("n", "]q", ":cnext<CR>", opt)
+map("n", "[q", "<Cmd>cprevious<CR>", opt)
+map("n", "]q", "<Cmd>cnext<CR>", opt)
 
 ---- Plugins ----
 
 -- 关闭标签页
 -- "moll/vim-bbye"
--- map("n","tc", ":Bdelete!<CR>", opt)
+-- map("n","tc", "<Cmd>Bdelete!<CR>", opt)
 
 -- nvim-tree
 -- tt 键打开关闭tree
--- map("n", "<leader>n", ":NvimTreeToggle<CR>", opt)
+-- map("n", "<leader>n", "<Cmd>NvimTreeToggle<CR>", opt)
 -- 列表快捷键
 -- pluginKeys.nvimTreeList = {
 --   { key = "J", action = "" },
@@ -266,7 +266,7 @@ pluginKeys.gitsigns = function(bufnr)
   -- gitsign_map('n', '<leader>td', gs.toggle_deleted)
 
   -- Text object
-  -- gitsign_map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
+  -- gitsign_map({'o', 'x'}, 'ih', '<Cmd><C-U>Gitsigns select_hunk<CR>')
 end
 
 -- SymbolsOutline
@@ -296,8 +296,8 @@ pluginKeys.telescope = {
     map("n", "<leader>g", builtin.live_grep, opt)
     map("n", "<leader>b", builtin.buffers, opt)
     map("n", "<leader>o", builtin.oldfiles, opt)
-    -- map("n", "sh", ":Telescope help_tags<CR>", opt)
-    -- map("n", "st", ":Telescope tags<CR>", opt)
+    -- map("n", "sh", "<Cmd>Telescope help_tags<CR>", opt)
+    -- map("n", "st", "<Cmd>Telescope tags<CR>", opt)
     -- project插件
     map("n", "<leader>p", "<cmd>Telescope projects<CR>", opt)
   end,
